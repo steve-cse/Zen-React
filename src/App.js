@@ -1,11 +1,11 @@
 import "./App.css";
-import Yogabeginner from "./components/Yogabeginner";
+import Pilates from "./pages/Pilates/Pilates";
 
 function App() {
   return (
     <>
       <div>
-        <Yogabeginner />
+        <Pilates />
       
       </div>
     </>
