@@ -1,11 +1,12 @@
 import "./App.css";
-import Pilates from "./pages/Pilates/Pilates";
+import Pilates_Practice from "./pages/Practice/Pilates/Pilates-Practice";
+
 
 function App() {
   return (
     <>
       <div>
-        <Pilates />
+        <Pilates_Practice/>
       
       </div>
     </>
