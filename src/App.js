@@ -1,16 +1,7 @@
-import "./App.css";
-import Pilates_Practice from "./pages/Practice/Pilates/Pilates-Practice";
-
+import Landing from "./pages/Landing/Landing";
 
 function App() {
-  return (
-    <>
-      <div>
-        <Pilates_Practice/>
-      
-      </div>
-    </>
-  );
+  return (<Landing />);
 }
 
 export default App;
