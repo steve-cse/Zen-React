@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import logo from '../../assets/logo.svg';
 import './navbar.css';
-
+import {Link,useNavigate} from 'react-router-dom'
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <div className="gpt3__navbar">
       <div className="gpt3__navbar-links">
@@ -21,8 +21,8 @@ const Navbar = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-        <p>Sign in</p>
-        <button type="button">Sign up</button>
+     <p> <Link to="/login">Log in</Link></p>
+        <button type="button" onClick={() => navigate('/signup')}>Sign up</button>
       </div>
       <div className="gpt3__navbar-menu">
         {toggleMenu
@@ -38,8 +38,8 @@ const Navbar = () => {
           <p><a href="#future">Future</a></p>
           </div>
           <div className="gpt3__navbar-menu_container-links-sign">
-            <p>Sign in</p>
-            <button type="button">Sign up</button>
+          <p> <Link to="/login">Log in</Link></p>
+            <button type="button" onClick={() => navigate('/signup')}>Sign up</button>
           </div>
         </div>
         )}

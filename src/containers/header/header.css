@@ -26,7 +26,7 @@
 
 }
 
-.gpt3__header-content p {
+.gpt3__header-content strong {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 30px;
@@ -129,7 +129,7 @@
 
 .gpt3__header-image img {
     width: 100%;
-    height: 100%;
+    height: 99%;
 }
 
 @media screen and (max-width: 1050px) {

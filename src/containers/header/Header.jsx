@@ -1,15 +1,15 @@
 import React from 'react';
-// import people from '../../assets/people.png';
-import yoga from '../../assets/5184243.jpg';
 import './header.css';
+import yoga from '../../assets/5184243.jpg';
+
 
 const Header = () => (
   <div className="gpt3__header section__padding" id="home">
     <div className="gpt3__header-content">
       <h1 className="gradient__text">Zen : Yoga and Pilates</h1>
-      <p>Computer Assisted Yoga and Pilates training system. Users get real time feedback on their posture, 
+      <strong>Computer Assisted Yoga and Pilates training system. Users get real time feedback on their posture, 
         performance and correction needed. Helps diminish the need for a yoga or pilates coach
-      </p>
+      </strong>
 
       <div className="gpt3__header-content__input">
         <input type="email" placeholder="Your Email Address"/>
