@@ -8,26 +8,24 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import Landing from "./pages/Landing/Landing";
 function App() {
   return (
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route exact path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path='/' element={<Landing />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
 
-   
-        <Router>
-          <AuthProvider>
-            <Routes>
-              <Route exact path="/dashboard"
-                element={
-                  <PrivateRoute>
-                    <Dashboard />
-                  </PrivateRoute>
-                }
-              ></Route>
-              <Route path='/signup' element={<Signup />} />
-              <Route path='/login' element={<Login />} />
-              <Route path="/forgot-password" element={<ForgotPassword/>}/>
-              <Route path='/' element={<Landing/>} />
-            </Routes>
-          </AuthProvider>
-        </Router>
-     
 
   );
 }
