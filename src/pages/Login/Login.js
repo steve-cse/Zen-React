@@ -24,9 +24,9 @@ export default function Login() {
       if (docs.docs.length === 0) {
         await addDoc(collection(fstore, "users"), {
           uid: res.user.uid,
-          curls: 0,
-          squats: 0,
-          lateral_raise:0
+          "Left Curl": 0,
+          "Squats": 0,
+          "Lateral Raise":0
         });}
       navigate("/dashboard")
     } catch (err) {

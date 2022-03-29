@@ -60,17 +60,19 @@ function Pilates_Practice() {
       
       stage = null;
       const [counter, setCounter] = useState(0); //hook to deal with counter
+      const [currentPose, setCurrentPose,currentPoseRef] = useState('Left Curl')
+
       function incrementCounter() {
         setCounter(prevCounter=>prevCounter+1);
       }
       function resetCounter() { 
+
         setCounter(0);
       }
       // const [exercise_name_for_display, setexercise_name_for_display] = useState("Left Curl") //hook to deal with current exercise to display
       // function changeDisplay(){
       //   setexercise_name_for_display(current_exercise.name);
       // }
-      const [currentPose, setCurrentPose,currentPoseRef] = useState('Left Curl')
       useEffect(() => {
         resetCounter();
         

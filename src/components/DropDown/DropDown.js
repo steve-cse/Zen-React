@@ -11,17 +11,7 @@ return (<>
           )}
         
         </DropdownButton>
-        {/* <ul class="dropdown-menu dropdown-custom-menu" aria-labelledby="dropdownMenuButton1">
-            {poseList.map((pose) => (
-                <li onClick={() => setCurrentPose(pose)}>
-                    <div class="dropdown-item-container">
-                        <p className="dropdown-item-1">{pose}</p>
-                        
-                    </div>
-                </li>
-            ))}
-            
-        </ul> */}
+        
         </>    
           
      
