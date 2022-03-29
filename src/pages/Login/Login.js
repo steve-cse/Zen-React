@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert, Container } from "react-bootstrap"
-import { useAuth } from "../../contexts/AuthContext"
+import { useAuth} from "../../contexts/AuthContext"
 import { Link, useNavigate } from 'react-router-dom'
-
+import { query,getDocs,collection,where,addDoc} from 'firebase/firestore';
+import { fstore } from "../../firebaseconfig/firebaseconfig";
 export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -17,9 +18,19 @@ export default function Login() {
     try {
       setError("")
       setLoading(true)
-      await login(emailRef.current.value, passwordRef.current.value)
+      const res=await login(emailRef.current.value, passwordRef.current.value)
+      const q = query(collection(fstore, "users"), where("uid", "==", res.user.uid));
+      const docs = await getDocs(q);
+      if (docs.docs.length === 0) {
+        await addDoc(collection(fstore, "users"), {
+          uid: res.user.uid,
+          curls: 0,
+          squats: 0,
+          lateral_raise:0
+        });}
       navigate("/dashboard")
-    } catch {
+    } catch (err) {
+      console.log(err)
       setError("Failed to log in")
     }
 

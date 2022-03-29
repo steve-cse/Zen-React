@@ -110,7 +110,7 @@ function Pilates_Practice() {
     
           // Only overwrite existing pixels.
           canvasCtx.globalCompositeOperation = "source-in";
-          canvasCtx.fillStyle = "#f542e6";
+          canvasCtx.fillStyle = "#ff5500";
           canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
     
           // Only overwrite missing pixels.
@@ -125,11 +125,11 @@ function Pilates_Practice() {
     
           canvasCtx.globalCompositeOperation = "source-over";
           connect(canvasCtx, results.poseLandmarks, poseAll.POSE_CONNECTIONS, {
-            color: "#f542e6",
+            color: "#ff5500",
             lineWidth: 4,
           });
           land(canvasCtx, results.poseLandmarks, {
-            color: "#4f4fff",
+            color: "#42ff52",
             lineWidth: 2,
           });
           canvasCtx.restore();

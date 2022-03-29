@@ -6,6 +6,7 @@ import Login from "./pages/Login/Login";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import Landing from "./pages/Landing/Landing";
+import PilatesPractice from "./pages/Practice/Pilates/Pilates-Practice";
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path='/pilates-practice-beginner' element={<PilatesPractice />} />
           <Route path='/' element={<Landing />} />
         </Routes>
       </AuthProvider>
