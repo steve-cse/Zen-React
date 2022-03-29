@@ -3,8 +3,14 @@ import React, { useRef, useEffect} from "react";
 import * as poseAll from "@mediapipe/pose";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
+import { useNavigate } from "react-router-dom";
 import useState from 'react-usestateref';
 import DropDown from "../../../components/DropDown/DropDown";
+import { fstore } from "../../../firebaseconfig/firebaseconfig";
+import { updateDoc,doc } from "firebase/firestore";
+import { Button} from "react-bootstrap";
+
+
 const radians_to_degrees = (rad) => (rad * 180.0) / Math.PI;
 function find_angle(p1, p2, p3) {
   //angle between 3 points
@@ -18,6 +24,8 @@ function find_angle(p1, p2, p3) {
 }
 
 function Pilates_Practice() {
+  
+  
   
     var exercise_pack = [
         {
@@ -57,16 +65,32 @@ function Pilates_Practice() {
       var current_exercise;
       var stage;
       var angle_deg;
-      
+      const navigate = useNavigate();
       stage = null;
       const [counter, setCounter] = useState(0); //hook to deal with counter
       const [currentPose, setCurrentPose,currentPoseRef] = useState('Left Curl')
-
+      const handleUpdate = async ()=>{
+       
+        console.log(parseInt(localStorage.getItem(currentPoseRef.current))+1);
+        try{
+         const dataRef=doc(fstore, 'users', localStorage.getItem('id'))
+         
+          await updateDoc(dataRef, {
+            [currentPoseRef.current]: parseInt(localStorage.getItem(currentPoseRef.current))+1
+            
+          })
+          localStorage.setItem(currentPoseRef.current,parseInt(localStorage.getItem(currentPoseRef.current))+1);
+        } catch (err) {
+          console.log(err)
+        }    
+      }
       function incrementCounter() {
+        
         setCounter(prevCounter=>prevCounter+1);
+        handleUpdate();
       }
       function resetCounter() { 
-
+      
         setCounter(0);
       }
       // const [exercise_name_for_display, setexercise_name_for_display] = useState("Left Curl") //hook to deal with current exercise to display
@@ -152,7 +176,8 @@ function Pilates_Practice() {
             stage = "up";
             
             incrementCounter();
-            console.log(current_exercise.name)  
+            console.log(current_exercise.name) 
+           
             
           }
           // if (counterRef.current === 20 && current_exercise_index < 2) {
@@ -251,6 +276,9 @@ function Pilates_Practice() {
     currentPose={currentPose}
     setCurrentPose={setCurrentPose}
     />
+    <Button variant="link"  onClick={() => navigate("/dashboard")}>
+          Back to Dashboard
+        </Button>
     </>
     
   )

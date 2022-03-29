@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { fstore } from "../../firebaseconfig/firebaseconfig";
 import { query, getDocs, collection, where } from "firebase/firestore";
 import PilatesDataTable from "../../components/PilatesDataTable/PilatesDataTable";
+var returnedData;
 export default function Dashboard() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-  const [pilates, setPilates] = useState([]);
 
   async function handleLogout() {
     setError("");
@@ -22,17 +22,24 @@ export default function Dashboard() {
     }
   }
   useEffect(() => {
-    const getPilates = async () => {
+    const getData = async () => {
       const q = query(
         collection(fstore, "users"),
         where("uid", "==", currentUser.uid)
       );
       const docs = await getDocs(q);
-      setPilates(docs.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      
+      //setPilates();
+      returnedData = Object.assign(
+        docs.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      )[0];
+      localStorage.setItem("Left Curl", returnedData["Left Curl"]);
+      localStorage.setItem("Squats", returnedData["Squats"]);
+      localStorage.setItem("Lateral Raise", returnedData["Lateral Raise"]);
+      localStorage.setItem("id", returnedData.id);
     };
 
-    getPilates();
+    getData();
+
   }, []);
 
   return (
@@ -42,17 +49,13 @@ export default function Dashboard() {
           <h2 className="text-center mb-4">Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
-          {pilates.map((data) => {
-            return (
-              <div>
-                <PilatesDataTable
-                  curls={data['Left Curl']}
-                  squats={data['Squats']}
-                  lateral_raise={data['Lateral Raise']}
-                />
-              </div>
-            );
-          })}
+          <div>
+            <PilatesDataTable
+              curls={localStorage.getItem("Left Curl")}
+              squats={localStorage.getItem("Squats")}
+              lateral_raise={localStorage.getItem("Lateral Raise")}
+            />
+          </div>
         </Card.Body>
       </Card>
 

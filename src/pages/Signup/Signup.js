@@ -2,6 +2,9 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useNavigate } from 'react-router-dom'
+import { query,getDocs,collection,where,addDoc} from 'firebase/firestore';
+import { fstore } from "../../firebaseconfig/firebaseconfig";
+
 
 export default function Signup() {
 
@@ -21,7 +24,16 @@ export default function Signup() {
     try {
       setError('')
       setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
+      const res=await signup(emailRef.current.value, passwordRef.current.value)
+      const q = query(collection(fstore, "users"), where("uid", "==", res.user.uid));
+      const docs = await getDocs(q);
+      if (docs.docs.length === 0) {
+        await addDoc(collection(fstore, "users"), {
+          uid: res.user.uid,
+          "Left Curl": 0,
+          "Squats": 0,
+          "Lateral Raise":0
+        });}
       navigate("/")
     } catch (error) {
       setError('Failed to create an account')

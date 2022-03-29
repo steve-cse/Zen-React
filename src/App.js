@@ -22,7 +22,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path='/pilates-practice-beginner' element={<PilatesPractice />} />
+          <Route path='/pilates-practice-beginner' element={<PrivateRoute><PilatesPractice /></PrivateRoute>} />
           <Route path='/' element={<Landing />} />
         </Routes>
       </AuthProvider>
