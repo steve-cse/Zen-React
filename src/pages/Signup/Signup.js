@@ -32,7 +32,12 @@ export default function Signup() {
           uid: res.user.uid,
           "Left Curl": 0,
           "Squats": 0,
-          "Lateral Raise":0
+          "Lateral Raise":0,
+          "chair":0,
+          "cobra":0,
+          "goddess_pose":0,
+          "traingle":0,
+          "tree":0
         });}
       navigate("/")
     } catch (error) {

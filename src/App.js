@@ -8,7 +8,8 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import Landing from "./pages/Landing/Landing";
 import PilatesPractice from "./pages/Practice/Pilates/Pilates-Practice";
 import YogaPractice from "./pages/Practice/Yoga/Yoga-Practice-Beginner";
-import YogaLearn from "./pages/Learn/Yoga/Yoga-Beginner"
+import YogaLearnBeginner from "./pages/Learn/Yoga/Yoga-Beginner"
+import PilatesLearnBeginner from "./pages/Learn/Pilates/Pilates-Beginner"
 function App() {
   return (
     <Router>
@@ -26,7 +27,8 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path='/pilates-practice-beginner' element={<PrivateRoute><PilatesPractice /></PrivateRoute>} />
           <Route path='/yoga-practice-beginner' element={<PrivateRoute><YogaPractice /></PrivateRoute>} />
-          <Route path='/yoga-learn-beginner' element={<PrivateRoute><YogaLearn /></PrivateRoute>} />
+          <Route path='/yoga-learn-beginner' element={<PrivateRoute><YogaLearnBeginner /></PrivateRoute>} />
+          <Route path='/pilates-learn-beginner' element={<PrivateRoute><PilatesLearnBeginner /></PrivateRoute>} />
           <Route path='/' element={<Landing />} />
         </Routes>
       </AuthProvider>

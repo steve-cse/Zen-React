@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { fstore } from "../../firebaseconfig/firebaseconfig";
 import { query, getDocs, collection, where } from "firebase/firestore";
 import PilatesDataTable from "../../components/PilatesDataTable/PilatesDataTable";
+import YogaDataTable from "../../components/YogaDataTable/YogaDataTable";
 var returnedData;
 export default function Dashboard() {
   const [error, setError] = useState("");
@@ -35,6 +36,11 @@ export default function Dashboard() {
       localStorage.setItem("Left Curl", returnedData["Left Curl"]);
       localStorage.setItem("Squats", returnedData["Squats"]);
       localStorage.setItem("Lateral Raise", returnedData["Lateral Raise"]);
+      localStorage.setItem("chair", returnedData.chair);
+      localStorage.setItem("cobra", returnedData.cobra);
+      localStorage.setItem("goddess_pose", returnedData.goddess_pose);
+      localStorage.setItem("traingle", returnedData.traingle);
+      localStorage.setItem("tree", returnedData.tree);
       localStorage.setItem("id", returnedData.id);
     };
 
@@ -50,11 +56,14 @@ export default function Dashboard() {
           {error && <Alert variant="danger">{error}</Alert>}
           <strong>Email:</strong> {currentUser.email}
           <div>
+            <h3>Pilates Analytics</h3>
             <PilatesDataTable
               curls={localStorage.getItem("Left Curl")}
               squats={localStorage.getItem("Squats")}
               lateral_raise={localStorage.getItem("Lateral Raise")}
             />
+            <h3>Yoga Analytics</h3>
+            <YogaDataTable/>
           </div>
         </Card.Body>
       </Card>
@@ -64,13 +73,19 @@ export default function Dashboard() {
           variant="link"
           onClick={() => navigate("/pilates-practice-beginner")}
         >
-          Pilates
+          Practice Pilates
         </Button>
         <Button
           variant="link"
           onClick={() => navigate("/yoga-practice-beginner")}
         >
-          Yoga
+          Practice Yoga
+        </Button>
+        <Button
+          variant="link"
+          onClick={() => navigate("/pilates-learn-beginner")}
+        >
+          Learn Pilates 
         </Button>
         <Button
           variant="link"
@@ -78,6 +93,7 @@ export default function Dashboard() {
         >
           Learn Yoga 
         </Button>
+        
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>

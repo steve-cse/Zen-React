@@ -6,7 +6,9 @@ import Webcam from "react-webcam";
 import { POINTS, keypointConnections } from "../../../utils/data";
 import { drawPoint, drawSegment } from "../../../utils/helper";
 import DropDown from "../../../components/DropDown/DropDown";
-let skeletonColor = "rgb(255,255,255)";
+import { fstore } from "../../../firebaseconfig/firebaseconfig";
+import { updateDoc,doc } from "firebase/firestore";
+let skeletonColor = "rgb(160, 32, 240)";
 let poseList = [
   { name: "chair" },
   { name: "cobra" },
@@ -24,8 +26,25 @@ function Yoga() {
   const [currentTime, setCurrentTime] = useState(0);
   const [poseTime, setPoseTime] = useState(0);
   const [round, setRound] = useState(0);
+
+  const handleUpdate = async ()=>{
+       
+    console.log(parseInt(localStorage.getItem(currentPoseRef.current))+1);
+    try{
+     const dataRef=doc(fstore, 'users', localStorage.getItem('id'))
+     
+      await updateDoc(dataRef, {
+        [currentPoseRef.current]: parseInt(localStorage.getItem(currentPoseRef.current))+1
+        
+      })
+      localStorage.setItem(currentPoseRef.current,parseInt(localStorage.getItem(currentPoseRef.current))+1);
+    } catch (err) {
+      console.log(err)
+    }    
+  }
   function incrementRound() {
     setRound((prevRound) => prevRound + 1);
+    handleUpdate();
   }
   useEffect(() => {
     runMovenet();
@@ -178,7 +197,7 @@ function Yoga() {
           return [keypoint.x, keypoint.y];
         });
         if (notDetected > 4) {
-          skeletonColor = "rgb(255,255,255)";
+          skeletonColor = "rgb(160, 32, 240)";
           return;
         }
         const processedInput = landmarks_to_embedding(input);
@@ -197,7 +216,7 @@ function Yoga() {
             skeletonColor = "rgb(0,255,0)";
           } else {
             flag = false;
-            skeletonColor = "rgb(255,255,255)";
+            skeletonColor = "rgb(160, 32, 240)";
           }
         });
       } catch (err) {
