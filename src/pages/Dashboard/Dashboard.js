@@ -72,6 +72,12 @@ export default function Dashboard() {
         >
           Yoga
         </Button>
+        <Button
+          variant="link"
+          onClick={() => navigate("/yoga-learn-beginner")}
+        >
+          Learn Yoga 
+        </Button>
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>

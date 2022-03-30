@@ -23,9 +23,9 @@ function Yoga() {
   const [startingTime, setStartingTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [poseTime, setPoseTime] = useState(0);
-  const [round, setRound] = useState(0)
-  function incrementRound() {    
-    setRound(prevRound=>prevRound+1);
+  const [round, setRound] = useState(0);
+  function incrementRound() {
+    setRound((prevRound) => prevRound + 1);
   }
   useEffect(() => {
     runMovenet();
@@ -42,8 +42,11 @@ function Yoga() {
     if (flag) {
       setPoseTime(timeDiff);
     }
-    if (((currentTime - startingTime) / 1000)%10===0 && (currentTime - startingTime) / 1000!==0){
-      incrementRound()
+    if (
+      ((currentTime - startingTime) / 1000) % 10 === 0 &&
+      (currentTime - startingTime) / 1000 !== 0
+    ) {
+      incrementRound();
     }
   }, [currentTime]);
 
@@ -205,40 +208,39 @@ function Yoga() {
 
   return (
     <>
-      
       <center>
-      <Webcam
-        width="640px"
-        height="480px"
-        id="webcam"
-        ref={webcamRef}
-        style={{
-          position: "absolute",
-          marginLeft: "auto",
+        <Webcam
+          width="640px"
+          height="480px"
+          id="webcam"
+          ref={webcamRef}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
             marginRight: "auto",
             textAlign: "center",
-          left: 0,
-          right: 0,
-          zindex: 9,
-          padding: "0px",
-        }}
-      /> 
-      <canvas
-        ref={canvasRef}
-        id="my-canvas"
-        width="640px"
-        height="480px"
-        style={{
-          position: "absolute",
-          marginLeft: "auto",
+            left: 0,
+            right: 0,
+            zindex: 9,
+            padding: "0px",
+          }}
+        />
+        <canvas
+          ref={canvasRef}
+          id="my-canvas"
+          width="640px"
+          height="480px"
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
             marginRight: "auto",
             textAlign: "center",
-          left: 0,
-          right: 0,
-          zindex: 9,
-        }}
-      ></canvas>
-     </center>
+            left: 0,
+            right: 0,
+            zindex: 9,
+          }}
+        ></canvas>
+      </center>
       <DropDown
         exercise_pack={poseList}
         currentPose={currentPose}
