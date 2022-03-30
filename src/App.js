@@ -7,6 +7,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 import Landing from "./pages/Landing/Landing";
 import PilatesPractice from "./pages/Practice/Pilates/Pilates-Practice";
+import YogaPractice from "./pages/Practice/Yoga/Yoga-Practice-Beginner";
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path='/pilates-practice-beginner' element={<PrivateRoute><PilatesPractice /></PrivateRoute>} />
+          <Route path='/yoga-practice-beginner' element={<PrivateRoute><YogaPractice /></PrivateRoute>} />
           <Route path='/' element={<Landing />} />
         </Routes>
       </AuthProvider>

@@ -39,7 +39,7 @@ export default function Dashboard() {
     };
 
     getData();
-
+    
   }, []);
 
   return (
@@ -65,6 +65,12 @@ export default function Dashboard() {
           onClick={() => navigate("/pilates-practice-beginner")}
         >
           Pilates
+        </Button>
+        <Button
+          variant="link"
+          onClick={() => navigate("/yoga-practice-beginner")}
+        >
+          Yoga
         </Button>
         <Button variant="link" onClick={handleLogout}>
           Log Out
