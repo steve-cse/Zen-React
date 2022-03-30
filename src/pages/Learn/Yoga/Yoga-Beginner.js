@@ -6,7 +6,7 @@ import Webcam from "react-webcam";
 import { POINTS, keypointConnections } from "../../../utils/data";
 import { drawPoint, drawSegment } from "../../../utils/helper";
 
-let skeletonColor = "rgb(255, 149, 0)";
+let skeletonColor = "rgb(160, 32, 240)";
 let poseList = [
   { name: "chair" },
   { name: "cobra" },
@@ -172,7 +172,7 @@ function Yoga() {
             if (
               !(keypoint.name === "left_eye" || keypoint.name === "right_eye")
             ) {
-              drawPoint(ctx, keypoint.x, keypoint.y, 8, "rgb(255, 149, 0)");
+              drawPoint(ctx, keypoint.x, keypoint.y, 8, "rgb(255,255,255)");
               let connections = keypointConnections[keypoint.name];
               try {
                 connections.forEach((connection) => {
@@ -195,7 +195,7 @@ function Yoga() {
           return [keypoint.x, keypoint.y];
         });
         if (notDetected > 4) {
-          skeletonColor = "rgb(255, 149, 0)";
+          skeletonColor = "rgb(160, 32, 240)";
           return;
         }
         const processedInput = landmarks_to_embedding(input);
@@ -214,7 +214,7 @@ function Yoga() {
             skeletonColor = "rgb(0,255,0)";
           } else {
             flag = false;
-            skeletonColor = "rgb(255, 149, 0)";
+            skeletonColor = "rgb(160, 32, 240)";
           }
         });
       } catch (err) {
@@ -261,6 +261,7 @@ function Yoga() {
      
       <h3>Counter: {poseTime}</h3>
       <h3>Rounds: {round}</h3>
+      <h3>Pose: {currentPose}</h3>
     </>
   );
 }
