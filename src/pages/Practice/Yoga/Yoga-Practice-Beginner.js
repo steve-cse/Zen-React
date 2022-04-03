@@ -276,7 +276,7 @@ function Yoga() {
       />
       <h3>Counter: {poseTime}</h3>
       <h3>Rounds: {round}</h3>
-      <h2>{feedback}</h2>
+      <h3>{feedback}</h3>
     </>
   );
 }

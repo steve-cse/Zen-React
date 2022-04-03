@@ -26,6 +26,7 @@ function Yoga() {
   const [currentTime, setCurrentTime] = useState(0);
   const [poseTime, setPoseTime] = useState(0);
   const [round, setRound,roundRef] = useState(0);
+  const [feedback, setFeedback] = useState(" ");
   function incrementRound() {
     setRound((prevRound) => prevRound + 1);
   }
@@ -205,10 +206,17 @@ function Yoga() {
           const classNo = CLASS_NO[currentPoseRef.current];
           //console.log(data[0][classNo]);
           //console.log(currentPoseRef.current);
+          if (data[0][classNo] < 0.75) {
+            setFeedback("Correct Your Pose!!!")
+          }
+          if (data[0][classNo]>0.75 && data[0][classNo]<0.85){
+            setFeedback("Little more to Perfection")
+          }
           if (data[0][classNo] > 0.97) {
             if (!flag) {
               setStartingTime(new Date(Date()).getTime());
               flag = true;
+              setFeedback("PERFECT")
             }
             setCurrentTime(new Date(Date()).getTime());
             skeletonColor = "rgb(0,255,0)";
@@ -262,6 +270,7 @@ function Yoga() {
       <h3>Counter: {poseTime}</h3>
       <h3>Rounds: {round}</h3>
       <h3>Pose: {currentPose}</h3>
+      <h3>{feedback}</h3>
     </>
   );
 }
