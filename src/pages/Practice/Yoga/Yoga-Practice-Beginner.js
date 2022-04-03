@@ -81,6 +81,7 @@ function Yoga() {
   };
 
   function get_center_point(landmarks, left_bodypart, right_bodypart) {
+    // Calculates the center point of the two given landmarks.
     let left = tf.gather(landmarks, left_bodypart, 1);
     let right = tf.gather(landmarks, right_bodypart, 1);
     const center = tf.add(tf.mul(left, 0.5), tf.mul(right, 0.5));
@@ -88,6 +89,12 @@ function Yoga() {
   }
 
   function get_pose_size(landmarks, torso_size_multiplier = 2.5) {
+    //   Calculates pose size.
+
+    // It is the maximum of two values:
+    //   * Torso size multiplied by `torso_size_multiplier`
+    //   * Maximum distance from pose center to any pose landmark
+
     let hips_center = get_center_point(
       landmarks,
       POINTS.LEFT_HIP,
@@ -120,6 +127,8 @@ function Yoga() {
   }
 
   function normalize_pose_landmarks(landmarks) {
+    //   Normalizes the landmarks translation by moving the pose center to (0,0) and
+    //   scaling it to a constant pose size.
     let pose_center = get_center_point(
       landmarks,
       POINTS.LEFT_HIP,
@@ -135,7 +144,7 @@ function Yoga() {
   }
 
   function landmarks_to_embedding(landmarks) {
-    // normalize landmarks 2D
+    // Converts the input landmarks into a pose embedding.
     landmarks = normalize_pose_landmarks(tf.expandDims(landmarks, 0));
     let embedding = tf.reshape(landmarks, [1, 34]);
     return embedding;
@@ -210,16 +219,16 @@ function Yoga() {
           //console.log(data[0][classNo]);
           //console.log(currentPoseRef.current);
           if (data[0][classNo] < 0.75) {
-            setFeedback("Correct Your Pose!!!")
+            setFeedback("Correct Your Pose!!!");
           }
-          if (data[0][classNo]>0.75 && data[0][classNo]<0.85){
-            setFeedback("Little more to Perfection")
+          if (data[0][classNo] > 0.75 && data[0][classNo] < 0.85) {
+            setFeedback("Little more to Perfection");
           }
           if (data[0][classNo] > 0.97) {
             if (!flag) {
               setStartingTime(new Date(Date()).getTime());
               flag = true;
-              setFeedback("PERFECT")
+              setFeedback("PERFECT");
             }
             setCurrentTime(new Date(Date()).getTime());
             skeletonColor = "rgb(0,255,0)";
