@@ -7,7 +7,7 @@ import { POINTS, keypointConnections } from "../../../utils/data";
 import { drawPoint, drawSegment } from "../../../utils/helper";
 import DropDown from "../../../components/DropDown/DropDown";
 import { fstore } from "../../../firebaseconfig/firebaseconfig";
-import { updateDoc,doc } from "firebase/firestore";
+import { updateDoc, doc } from "firebase/firestore";
 let skeletonColor = "rgb(160, 32, 240)";
 let poseList = [
   { name: "chair" },
@@ -26,22 +26,24 @@ function Yoga() {
   const [currentTime, setCurrentTime] = useState(0);
   const [poseTime, setPoseTime] = useState(0);
   const [round, setRound] = useState(0);
+  const [feedback, setFeedback] = useState(" ");
+  const handleUpdate = async () => {
+    console.log(parseInt(localStorage.getItem(currentPoseRef.current)) + 1);
+    try {
+      const dataRef = doc(fstore, "users", localStorage.getItem("id"));
 
-  const handleUpdate = async ()=>{
-       
-    console.log(parseInt(localStorage.getItem(currentPoseRef.current))+1);
-    try{
-     const dataRef=doc(fstore, 'users', localStorage.getItem('id'))
-     
       await updateDoc(dataRef, {
-        [currentPoseRef.current]: parseInt(localStorage.getItem(currentPoseRef.current))+1
-        
-      })
-      localStorage.setItem(currentPoseRef.current,parseInt(localStorage.getItem(currentPoseRef.current))+1);
+        [currentPoseRef.current]:
+          parseInt(localStorage.getItem(currentPoseRef.current)) + 1,
+      });
+      localStorage.setItem(
+        currentPoseRef.current,
+        parseInt(localStorage.getItem(currentPoseRef.current)) + 1
+      );
     } catch (err) {
-      console.log(err)
-    }    
-  }
+      console.log(err);
+    }
+  };
   function incrementRound() {
     setRound((prevRound) => prevRound + 1);
     handleUpdate();
@@ -207,10 +209,17 @@ function Yoga() {
           const classNo = CLASS_NO[currentPoseRef.current];
           //console.log(data[0][classNo]);
           //console.log(currentPoseRef.current);
+          if (data[0][classNo] < 0.75) {
+            setFeedback("Correct Your Pose!!!")
+          }
+          if (data[0][classNo]>0.75 && data[0][classNo]<0.85){
+            setFeedback("Little more to Perfection")
+          }
           if (data[0][classNo] > 0.97) {
             if (!flag) {
               setStartingTime(new Date(Date()).getTime());
               flag = true;
+              setFeedback("PERFECT")
             }
             setCurrentTime(new Date(Date()).getTime());
             skeletonColor = "rgb(0,255,0)";
@@ -267,6 +276,7 @@ function Yoga() {
       />
       <h3>Counter: {poseTime}</h3>
       <h3>Rounds: {round}</h3>
+      <h2>{feedback}</h2>
     </>
   );
 }
