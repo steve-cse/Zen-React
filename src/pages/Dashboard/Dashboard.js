@@ -98,9 +98,11 @@ export default function Dashboard() {
           Learn Pilates
         </Button>
         <Button variant="link" onClick={() => navigate("/yoga-learn-beginner")}>
-          Learn Yoga
+          Learn Yoga Beginner
         </Button>
-
+        <Button variant="link" onClick={() => navigate("/yoga-learn-intermediate")}>
+          Learn Yoga Intermediate
+        </Button>
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>
