@@ -8,6 +8,8 @@ import { drawPoint, drawSegment } from "../../../utils/helper";
 import DropDown from "../../../components/DropDown/DropDown";
 import { fstore } from "../../../firebaseconfig/firebaseconfig";
 import { updateDoc, doc } from "firebase/firestore";
+import { landmarks_to_embedding } from "../../../tflib/FeatureVectorExtractor";
+
 let skeletonColor = "rgb(160, 32, 240)";
 let poseList = [
   { name: "chair" },
@@ -80,76 +82,6 @@ function Yoga() {
     tree: 5,
   };
 
-  function get_center_point(landmarks, left_bodypart, right_bodypart) {
-    // Calculates the center point of the two given landmarks.
-    let left = tf.gather(landmarks, left_bodypart, 1);
-    let right = tf.gather(landmarks, right_bodypart, 1);
-    const center = tf.add(tf.mul(left, 0.5), tf.mul(right, 0.5));
-    return center;
-  }
-
-  function get_pose_size(landmarks, torso_size_multiplier = 2.5) {
-    //   Calculates pose size.
-
-    // It is the maximum of two values:
-    //   * Torso size multiplied by `torso_size_multiplier`
-    //   * Maximum distance from pose center to any pose landmark
-
-    let hips_center = get_center_point(
-      landmarks,
-      POINTS.LEFT_HIP,
-      POINTS.RIGHT_HIP
-    );
-    let shoulders_center = get_center_point(
-      landmarks,
-      POINTS.LEFT_SHOULDER,
-      POINTS.RIGHT_SHOULDER
-    );
-    let torso_size = tf.norm(tf.sub(shoulders_center, hips_center));
-    let pose_center_new = get_center_point(
-      landmarks,
-      POINTS.LEFT_HIP,
-      POINTS.RIGHT_HIP
-    );
-    pose_center_new = tf.expandDims(pose_center_new, 1);
-
-    pose_center_new = tf.broadcastTo(pose_center_new, [1, 17, 2]);
-    // return: shape(17,2)
-    let d = tf.gather(tf.sub(landmarks, pose_center_new), 0, 0);
-    let max_dist = tf.max(tf.norm(d, "euclidean", 0));
-
-    // normalize scale
-    let pose_size = tf.maximum(
-      tf.mul(torso_size, torso_size_multiplier),
-      max_dist
-    );
-    return pose_size;
-  }
-
-  function normalize_pose_landmarks(landmarks) {
-    //   Normalizes the landmarks translation by moving the pose center to (0,0) and
-    //   scaling it to a constant pose size.
-    let pose_center = get_center_point(
-      landmarks,
-      POINTS.LEFT_HIP,
-      POINTS.RIGHT_HIP
-    );
-    pose_center = tf.expandDims(pose_center, 1);
-    pose_center = tf.broadcastTo(pose_center, [1, 17, 2]);
-    landmarks = tf.sub(landmarks, pose_center);
-
-    let pose_size = get_pose_size(landmarks);
-    landmarks = tf.div(landmarks, pose_size);
-    return landmarks;
-  }
-
-  function landmarks_to_embedding(landmarks) {
-    // Converts the input landmarks into a pose embedding.
-    landmarks = normalize_pose_landmarks(tf.expandDims(landmarks, 0));
-    let embedding = tf.reshape(landmarks, [1, 34]);
-    return embedding;
-  }
-
   const runMovenet = async () => {
     const detectorConfig = {
       modelType: poseDetection.movenet.modelType.SINGLEPOSE_THUNDER,
@@ -159,7 +91,7 @@ function Yoga() {
       detectorConfig
     );
     const poseClassifier = await tf.loadLayersModel(
-      "https://raw.githubusercontent.com/Maverick-2000/Zen-React/master/Movenet%20Files/model.json"
+      "https://raw.githubusercontent.com/Maverick-2000/Zen-React/master/Movenet%20Files/Beginner/model/model.json"
     );
 
     interval = setInterval(() => {

@@ -5,6 +5,7 @@ import useState from "react-usestateref";
 import Webcam from "react-webcam";
 import { POINTS, keypointConnections } from "../../../utils/data";
 import { drawPoint, drawSegment } from "../../../utils/helper";
+import { landmarks_to_embedding } from "../../../tflib/FeatureVectorExtractor";
 
 let skeletonColor = "rgb(160, 32, 240)";
 let poseList = [
@@ -13,11 +14,11 @@ let poseList = [
   { name: "goddess_pose" },
   { name: "traingle" },
   { name: "tree" },
-  {name:"no_pose"}
+  { name: "no_pose" },
 ];
 let flag = false;
 let interval;
-var currentPoseIndex=0;
+var currentPoseIndex = 0;
 function Yoga() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
@@ -25,20 +26,20 @@ function Yoga() {
   const [startingTime, setStartingTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [poseTime, setPoseTime] = useState(0);
-  const [round, setRound,roundRef] = useState(0);
+  const [round, setRound, roundRef] = useState(0);
   const [feedback, setFeedback] = useState(" ");
   function incrementRound() {
     setRound((prevRound) => prevRound + 1);
   }
-  function incrementPose(){
-    currentPoseIndex=currentPoseIndex+1;
-    if (currentPoseIndex===5){
-      setCurrentPose(poseList[poseList.length-1].name)
-      console.log(poseList[poseList.length-1].name)
-    } else if (currentPoseIndex<5){
-      setCurrentPose(poseList[currentPoseIndex].name)
-      console.log(poseList[currentPoseIndex].name)
-  }
+  function incrementPose() {
+    currentPoseIndex = currentPoseIndex + 1;
+    if (currentPoseIndex === 5) {
+      setCurrentPose(poseList[poseList.length - 1].name);
+      console.log(poseList[poseList.length - 1].name);
+    } else if (currentPoseIndex < 5) {
+      setCurrentPose(poseList[currentPoseIndex].name);
+      console.log(poseList[currentPoseIndex].name);
+    }
   }
   useEffect(() => {
     runMovenet();
@@ -60,9 +61,9 @@ function Yoga() {
       (currentTime - startingTime) / 1000 !== 0
     ) {
       incrementRound();
-      
-      if (roundRef.current===6){
-        console.log(roundRef.current)
+
+      if (roundRef.current === 6) {
+        console.log(roundRef.current);
         incrementPose();
       }
     }
@@ -77,67 +78,6 @@ function Yoga() {
     tree: 5,
   };
 
-  function get_center_point(landmarks, left_bodypart, right_bodypart) {
-    let left = tf.gather(landmarks, left_bodypart, 1);
-    let right = tf.gather(landmarks, right_bodypart, 1);
-    const center = tf.add(tf.mul(left, 0.5), tf.mul(right, 0.5));
-    return center;
-  }
-
-  function get_pose_size(landmarks, torso_size_multiplier = 2.5) {
-    let hips_center = get_center_point(
-      landmarks,
-      POINTS.LEFT_HIP,
-      POINTS.RIGHT_HIP
-    );
-    let shoulders_center = get_center_point(
-      landmarks,
-      POINTS.LEFT_SHOULDER,
-      POINTS.RIGHT_SHOULDER
-    );
-    let torso_size = tf.norm(tf.sub(shoulders_center, hips_center));
-    let pose_center_new = get_center_point(
-      landmarks,
-      POINTS.LEFT_HIP,
-      POINTS.RIGHT_HIP
-    );
-    pose_center_new = tf.expandDims(pose_center_new, 1);
-
-    pose_center_new = tf.broadcastTo(pose_center_new, [1, 17, 2]);
-    // return: shape(17,2)
-    let d = tf.gather(tf.sub(landmarks, pose_center_new), 0, 0);
-    let max_dist = tf.max(tf.norm(d, "euclidean", 0));
-
-    // normalize scale
-    let pose_size = tf.maximum(
-      tf.mul(torso_size, torso_size_multiplier),
-      max_dist
-    );
-    return pose_size;
-  }
-
-  function normalize_pose_landmarks(landmarks) {
-    let pose_center = get_center_point(
-      landmarks,
-      POINTS.LEFT_HIP,
-      POINTS.RIGHT_HIP
-    );
-    pose_center = tf.expandDims(pose_center, 1);
-    pose_center = tf.broadcastTo(pose_center, [1, 17, 2]);
-    landmarks = tf.sub(landmarks, pose_center);
-
-    let pose_size = get_pose_size(landmarks);
-    landmarks = tf.div(landmarks, pose_size);
-    return landmarks;
-  }
-
-  function landmarks_to_embedding(landmarks) {
-    // normalize landmarks 2D
-    landmarks = normalize_pose_landmarks(tf.expandDims(landmarks, 0));
-    let embedding = tf.reshape(landmarks, [1, 34]);
-    return embedding;
-  }
-
   const runMovenet = async () => {
     const detectorConfig = {
       modelType: poseDetection.movenet.modelType.SINGLEPOSE_THUNDER,
@@ -147,7 +87,7 @@ function Yoga() {
       detectorConfig
     );
     const poseClassifier = await tf.loadLayersModel(
-      "https://raw.githubusercontent.com/Maverick-2000/Zen-React/master/Movenet%20Files/model.json"
+      "https://raw.githubusercontent.com/Maverick-2000/Zen-React/master/Movenet%20Files/Beginner/model/model.json"
     );
 
     interval = setInterval(() => {
@@ -207,16 +147,16 @@ function Yoga() {
           //console.log(data[0][classNo]);
           //console.log(currentPoseRef.current);
           if (data[0][classNo] < 0.75) {
-            setFeedback("Correct Your Pose!!!")
+            setFeedback("Correct Your Pose!!!");
           }
-          if (data[0][classNo]>0.75 && data[0][classNo]<0.85){
-            setFeedback("Little more to Perfection")
+          if (data[0][classNo] > 0.75 && data[0][classNo] < 0.85) {
+            setFeedback("Little more to Perfection");
           }
           if (data[0][classNo] > 0.97) {
             if (!flag) {
               setStartingTime(new Date(Date()).getTime());
               flag = true;
-              setFeedback("PERFECT")
+              setFeedback("PERFECT");
             }
             setCurrentTime(new Date(Date()).getTime());
             skeletonColor = "rgb(0,255,0)";
@@ -266,7 +206,7 @@ function Yoga() {
           }}
         ></canvas>
       </center>
-     
+
       <h3>Counter: {poseTime}</h3>
       <h3>Rounds: {round}</h3>
       <h3>Pose: {currentPose}</h3>
