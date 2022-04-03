@@ -41,11 +41,15 @@ export default function Dashboard() {
       localStorage.setItem("goddess_pose", returnedData.goddess_pose);
       localStorage.setItem("traingle", returnedData.traingle);
       localStorage.setItem("tree", returnedData.tree);
+      localStorage.setItem("camel", returnedData.camel);
+      localStorage.setItem("plank", returnedData.plank);
+      localStorage.setItem("upward_dog", returnedData.upward_dog);
+      localStorage.setItem("warrior1", returnedData.warrior1);
+      localStorage.setItem("warrior2", returnedData.warrior2);
       localStorage.setItem("id", returnedData.id);
     };
 
     getData();
-    
   }, []);
 
   return (
@@ -63,7 +67,7 @@ export default function Dashboard() {
               lateral_raise={localStorage.getItem("Lateral Raise")}
             />
             <h3>Yoga Analytics</h3>
-            <YogaDataTable/>
+            <YogaDataTable />
           </div>
         </Card.Body>
       </Card>
@@ -79,21 +83,24 @@ export default function Dashboard() {
           variant="link"
           onClick={() => navigate("/yoga-practice-beginner")}
         >
-          Practice Yoga
+          Practice Yoga Beginner
+        </Button>
+        <Button
+          variant="link"
+          onClick={() => navigate("/yoga-practice-intermediate")}
+        >
+          Practice Yoga Intermediate
         </Button>
         <Button
           variant="link"
           onClick={() => navigate("/pilates-learn-beginner")}
         >
-          Learn Pilates 
+          Learn Pilates
         </Button>
-        <Button
-          variant="link"
-          onClick={() => navigate("/yoga-learn-beginner")}
-        >
-          Learn Yoga 
+        <Button variant="link" onClick={() => navigate("/yoga-learn-beginner")}>
+          Learn Yoga
         </Button>
-        
+
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>

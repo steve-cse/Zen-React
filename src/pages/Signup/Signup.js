@@ -37,9 +37,14 @@ export default function Signup() {
           "cobra":0,
           "goddess_pose":0,
           "traingle":0,
-          "tree":0
+          "tree":0,
+          "camel":0,
+          "plank":0,
+          "upward_dog":0,
+          "warrior1":0,
+          "warrior2":0
         });}
-      navigate("/")
+      navigate("/login")
     } catch (error) {
       setError('Failed to create an account')
       console.log(error)
