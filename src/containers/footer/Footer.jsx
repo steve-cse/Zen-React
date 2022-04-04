@@ -11,9 +11,9 @@ const Footer = () => {
       <h1 className="gradient__text">Get OnBoard Right Now !</h1>
     </div>
 
-    <div className="gpt3__footer-btn">
+    <div className="gpt3__footer-btn" onClick={() => navigate('/signup')}>
      
-      <strong onClick={() => navigate('/signup')}> Login / Register</strong>
+      <strong > Login / Register</strong>
     </div>
 
     <div className="gpt3__footer-links">
