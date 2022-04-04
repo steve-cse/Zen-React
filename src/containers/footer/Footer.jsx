@@ -1,20 +1,24 @@
 import React from 'react';
 import gpt3Logo from '../../assets/logo.svg';
 import './footer.css';
+import {useNavigate} from 'react-router-dom'
 
-const Footer = () => (
+const Footer = () => {
+  const navigate = useNavigate();
+  return (
   <div className="gpt3__footer section__padding">
     <div className="gpt3__footer-heading">
       <h1 className="gradient__text">Get OnBoard Right Now !</h1>
     </div>
 
     <div className="gpt3__footer-btn">
-      <strong>Login / Register</strong>
+     
+      <strong onClick={() => navigate('/signup')}> Login / Register</strong>
     </div>
 
     <div className="gpt3__footer-links">
       <div className="gpt3__footer-links_logo">
-        <img src={gpt3Logo} alt="gpt3_logo" />
+        {/* <img src={gpt3Logo} alt="gpt3_logo" /> */}
         <p>AISAT<br /> All Rights Reserved</p>
       </div>
       <div className="gpt3__footer-links_div">
@@ -39,8 +43,7 @@ const Footer = () => (
     <div className="gpt3__footer-copyright">
       <p>@2022 ZEN. All rights reserved.</p>
     </div>
-  </div>
-
-);
+  </div> );
+};
 
 export default Footer;
