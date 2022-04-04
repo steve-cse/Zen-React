@@ -1,5 +1,5 @@
 import React from 'react';
-import gpt3Logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
 import './footer.css';
 import {useNavigate} from 'react-router-dom'
 
@@ -18,8 +18,8 @@ const Footer = () => {
 
     <div className="gpt3__footer-links">
       <div className="gpt3__footer-links_logo">
-        {/* <img src={gpt3Logo} alt="gpt3_logo" /> */}
-        <p>AISAT<br /> All Rights Reserved</p>
+        <img src={logo} alt="gpt3_logo" />
+        <p>Z E N ™<br /> All Rights Reserved</p>
       </div>
       <div className="gpt3__footer-links_div">
         <h4>Links</h4>

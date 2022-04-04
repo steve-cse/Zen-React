@@ -3,8 +3,7 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 2rem 6rem;
-
+    padding: 1rem 3rem;
     
     background: rgb(255,188,188);
     background: linear-gradient(18deg, rgba(255,188,188,1) 0%, rgba(233,233,148,1) 100%);
@@ -18,13 +17,12 @@
 }
 
 .gpt3__navbar-links_logo {
-    margin-right: 2rem;
-    
+    margin-right: 2rem;   
 }
 
 .gpt3__navbar-links_logo img {
-    width: 70px;
-    height: 70px;
+    width: 120px;
+    height: 60px;
 }
 
 .gpt3__navbar-links_container {
