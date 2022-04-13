@@ -36,7 +36,7 @@ export default function Signup() {
           "chair":0,
           "cobra":0,
           "goddess_pose":0,
-          "traingle":0,
+          "triangle":0,
           "tree":0,
           "camel":0,
           "plank":0,

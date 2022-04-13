@@ -39,7 +39,7 @@ export default function Dashboard() {
       localStorage.setItem("chair", returnedData.chair);
       localStorage.setItem("cobra", returnedData.cobra);
       localStorage.setItem("goddess_pose", returnedData.goddess_pose);
-      localStorage.setItem("traingle", returnedData.traingle);
+      localStorage.setItem("triangle", returnedData.triangle);
       localStorage.setItem("tree", returnedData.tree);
       localStorage.setItem("camel", returnedData.camel);
       localStorage.setItem("plank", returnedData.plank);

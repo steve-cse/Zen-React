@@ -30,7 +30,7 @@ export default function PilatesDataTable(props) {
       </tr>
       <tr>
         <td>Triangle</td>
-        <td>{localStorage.getItem("traingle")}</td>
+        <td>{localStorage.getItem("triangle")}</td>
         
       </tr>
       <tr>

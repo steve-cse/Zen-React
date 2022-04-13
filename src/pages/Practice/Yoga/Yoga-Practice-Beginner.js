@@ -15,8 +15,8 @@ let poseList = [
   { name: "chair" },
   { name: "cobra" },
   { name: "goddess_pose" },
-  { name: "traingle" },
   { name: "tree" },
+  { name: "triangle" },
 ];
 let flag = false;
 let interval;
@@ -78,8 +78,8 @@ function Yoga() {
     cobra: 1,
     goddess_pose: 2,
     no_pose: 3,
-    traingle: 4,
-    tree: 5,
+    tree: 4,
+    triangle: 5,
   };
 
   const runMovenet = async () => {
