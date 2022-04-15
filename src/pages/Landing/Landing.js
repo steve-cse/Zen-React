@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Landing.css";
 import { Footer, Features, About ,Header } from '../../containers';
-import {Navbar} from '../../components'
+import {CustomNavBar} from '../../components'
 
 
 export default function Landing() {
@@ -9,7 +9,7 @@ export default function Landing() {
     <>
     <div className="Landing">
     <div className="gradient__bg">
-      <Navbar />
+      <CustomNavBar />
       <Header />
     </div>
     <About />

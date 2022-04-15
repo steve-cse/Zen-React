@@ -5,7 +5,7 @@ export default function PilatesDataTable(props) {
     
     <Table striped bordered size="sm">
     <thead>
-      <tr  class="table-dark"> 
+      <tr  className="table-dark"> 
         <th>Exercise</th>
         <th>Reps</th>
         <th>Avg. Calories Burned</th>
