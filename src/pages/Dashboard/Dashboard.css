@@ -15,29 +15,31 @@
   display: flex;
   justify-content: center;
 }
+.graph_container {
+  display: flex;
+  justify-content: center;
+}
 .pilates_table_style {
   margin: 20px;
 }
 .yoga_table_style {
   margin: 20px;
 }
-.dashboard_heading{
-    font-family: var(--font-family);
-    font-weight: 800;
-    font-size: 50px;
-    line-height: 50px;
-    letter-spacing: -0.04em;
-    padding: 1rem;
-    
+.dashboard_heading {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  padding: 1rem;
 }
 
-.dashboard_description{
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 10px;
-    
-    
-    color: rgb(0, 0, 0);
-    padding: 1rem;
+.dashboard_description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 10px;
+
+  color: rgb(0, 0, 0);
+  padding: 1rem;
 }

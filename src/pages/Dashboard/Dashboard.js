@@ -6,7 +6,9 @@ import { fstore } from "../../firebaseconfig/firebaseconfig";
 import { query, getDocs, collection, where } from "firebase/firestore";
 import PilatesDataTable from "../../components/PilatesDataTable/PilatesDataTable";
 import YogaDataTable from "../../components/YogaDataTable/YogaDataTable";
+import BarChart from "../../components/BarChart/BarChart";
 import logo from "../../assets/logo.png";
+
 import "./Dashboard.css";
 
 var returnedData;
@@ -14,7 +16,52 @@ export default function Dashboard() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-
+  const yogaBarData = {
+    labels: [
+      "Chair",
+      "Cobra",
+      "Goddess",
+      "Triangle",
+      "Tree",
+      "Camel",
+      "Plank",
+      "Upward Dog",
+      "Warrior 1",
+      "Warrior 2",
+    ],
+    datasets: [
+      {
+        label: "Rounds",
+        data: [
+          localStorage.getItem("chair"),
+          localStorage.getItem("cobra"),
+          localStorage.getItem("goddess_pose"),
+          localStorage.getItem("triangle"),
+          localStorage.getItem("tree"),
+          localStorage.getItem("camel"),
+          localStorage.getItem("plank"),
+          localStorage.getItem("upward_dog"),
+          localStorage.getItem("warrior1"),
+          localStorage.getItem("warrior2"),
+        ],
+        backgroundColor: "rgba(153, 102, 255, 0.6)",
+      },
+    ],
+  };
+  const pilatesBarData = {
+    labels: ["Curls", "Squats", "Lateral Raise"],
+    datasets: [
+      {
+        label: "Repetitions",
+        data: [
+          localStorage.getItem("Left Curl"),
+          localStorage.getItem("Squats"),
+          localStorage.getItem("Lateral Raise"),
+        ],
+        backgroundColor: "rgba(255, 99, 132, 0.6)",
+      },
+    ],
+  };
   async function handleLogout() {
     setError("");
 
@@ -120,7 +167,16 @@ export default function Dashboard() {
       {error && <Alert variant="danger">{error}</Alert>}
 
       <h2 className="dashboard_heading">Your Dashboard</h2>
-      <p className="dashboard_description"> 💪 Visualize your gains here.</p>
+      <p className="dashboard_description"> 📈 Visualize your gains here.</p>
+      <div className="graph_container">
+        <div style={{ width: 750 }}>
+          <BarChart chartData={yogaBarData} chartTitle="Yoga Overview" />
+        </div>
+        <div style={{ width: 750 }}>
+          <BarChart chartData={pilatesBarData} chartTitle="Pilates Overview" />
+        </div>
+      </div>
+      <p className="dashboard_description"> 🗂️ Your data. </p>
       <div className="table_container">
         <div className="yoga_table_style">
           <YogaDataTable />
@@ -129,7 +185,6 @@ export default function Dashboard() {
           <PilatesDataTable />
         </div>
       </div>
-      <p className="dashboard_description"> 📈 Your charts. </p>
     </>
   );
 }
