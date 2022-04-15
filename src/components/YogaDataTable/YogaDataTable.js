@@ -1,10 +1,10 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 import "./YogaDataTable.css";
-export default function PilatesDataTable(props) {
+export default function YogaDataTable() {
   return (
     <div className="yoga_table_wrap">
-      <Table className="striped bordered">
+      <Table>
         <thead>
           <tr>
             <th className="bg-warning yoga_table_body" colspan="3">

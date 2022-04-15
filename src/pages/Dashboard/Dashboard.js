@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Navbar,
-  Button,
-  Alert,
-  Nav,
-  NavItem,
-  Container,
-} from "react-bootstrap";
+import { Navbar, Button, Alert, Nav, NavItem } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { fstore } from "../../firebaseconfig/firebaseconfig";
@@ -126,56 +119,14 @@ export default function Dashboard() {
 
       {error && <Alert variant="danger">{error}</Alert>}
 
-      <h3>Pilates Analytics</h3>
-      <Container>
-        <PilatesDataTable
-          curls={localStorage.getItem("Left Curl")}
-          squats={localStorage.getItem("Squats")}
-          lateral_raise={localStorage.getItem("Lateral Raise")}
-        />
-      </Container>
-
-      <Container>
-        <YogaDataTable />
-      </Container>
-
-      <div className="w-100 text-center mt-2">
-        <Button
-          variant="link"
-          onClick={() => navigate("/pilates-practice-beginner")}
-        >
-          Practice Pilates
-        </Button>
-        <Button
-          variant="link"
-          onClick={() => navigate("/yoga-practice-beginner")}
-        >
-          Practice Yoga Beginner
-        </Button>
-        <Button
-          variant="link"
-          onClick={() => navigate("/yoga-practice-intermediate")}
-        >
-          Practice Yoga Intermediate
-        </Button>
-        <Button
-          variant="link"
-          onClick={() => navigate("/pilates-learn-beginner")}
-        >
-          Learn Pilates
-        </Button>
-        <Button variant="link" onClick={() => navigate("/yoga-learn-beginner")}>
-          Learn Yoga Beginner
-        </Button>
-        <Button
-          variant="link"
-          onClick={() => navigate("/yoga-learn-intermediate")}
-        >
-          Learn Yoga Intermediate
-        </Button>
-        <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
+      <h3>Your Dashboard</h3>
+      <div className="table_container">
+        <div className="yoga_table_style">
+          <YogaDataTable />
+        </div>
+        <div className="pilates_table_style">
+          <PilatesDataTable />
+        </div>
       </div>
     </>
   );
