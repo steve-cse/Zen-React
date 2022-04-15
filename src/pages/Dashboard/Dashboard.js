@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Button, Alert, Nav, NavItem,Container } from "react-bootstrap";
+import {
+  Navbar,
+  Button,
+  Alert,
+  Nav,
+  NavItem,
+  Container,
+} from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { fstore } from "../../firebaseconfig/firebaseconfig";
@@ -58,7 +65,7 @@ export default function Dashboard() {
   return (
     <>
       <Navbar className="gradient_navbar">
-        <Navbar.Brand >
+        <Navbar.Brand>
           <img
             alt=""
             src={logo}
@@ -94,6 +101,13 @@ export default function Dashboard() {
             href="#pricing"
             style={{ color: "black" }}
           >
+            Tutorials
+          </Nav.Link>
+          <Nav.Link
+            className="navbar_links my-2"
+            href="#pricing"
+            style={{ color: "black" }}
+          >
             Article
           </Nav.Link>
         </Nav>
@@ -112,24 +126,19 @@ export default function Dashboard() {
 
       {error && <Alert variant="danger">{error}</Alert>}
 
-     
-        <h3>Pilates Analytics</h3>
-        <Container>
+      <h3>Pilates Analytics</h3>
+      <Container>
         <PilatesDataTable
           curls={localStorage.getItem("Left Curl")}
           squats={localStorage.getItem("Squats")}
           lateral_raise={localStorage.getItem("Lateral Raise")}
         />
-        </Container>
-        
-        <h3>Yoga Analytics</h3>
-       
-        <Container>
-        
+      </Container>
+
+      <Container>
         <YogaDataTable />
-      
-        </Container>
-      
+      </Container>
+
       <div className="w-100 text-center mt-2">
         <Button
           variant="link"
