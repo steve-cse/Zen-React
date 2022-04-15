@@ -7,7 +7,7 @@ export default function PilatesDataTable() {
       <Table>
         <thead>
           <tr>
-            <th className="bg-warning pilates_table_body" colspan="3">
+            <th className="bg-warning pilates_table_body" colSpan="3">
               Pilates Overview
             </th>
           </tr>

@@ -119,7 +119,8 @@ export default function Dashboard() {
 
       {error && <Alert variant="danger">{error}</Alert>}
 
-      <h3>Your Dashboard</h3>
+      <h2 className="dashboard_heading">Your Dashboard</h2>
+      <p className="dashboard_description"> 💪 Visualize your gains here.</p>
       <div className="table_container">
         <div className="yoga_table_style">
           <YogaDataTable />
@@ -128,6 +129,7 @@ export default function Dashboard() {
           <PilatesDataTable />
         </div>
       </div>
+      <p className="dashboard_description"> 📈 Your charts. </p>
     </>
   );
 }

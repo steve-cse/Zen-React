@@ -7,7 +7,7 @@ export default function YogaDataTable() {
       <Table>
         <thead>
           <tr>
-            <th className="bg-warning yoga_table_body" colspan="3">
+            <th className="bg-warning yoga_table_body" colSpan="3">
               Yoga Overview
             </th>
           </tr>
