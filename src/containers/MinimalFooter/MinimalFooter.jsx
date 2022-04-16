@@ -1,20 +1,12 @@
 import React from 'react';
 import logo from '../../assets/logo.png';
-import './footer.css';
-import {useNavigate} from 'react-router-dom'
+import './MinimalFooter.css';
 
-const Footer = () => {
-  const navigate = useNavigate();
+
+const MinimalFooter = () => {
+  
   return (
   <div className="gpt3__footer section__padding">
-    <div className="gpt3__footer-heading">
-      <h1 className="gradient__text">Get On Board Right Now !</h1>
-    </div>
-
-    <div className="gpt3__footer-btn" onClick={() => navigate('/signup')}>
-     
-      <strong > Login / Register</strong>
-    </div>
 
     <div className="gpt3__footer-links">
       <div className="gpt3__footer-links_logo">
@@ -40,10 +32,10 @@ const Footer = () => {
     </div>
 
     <div className="gpt3__footer-copyright">
-    <p>&copy; {new Date().getFullYear()} ZEN. All rights reserved.</p>
-    <p> Made in Kerala &#127796;</p>
+      <p>&copy; {new Date().getFullYear()} ZEN. All rights reserved.</p>
+      <p> Made in Kerala &#127796;</p>
     </div>
   </div> );
 };
 
-export default Footer;
+export default MinimalFooter;

@@ -8,7 +8,7 @@ import PilatesDataTable from "../../components/PilatesDataTable/PilatesDataTable
 import YogaDataTable from "../../components/YogaDataTable/YogaDataTable";
 import BarChart from "../../components/BarChart/BarChart";
 import logo from "../../assets/logo.png";
-
+import {MinimalFooter} from '../../containers';
 import "./Dashboard.css";
 
 var returnedData;
@@ -167,7 +167,7 @@ export default function Dashboard() {
       {error && <Alert variant="danger">{error}</Alert>}
 
       <h2 className="dashboard_heading">Your Dashboard</h2>
-      <p className="dashboard_description"> 📈 Visualize your gains here.</p>
+      <p className="dashboard_description"> &#128200; Visualize your gains here.</p>
       <div className="graph_container">
         <div style={{ width: 750 }}>
           <BarChart chartData={yogaBarData} chartTitle="Yoga Overview" />
@@ -176,7 +176,7 @@ export default function Dashboard() {
           <BarChart chartData={pilatesBarData} chartTitle="Pilates Overview" />
         </div>
       </div>
-      <p className="dashboard_description"> 🗂️ Your data. </p>
+      <p className="dashboard_description"> &#128194; Your data. </p>
       <div className="table_container">
         <div className="yoga_table_style">
           <YogaDataTable />
@@ -185,6 +185,7 @@ export default function Dashboard() {
           <PilatesDataTable />
         </div>
       </div>
+      <MinimalFooter />
     </>
   );
 }
