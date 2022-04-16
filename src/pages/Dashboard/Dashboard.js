@@ -116,7 +116,7 @@ export default function Dashboard() {
               loading={loading}
               size={140}
             />
-            <p>Stay hungry. Stay foolish.</p>
+            <p>Follow the white rabbit.</p>
           </div>
         </>
       ) : (
