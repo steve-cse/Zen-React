@@ -8,14 +8,17 @@ import PilatesDataTable from "../../components/PilatesDataTable/PilatesDataTable
 import YogaDataTable from "../../components/YogaDataTable/YogaDataTable";
 import BarChart from "../../components/BarChart/BarChart";
 import logo from "../../assets/logo.png";
-import {MinimalFooter} from '../../containers';
+import { MinimalFooter } from "../../containers";
+import ClockLoader from "react-spinners/ClockLoader";
 import "./Dashboard.css";
 
 var returnedData;
 export default function Dashboard() {
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
+
   const yogaBarData = {
     labels: [
       "Chair",
@@ -79,7 +82,6 @@ export default function Dashboard() {
         where("uid", "==", currentUser.uid)
       );
       const docs = await getDocs(q);
-      //setPilates();
       returnedData = Object.assign(
         docs.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
       )[0];
@@ -97,6 +99,7 @@ export default function Dashboard() {
       localStorage.setItem("warrior1", returnedData.warrior1);
       localStorage.setItem("warrior2", returnedData.warrior2);
       localStorage.setItem("id", returnedData.id);
+      setLoading(false);
     };
 
     getData();
@@ -104,88 +107,108 @@ export default function Dashboard() {
 
   return (
     <>
-      <Navbar className="gradient_navbar">
-        <Navbar.Brand>
-          <img
-            alt=""
-            src={logo}
-            width="120"
-            height="60"
-            className="d-inline-block align-top mx-3"
-          />
-        </Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link
-            className="navbar_links my-2"
-            onClick={() => navigate("/dashboard")}
-            style={{ color: "black" }}
-          >
-            Dashboard
-          </Nav.Link>
-          <Nav.Link
-            className="navbar_links my-2"
-            href="#pricing"
-            style={{ color: "black" }}
-          >
-            Learn
-          </Nav.Link>
-          <Nav.Link
-            className="navbar_links my-2"
-            href="#pricing"
-            style={{ color: "black" }}
-          >
-            Practice
-          </Nav.Link>
-          <Nav.Link
-            className="navbar_links my-2"
-            href="#pricing"
-            style={{ color: "black" }}
-          >
-            Tutorials
-          </Nav.Link>
-          <Nav.Link
-            className="navbar_links my-2"
-            href="#pricing"
-            style={{ color: "black" }}
-          >
-            Article
-          </Nav.Link>
-        </Nav>
-        <Nav pullright="true">
-          <Nav.Link
-            className="mx-1"
-            style={{ color: "black", cursor: "default" }}
-          >
-            Syncing to: {currentUser.email}
-          </Nav.Link>
-          <NavItem className="mx-3" onClick={handleLogout}>
-            <Button>Log Out</Button>
-          </NavItem>
-        </Nav>
-      </Navbar>
+      {loading ? (
+        <>
+          <div className="spinner_style">
+            <ClockLoader
+              speedMultiplier={1.5}
+              color={"#ffc107"}
+              loading={loading}
+              size={140}
+            />
+            <p>Stay hungry. Stay foolish.</p>
+          </div>
+        </>
+      ) : (
+        <>
+          <Navbar className="gradient_navbar">
+            <Navbar.Brand>
+              <img
+                alt=""
+                src={logo}
+                width="120"
+                height="60"
+                className="d-inline-block align-top mx-3"
+              />
+            </Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link
+                className="navbar_links my-2"
+                onClick={() => navigate("/dashboard")}
+                style={{ color: "black" }}
+              >
+                Dashboard
+              </Nav.Link>
+              <Nav.Link
+                className="navbar_links my-2"
+                href="#pricing"
+                style={{ color: "black" }}
+              >
+                Learn
+              </Nav.Link>
+              <Nav.Link
+                className="navbar_links my-2"
+                href="#pricing"
+                style={{ color: "black" }}
+              >
+                Practice
+              </Nav.Link>
+              <Nav.Link
+                className="navbar_links my-2"
+                href="#pricing"
+                style={{ color: "black" }}
+              >
+                Tutorials
+              </Nav.Link>
+              <Nav.Link
+                className="navbar_links my-2"
+                href="#pricing"
+                style={{ color: "black" }}
+              >
+                Article
+              </Nav.Link>
+            </Nav>
+            <Nav pullright="true">
+              <Nav.Link
+                className="mx-1"
+                style={{ color: "black", cursor: "default" }}
+              >
+                Syncing to: {currentUser.email}
+              </Nav.Link>
+              <NavItem className="mx-3" onClick={handleLogout}>
+                <Button>Log Out</Button>
+              </NavItem>
+            </Nav>
+          </Navbar>
+          {error && <Alert variant="danger">{error}</Alert>}
 
-      {error && <Alert variant="danger">{error}</Alert>}
-
-      <h2 className="dashboard_heading">Your Dashboard</h2>
-      <p className="dashboard_description"> &#128200; Visualize your gains here.</p>
-      <div className="graph_container">
-        <div style={{ width: 750 }}>
-          <BarChart chartData={yogaBarData} chartTitle="Yoga Overview" />
-        </div>
-        <div style={{ width: 750 }}>
-          <BarChart chartData={pilatesBarData} chartTitle="Pilates Overview" />
-        </div>
-      </div>
-      <p className="dashboard_description"> &#128194; Your data. </p>
-      <div className="table_container">
-        <div className="yoga_table_style">
-          <YogaDataTable />
-        </div>
-        <div className="pilates_table_style">
-          <PilatesDataTable />
-        </div>
-      </div>
-      <MinimalFooter />
+          <h2 className="dashboard_heading">Your Dashboard</h2>
+          <p className="dashboard_description">
+            &#128200; Visualize your gains here.
+          </p>
+          <div className="graph_container">
+            <div style={{ width: 750 }}>
+              <BarChart chartData={yogaBarData} chartTitle="Yoga Overview" />
+            </div>
+            <div style={{ width: 750 }}>
+              <BarChart
+                chartData={pilatesBarData}
+                chartTitle="Pilates Overview"
+              />
+            </div>
+          </div>
+          <p className="dashboard_description"> &#128194; Your data. </p>
+          <div className="table_container">
+            <div className="yoga_table_style">
+              <YogaDataTable />
+            </div>
+            <div className="pilates_table_style">
+              <PilatesDataTable />
+            </div>
+          </div>
+          <MinimalFooter />
+        </>
+      )}
     </>
   );
 }
