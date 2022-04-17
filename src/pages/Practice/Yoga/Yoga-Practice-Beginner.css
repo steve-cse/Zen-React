@@ -1,0 +1,73 @@
+.gradient_navbar {
+  background: linear-gradient(
+    18deg,
+    rgba(255, 188, 188, 1) 0%,
+    rgba(233, 233, 148, 1) 100%
+  );
+}
+.navbar_links {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 22px;
+}
+.scoreboard {
+  position: absolute;
+  right: 290px;
+  bottom: 8px;
+}
+
+.scoreboard h3 {
+  font-family: var(--font-family);
+  font-weight: 550;
+}
+.pose_image {
+  position: absolute;
+  right: 200px;
+  top: 175px;
+  width: 450px;
+  height: 450px;
+  /* border-style: solid; */
+  text-align: justify;
+  font-family: var(--font-family);
+  cursor: default;
+  user-select: none;
+  font-weight: 500;
+  font-size: 20px;
+  resize: none;
+  border: none;
+  padding: 10px;
+}
+.camera_style {
+  position: absolute;
+  left: 50px;
+  bottom: 95px;
+}
+.dropdown_container {
+  
+  margin: 20px;
+  position: absolute;
+  left:685px;
+}
+.spinner_style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.spinner_style p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 10px;
+
+  color: rgb(0, 0, 0);
+  padding: 1rem;
+}
+
+.minimalfooter_style {
+  position: absolute;
+  width: 100%;
+  bottom: -500px;
+}

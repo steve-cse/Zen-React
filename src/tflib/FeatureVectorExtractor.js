@@ -1,13 +1,14 @@
 import * as tf from "@tensorflow/tfjs";
-import {POINTS} from "./../utils/data"
-export function get_center_point(landmarks, left_bodypart, right_bodypart) {
+import { POINTS } from "./../utils/data";
+
+function get_center_point(landmarks, left_bodypart, right_bodypart) {
   let left = tf.gather(landmarks, left_bodypart, 1);
   let right = tf.gather(landmarks, right_bodypart, 1);
   const center = tf.add(tf.mul(left, 0.5), tf.mul(right, 0.5));
   return center;
 }
 
-export function get_pose_size(landmarks, torso_size_multiplier = 2.5) {
+function get_pose_size(landmarks, torso_size_multiplier = 2.5) {
   let hips_center = get_center_point(
     landmarks,
     POINTS.LEFT_HIP,
@@ -39,7 +40,7 @@ export function get_pose_size(landmarks, torso_size_multiplier = 2.5) {
   return pose_size;
 }
 
-export function normalize_pose_landmarks(landmarks) {
+function normalize_pose_landmarks(landmarks) {
   let pose_center = get_center_point(
     landmarks,
     POINTS.LEFT_HIP,
