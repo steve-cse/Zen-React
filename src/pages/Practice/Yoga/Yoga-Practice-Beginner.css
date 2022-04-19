@@ -4,16 +4,22 @@
     rgba(255, 188, 188, 1) 0%,
     rgba(233, 233, 148, 1) 100%
   );
+  width:100%;
 }
 .navbar_links {
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 22px;
 }
+.flex_container{
+  display:flex;
+  flex-wrap:wrap;
+}
 .scoreboard {
   position: absolute;
   right: 290px;
-  top: 650px;
+  bottom: -150px;
+
   padding: 10px 30px 10px 10px;
   margin: 20px;
 }
@@ -26,12 +32,11 @@
 .pose_image {
   position: absolute;
   right: 200px;
-  top: 170px;
-  width: 450px;
-  height: 450px;
-  /* border-style: solid; */
-  max-width: 450px;
-  max-height: 450px;
+  bottom: 40px;
+  width: 500px;
+  height: 500px;
+  border-style: dotted; 
+  
   text-align: justify;
   font-family: var(--font-family);
   cursor: default;
@@ -39,18 +44,28 @@
   font-weight: 500;
   font-size: 20px;
   resize: none;
-  border: none;
+  /* border: none; */
   padding: 10px;
 }
 .camera_style {
-  position: absolute;
+  margin:10px;
+  position:absolute;
+  background-color: black;
   left: 50px;
-  bottom: 95px;
+  bottom: 40px;
+}
+.canvas_style{
+  margin:10px;
+  position:absolute;
+  
+  left: 50px;
+  bottom: 40px;
 }
 .dropdown_container {
   margin: 20px;
   position: absolute;
   left: 685px;
+  top: 100px;
 }
 .spinner_style {
   display: flex;

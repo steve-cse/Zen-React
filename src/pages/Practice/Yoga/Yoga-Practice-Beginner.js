@@ -220,6 +220,7 @@ function Yoga() {
         </>
       ) : (
         <>
+        <div className="flex_container">
           {error && <Alert variant="danger">{error}</Alert>}
           <Navbar className="gradient_navbar">
             <Navbar.Brand>
@@ -295,7 +296,7 @@ function Yoga() {
             ref={webcamRef}
           />
           <canvas
-            className="camera_style"
+            className="canvas_style"
             ref={canvasRef}
             width="640px"
             height="480px"
@@ -328,6 +329,7 @@ function Yoga() {
           </div>
           <div className="minimalfooter_style">
             <MinimalFooter />
+          </div>
           </div>
         </>
       )}
