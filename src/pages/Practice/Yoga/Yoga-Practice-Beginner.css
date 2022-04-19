@@ -14,12 +14,15 @@
   position: absolute;
   right: 290px;
   bottom: -65px;
+  border-style: solid;
+padding: 10px;
   margin: 20px;
 }
 
-.scoreboard h3 {
+.scoreboard p {
   font-family: var(--font-family);
   font-weight: 550;
+  font-size:20px;
 }
 .pose_image {
   position: absolute;

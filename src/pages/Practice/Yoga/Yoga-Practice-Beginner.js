@@ -322,9 +322,9 @@ function Yoga() {
           )}
 
           <div className="scoreboard">
-            <h3>Counter: {poseTime}</h3>
-            <h3>Rounds: {round}</h3>
-            <h3>{feedback}</h3>
+            <p>Counter: {poseTime}</p>
+            <p>Rounds: {round}</p>
+            <p>{feedback}</p>
           </div>
           <div className="minimalfooter_style">
             <MinimalFooter />
