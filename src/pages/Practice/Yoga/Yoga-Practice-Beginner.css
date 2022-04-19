@@ -13,7 +13,7 @@
 .scoreboard {
   position: absolute;
   right: 290px;
-  bottom: -95px;
+  top: 650px;
   padding: 10px;
   margin: 20px;
 }
