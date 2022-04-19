@@ -316,8 +316,8 @@ function Yoga() {
                 setToggleImage(true);
               }}
               value={YogaInstructions[currentPose]}
-              readonly="true"
-              spellcheck="false"
+              readOnly={true}
+              spellCheck={false}
             ></textarea>
           )}
 
