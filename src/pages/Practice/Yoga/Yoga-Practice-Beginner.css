@@ -30,6 +30,8 @@
   width: 450px;
   height: 450px;
   /* border-style: solid; */
+  max-width: 450px;
+  max-height: 450px;
   text-align: justify;
   font-family: var(--font-family);
   cursor: default;
