@@ -220,7 +220,7 @@ function Yoga() {
         </>
       ) : (
         <>
-        <div className="flex_container">
+        
           {error && <Alert variant="danger">{error}</Alert>}
           <Navbar className="gradient_navbar">
             <Navbar.Brand>
@@ -282,13 +282,15 @@ function Yoga() {
             </Nav>
           </Navbar>
           <div className="dropdown_container">
+          <div className="dropdown_style">
             <DropDown
               exercise_pack={poseList}
               currentPose={currentPose}
               setCurrentPose={setCurrentPose}
             />
+            </div>
           </div>
-
+          <div className="flex_container">
           <Webcam
             className="camera_style"
             width="640px"
@@ -321,16 +323,18 @@ function Yoga() {
               spellCheck={false}
             ></textarea>
           )}
-
-          <div className="scoreboard">
+ </div>
+          <div className="scoreboard_container">
+            <div className="scoreboard_style">
             <p>Counter: {poseTime}</p>
             <p>Rounds: {round}</p>
             <p>{feedback}</p>
+            </div>
           </div>
           <div className="minimalfooter_style">
             <MinimalFooter />
           </div>
-          </div>
+         
         </>
       )}
     </>

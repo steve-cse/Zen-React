@@ -4,36 +4,30 @@
     rgba(255, 188, 188, 1) 0%,
     rgba(233, 233, 148, 1) 100%
   );
-  width:100%;
+  width: 100%;
 }
 .navbar_links {
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 22px;
 }
-.flex_container{
-  display:flex;
-
-  justify-content: center;
+.flex_container {
+  display: flex;
+  position: relative;
 }
-.scoreboard {
-  position: absolute;
-  right: 290px;
-  bottom: -150px;
-
-  padding: 10px 30px 10px 10px;
-  margin: 20px;
+.scoreboard_container {
+  display: flex;
+}
+.scoreboard_style {
+  margin: 20px 20px 20px 65%;
 }
 
-.scoreboard p {
+.scoreboard_style p {
   font-family: var(--font-family);
   font-weight: 550;
-  font-size: 20px;
+  font-size: 25px;
 }
 .pose_image {
-  position: absolute;
-  right: 200px;
-  bottom: 40px;
   width: 500px;
   height: 500px;
   text-align: justify;
@@ -45,26 +39,25 @@
   resize: none;
   border: none;
   padding: 10px;
+  margin-left: 10%;
 }
 .camera_style {
-  margin:10px;
-  position:absolute;
-  background-color: black;
-  left: 50px;
-  bottom: 40px;
+  margin: 10px 10px 10px 5%;
 }
-.canvas_style{
-  margin:10px;
-  position:absolute;
-  
-  left: 50px;
-  bottom: 40px;
+.canvas_style {
+  position: absolute;
+  margin: 10px 10px 10px 5%;
+  top: 0%;
+  left: 0%;
+  bottom: 0%;
+  right: 0%;
+}
+.dropdown_style {
+  margin: 20px 20px 30px 20px;
 }
 .dropdown_container {
-  margin: 20px;
-  position: absolute;
-  left: 685px;
-  top: 100px;
+  display: flex;
+  justify-content: center;
 }
 .spinner_style {
   display: flex;
@@ -79,13 +72,11 @@
   font-weight: 400;
   font-size: 25px;
   line-height: 10px;
-
   color: rgb(0, 0, 0);
   padding: 1rem;
 }
 
 .minimalfooter_style {
-  position: absolute;
   width: 100%;
   bottom: -700px;
 }
