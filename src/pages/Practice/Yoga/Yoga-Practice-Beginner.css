@@ -13,16 +13,15 @@
 .scoreboard {
   position: absolute;
   right: 290px;
-  bottom: -65px;
-  border-style: solid;
-padding: 10px;
+  bottom: -95px;
+  padding: 10px;
   margin: 20px;
 }
 
 .scoreboard p {
   font-family: var(--font-family);
   font-weight: 550;
-  font-size:20px;
+  font-size: 20px;
 }
 .pose_image {
   position: absolute;
