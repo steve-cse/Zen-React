@@ -13,7 +13,8 @@
 .scoreboard {
   position: absolute;
   right: 290px;
-  bottom: 8px;
+  bottom: -65px;
+  margin: 20px;
 }
 
 .scoreboard h3 {
@@ -43,10 +44,9 @@
   bottom: 95px;
 }
 .dropdown_container {
-  
   margin: 20px;
   position: absolute;
-  left:685px;
+  left: 685px;
 }
 .spinner_style {
   display: flex;
