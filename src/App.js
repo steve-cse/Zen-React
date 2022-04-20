@@ -6,7 +6,7 @@ import Login from "./pages/Login/Login";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Landing from "./pages/Landing/Landing";
-import PilatesPractice from "./pages/Practice/Pilates/Pilates-Practice";
+import PilatesPracticeBeginner from "./pages/Practice/Pilates/Pilates-Practice-Beginner";
 import YogaPracticeBeginner from "./pages/Practice/Yoga/Yoga-Practice-Beginner";
 import YogaPracticeIntermediate from "./pages/Practice/Yoga/Yoga-Practice-Intermediate";
 import YogaLearnBeginner from "./pages/Learn/Yoga/Yoga-Beginner";
@@ -33,7 +33,7 @@ function App() {
             path="/pilates-practice-beginner"
             element={
               <PrivateRoute>
-                <PilatesPractice />
+                <PilatesPracticeBeginner />
               </PrivateRoute>
             }
           />

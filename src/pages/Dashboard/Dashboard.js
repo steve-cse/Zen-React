@@ -52,14 +52,20 @@ export default function Dashboard() {
     ],
   };
   const pilatesBarData = {
-    labels: ["Curls", "Squats", "Lateral Raise"],
+    labels: ["Right Curl", "Left Curl", "Lateral Raise","Lunges","Side Lunge","Squats","Tricep Kickback","Plie Squat"],
     datasets: [
       {
         label: "Repetitions",
         data: [
+          localStorage.getItem("Right Curl"),
           localStorage.getItem("Left Curl"),
-          localStorage.getItem("Squats"),
           localStorage.getItem("Lateral Raise"),
+          localStorage.getItem("Lunges"),
+          localStorage.getItem("Side Lunge"),
+          localStorage.getItem("Squats"),
+          localStorage.getItem("Tricep Kickback"),
+          localStorage.getItem("Plie Squat"),
+
         ],
         backgroundColor: "rgba(255, 99, 132, 0.6)",
       },
@@ -88,6 +94,13 @@ export default function Dashboard() {
       localStorage.setItem("Left Curl", returnedData["Left Curl"]);
       localStorage.setItem("Squats", returnedData["Squats"]);
       localStorage.setItem("Lateral Raise", returnedData["Lateral Raise"]);
+      localStorage.setItem("Right Curl", returnedData["Right Curl"]);
+      localStorage.setItem("Lunges", returnedData["Lunges"]);
+      localStorage.setItem("Side Lunge", returnedData["Side Lunge"]);
+      localStorage.setItem("Plie Squat", returnedData["Plie Squat"]);
+      localStorage.setItem("Tricep Kickback", returnedData["Tricep Kickback"]);
+
+
       localStorage.setItem("chair", returnedData.chair);
       localStorage.setItem("cobra", returnedData.cobra);
       localStorage.setItem("goddess_pose", returnedData.goddess_pose);

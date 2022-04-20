@@ -3,12 +3,19 @@ import React, { useRef, useEffect} from "react";
 import * as poseAll from "@mediapipe/pose";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
-import { useNavigate } from "react-router-dom";
+import { Navbar, Button, Alert, Nav, NavItem } from "react-bootstrap";
+import { useAuth } from "../../../contexts/AuthContext";
+import { MinimalFooter } from "../../../containers";
+import logo from "../../../assets/logo.png";
+import { PilatesImages } from "../../../pilatesposedata/PilatesImages";
+import { PilatesInstructions } from "../../../pilatesposedata/PilatesInstructions";
+
 import useState from 'react-usestateref';
 import DropDown from "../../../components/DropDown/DropDown";
 import { fstore } from "../../../firebaseconfig/firebaseconfig";
 import { updateDoc,doc } from "firebase/firestore";
-import { Button} from "react-bootstrap";
+
+import "./Pilates-Practice-Beginner.css";
 
 
 const radians_to_degrees = (rad) => (rad * 180.0) / Math.PI;
@@ -27,33 +34,33 @@ function Pilates_Practice() {
   
   
   
-    var exercise_pack = [
-        {
-          name: "Left Curl",
-          pose_landmark_1: 11,
-          pose_landmark_2: 13,
-          pose_landmark_3: 15,
-          max_angle: 160,
-          min_angle: 30,
-        },
+  var exercise_pack = [
+    {
+      name: "Right Curl",
+      pose_landmark_1: 12,
+      pose_landmark_2: 14,
+      pose_landmark_3: 16,
+      max_angle: 160,
+      min_angle: 30,
+    },
+    {
+      name: "Left Curl",
+      pose_landmark_1: 11,
+      pose_landmark_2: 13,
+      pose_landmark_3: 15,
+      max_angle: 160,
+      min_angle: 30,
+    },
+    {
+      name: "Lateral Raise",
+      pose_landmark_1: 13,
+      pose_landmark_2: 11,
+      pose_landmark_3: 23,
+      max_angle: 77,
+      min_angle: 10,
+    },
     
-        {
-          name: "Lateral Raise",
-          pose_landmark_1: 13,
-          pose_landmark_2: 11,
-          pose_landmark_3: 23,
-          max_angle: 77,
-          min_angle: 10,
-        },
-        {
-          name: "Squats",
-          pose_landmark_1: 23,
-          pose_landmark_2: 25,
-          pose_landmark_3: 27,
-          max_angle: 175,
-          min_angle: 89,
-        }
-      ]; //pose array
+  ]; //pose array
       // var current_exercise_index = 0; 
       
       const webcamRef = useRef(null);
@@ -65,10 +72,23 @@ function Pilates_Practice() {
       var current_exercise;
       var stage;
       var angle_deg;
-      const navigate = useNavigate();
+    
       stage = null;
       const [counter, setCounter] = useState(0); //hook to deal with counter
-      const [currentPose, setCurrentPose,currentPoseRef] = useState('Left Curl')
+      const [currentPose, setCurrentPose,currentPoseRef] = useState('Right Curl')
+      const { currentUser, logout } = useAuth();
+      const [error, setError] = useState("");
+      const [toggleImage, setToggleImage] = useState(true);
+      async function handleLogout() {
+        setError("");
+    
+        try {
+          await logout();
+          window.open("/login", "_top");
+        } catch {
+          setError("Failed to log out");
+        }
+      }
       const handleUpdate = async ()=>{
        
         console.log(parseInt(localStorage.getItem(currentPoseRef.current))+1);
@@ -234,51 +254,126 @@ function Pilates_Practice() {
       }, []);
   return (
     <>
-    <center>
-      <div className="Pilates">
-        <Webcam
-          ref={webcamRef}
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
-          }}
-        />{" "}
-        <canvas
-          ref={canvasRef}
-          className="output_canvas"
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
-          }}
-        ></canvas>
-        
-      </div>
-    </center>
-    
-    <h4>Current Exercise: {currentPose}</h4>
-    <h4>Reps: {counter}</h4>
-    <DropDown
+    {error && <Alert variant="danger">{error}</Alert>}
+      <Navbar className="gradient_navbar">
+        <Navbar.Brand>
+          <img
+            alt=""
+            src={logo}
+            width="120"
+            height="60"
+            className="d-inline-block align-top mx-3"
+          />
+        </Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link
+            className="navbar_links my-2"
+            onClick={() => window.open("/dashboard", "_top")}
+            style={{ color: "black" }}
+          >
+            Dashboard
+          </Nav.Link>
+          <Nav.Link
+            className="navbar_links my-2"
+            href="#pricing"
+            style={{ color: "black" }}
+          >
+            Learn
+          </Nav.Link>
+          <Nav.Link
+            className="navbar_links my-2"
+            href="#pricing"
+            style={{ color: "black" }}
+          >
+            Practice
+          </Nav.Link>
+          <Nav.Link
+            className="navbar_links my-2"
+            href="#pricing"
+            style={{ color: "black" }}
+          >
+            Tutorials
+          </Nav.Link>
+          <Nav.Link
+            className="navbar_links my-2"
+            href="#pricing"
+            style={{ color: "black" }}
+          >
+            Article
+          </Nav.Link>
+        </Nav>
+        <Nav pullright="true">
+          <Nav.Link
+            className="mx-1"
+            style={{ color: "black", cursor: "default" }}
+          >
+            Syncing to: {currentUser.email}
+          </Nav.Link>
+          <NavItem className="mx-3" onClick={handleLogout}>
+            <Button>Log Out</Button>
+          </NavItem>
+        </Nav>
+      </Navbar>
+      <h2 className="dashboard_heading">Practice Pilates (Beginner)</h2>
+      <div className="dropdown_container">
+          <div className="dropdown_style">
+      <DropDown
     exercise_pack={exercise_pack}
     currentPose={currentPose}
     setCurrentPose={setCurrentPose}
     />
-    <Button variant="link"  onClick={() => navigate("/dashboard")}>
-          Back to Dashboard
-        </Button>
+    </div>
+    </div>
+      <div className="flex_container">
+        <Webcam
+         className="camera_style"
+         ref={webcamRef}
+         style={{
+           width: 640,
+           height: 480,
+         }}
+        />{" "}
+        <canvas
+          ref={canvasRef}
+          className="canvas_style"
+          style={{
+            width: 640,
+            height: 480,
+          }}
+        ></canvas>
+        {toggleImage ? (
+            <img
+              className="pose_image"
+              alt=""
+              src={PilatesImages[currentPose]}
+              onClick={() => {
+                setToggleImage(false);
+              }}
+            />
+          ) : (
+            <textarea
+              className="pose_image"
+              onClick={() => {
+                setToggleImage(true);
+              }}
+              value={PilatesInstructions[currentPose]}
+              readOnly={true}
+              spellCheck={false}
+            ></textarea>
+          )}
+      </div>
+    
+      <div className="scoreboard_container">
+      <div className="scoreboard_style">
+    <p>Current Exercise: {currentPose}</p>
+    <p>Repetitions: {counter}</p>
+    </div>
+    </div>
+    <div className="minimalfooter_style">
+            <MinimalFooter />
+          </div>
+    
+    
     </>
     
   )

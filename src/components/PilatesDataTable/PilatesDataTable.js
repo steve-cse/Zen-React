@@ -19,19 +19,44 @@ export default function PilatesDataTable() {
         </thead>
         <tbody className="pilates_table_body">
           <tr>
-            <td>Curls</td>
+            <td>Right Curl</td>
             <td>Beginner</td>
-            <td>{localStorage.getItem("Left Curl")}</td>
+            <td>{localStorage.getItem("Right Curl")}</td>
           </tr>
           <tr>
-            <td>Squats</td>
+            <td>Left Curl</td>
             <td>Beginner</td>
-            <td>{localStorage.getItem("Squats")}</td>
+            <td>{localStorage.getItem("Left Curl")}</td>
           </tr>
           <tr>
             <td>Lateral Raise</td>
             <td>Beginner</td>
             <td>{localStorage.getItem("Lateral Raise")}</td>
+          </tr>
+          <tr>
+            <td>Lunges</td>
+            <td>Intermediate</td>
+            <td>{localStorage.getItem("Lunges")}</td>
+          </tr>
+          <tr>
+            <td>Side Lunge</td>
+            <td>Intermediate</td>
+            <td>{localStorage.getItem("Side Lunge")}</td>
+          </tr>
+          <tr>
+            <td>Squats</td>
+            <td>Intermediate</td>
+            <td>{localStorage.getItem("Squats")}</td>
+          </tr>
+          <tr>
+            <td>Tricep Kickback</td>
+            <td>Advanced</td>
+            <td>{localStorage.getItem("Tricep Kickback")}</td>
+          </tr>
+          <tr>
+            <td>Plie Squat</td>
+            <td>Advanced</td>
+            <td>{localStorage.getItem("Plie Squat")}</td>
           </tr>
         </tbody>
       </Table>
