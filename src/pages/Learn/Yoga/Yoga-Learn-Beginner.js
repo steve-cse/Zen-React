@@ -65,7 +65,7 @@ function Yoga() {
       setSparkles(true);
       setTimeout(function () {
         setSparkles(false);
-    }, 20000);
+    }, 30000);
       console.log(poseList[poseList.length - 1].name);
     } else if (currentPoseIndex < 5) {
       setCurrentPose(poseList[currentPoseIndex].name);
@@ -285,6 +285,12 @@ function Yoga() {
             </Nav>
           </Navbar>
           <h2 className="dashboard_heading">Learn Yoga (Beginner)</h2>
+          {sparkles ? (<><Confetti
+          width={win_width}
+          height={win_height}
+          initialVelocityX={25}
+          initialVelocityY={25}
+        /></>):(null)}
           <div className="flex_container">
           <Webcam
             className="camera_style"
