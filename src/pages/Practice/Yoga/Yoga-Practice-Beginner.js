@@ -281,6 +281,7 @@ function Yoga() {
               </NavItem>
             </Nav>
           </Navbar>
+          <h2 className="dashboard_heading">Practice Yoga (Beginner)</h2>
           <div className="dropdown_container">
           <div className="dropdown_style">
             <DropDown
