@@ -12,6 +12,8 @@ import YogaPracticeIntermediate from "./pages/Practice/Yoga/Yoga-Practice-Interm
 import YogaLearnBeginner from "./pages/Learn/Yoga/Yoga-Learn-Beginner";
 import YogaLearnIntermediate from "./pages/Learn/Yoga/Yoga-Learn-Intermediate";
 import PilatesLearnBeginner from "./pages/Learn/Pilates/Pilates-Learn-Beginner";
+import PilatesLearnIntermediate from "./pages/Learn/Pilates/Pilates-Learn-Intermediate";
+import PilatesLearnAdvanced from "./pages/Learn/Pilates/Pilates-Learn-Advanced";
 function App() {
   return (
     <Router>
@@ -74,6 +76,22 @@ function App() {
             element={
               <PrivateRoute>
                 <PilatesLearnBeginner />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/pilates-learn-intermediate"
+            element={
+              <PrivateRoute>
+                <PilatesLearnIntermediate />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/pilates-learn-advanced"
+            element={
+              <PrivateRoute>
+                <PilatesLearnAdvanced />
               </PrivateRoute>
             }
           />
