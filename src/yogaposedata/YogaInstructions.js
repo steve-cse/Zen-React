@@ -79,4 +79,7 @@ warrior2: [
 
 2. Turn your left foot out 90 degrees, then bend your knee into a lunge. Be sure to keep your knee above your ankle and pointing over your toes. Turn your head to the left and look over your fingers. Repeat on the other side.`,
  ],
+no_pose: [
+`Well done now you can practice the learned poses using the practice module.`  
+]
 };
