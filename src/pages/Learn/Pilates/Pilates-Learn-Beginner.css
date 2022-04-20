@@ -5,6 +5,7 @@
     rgba(233, 233, 148, 1) 100%
   );
   width: 100%;
+  /* margin-bottom: 40px; */
 }
 .navbar_links {
   font-family: var(--font-family);
@@ -61,7 +62,16 @@
   display: flex;
   justify-content: center;
 }
-
+.dashboard_heading {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  padding: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .minimalfooter_style {
   width: 100%;

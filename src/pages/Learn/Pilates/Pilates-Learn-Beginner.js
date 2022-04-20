@@ -10,8 +10,9 @@ import { MinimalFooter } from "../../../containers";
 import logo from "../../../assets/logo.png";
 import { useWindowSize } from "@react-hook/window-size";
 import Confetti from "react-confetti";
-
-import "./Pilates-Beginner.css";
+import { PilatesImages } from "../../../pilatesposedata/PilatesImages";
+import { PilatesInstructions } from "../../../pilatesposedata/PilatesInstructions";
+import "./Pilates-Learn-Beginner.css";
 const radians_to_degrees = (rad) => (rad * 180.0) / Math.PI;
 function find_angle(p1, p2, p3) {
   //angle between 3 points
@@ -27,28 +28,12 @@ function find_angle(p1, p2, p3) {
 function Pilates() {
   var exercise_pack = [
     {
-      name: "Side Lunge",
-      pose_landmark_1: 23,
-      pose_landmark_2: 24,
-      pose_landmark_3: 26,
-      max_angle: 110,
-      min_angle: 90,
-    },
-    {
-      name: "Tricep Kickback",
-      pose_landmark_1: 11,
-      pose_landmark_2: 13,
-      pose_landmark_3: 15,
-      max_angle: 172,
-      min_angle: 82,
-    },
-    {
-      name: "Lunges",
-      pose_landmark_1: 23,
-      pose_landmark_2: 25,
-      pose_landmark_3: 27,
-      max_angle: 170,
-      min_angle: 69,
+      name: "Right Curl",
+      pose_landmark_1: 12,
+      pose_landmark_2: 14,
+      pose_landmark_3: 16,
+      max_angle: 160,
+      min_angle: 30,
     },
     {
       name: "Left Curl",
@@ -58,7 +43,6 @@ function Pilates() {
       max_angle: 160,
       min_angle: 30,
     },
-
     {
       name: "Lateral Raise",
       pose_landmark_1: 13,
@@ -66,14 +50,6 @@ function Pilates() {
       pose_landmark_3: 23,
       max_angle: 77,
       min_angle: 10,
-    },
-    {
-      name: "Squats",
-      pose_landmark_1: 23,
-      pose_landmark_2: 25,
-      pose_landmark_3: 27,
-      max_angle: 175,
-      min_angle: 89,
     },
     
     {
@@ -103,6 +79,7 @@ function Pilates() {
   const [sparkles, setSparkles] = useState(false);
   const [win_width, win_height] = useWindowSize()
   const { currentUser, logout } = useAuth();
+  const [toggleImage, setToggleImage] = useState(true);
   async function handleLogout() {
     setError("");
 
@@ -121,7 +98,7 @@ function Pilates() {
     setCounter(0);
   }
   const [exercise_name_for_display, setexercise_name_for_display] =
-    useState("Side Lunge");
+    useState("Right Curl");
   function changeDisplay() {
     setexercise_name_for_display(current_exercise.name);
   }
@@ -196,7 +173,7 @@ function Pilates() {
 
         incrementCounter();
       }
-      if (counterRef.current === 5 && current_exercise_index < 7) {
+      if (counterRef.current === 12 && current_exercise_index < 2) {
         resetCounter();
 
         current_exercise_index += 1;
@@ -206,7 +183,7 @@ function Pilates() {
         console.log(current_exercise.name);
         changeDisplay();
       }
-      if (counterRef.current === 5 && current_exercise_index === 7) {
+      if (counterRef.current === 12 && current_exercise_index === 2) {
         resetCounter();
 
         current_exercise = exercise_pack[exercise_pack.length - 1];
@@ -315,13 +292,14 @@ function Pilates() {
           </NavItem>
         </Nav>
       </Navbar>
+      <h2 className="dashboard_heading">Learn Pilates (Beginner)</h2>
       {sparkles ? (<><Confetti
           width={win_width}
           height={win_height}
           initialVelocityX={15}
           initialVelocityY={15}
         /></>):(null)}
-      
+      <div className="flex_container">
       <Webcam
         className="camera_style"
         ref={webcamRef}
@@ -332,14 +310,42 @@ function Pilates() {
       />{" "}
       <canvas
         ref={canvasRef}
-        className="camera_style"
+        className="canvas_style"
         style={{
           width: 640,
           height: 480,
         }}
       ></canvas>
-      <h4>Current Exercise: {exercise_name_for_display}</h4>
-      <h4>Repetitions: {counter}/20</h4>
+       {toggleImage ? (
+            <img
+              className="pose_image"
+              alt=""
+              src={PilatesImages[exercise_name_for_display]}
+              onClick={() => {
+                setToggleImage(false);
+              }}
+            />
+          ) : (
+            <textarea
+              className="pose_image"
+              onClick={() => {
+                setToggleImage(true);
+              }}
+              value={PilatesInstructions[exercise_name_for_display]}
+              readOnly={true}
+              spellCheck={false}
+            ></textarea>
+          )}
+      </div>
+      <div className="scoreboard_container">
+      <div className="scoreboard_style">
+      <p>Current Exercise: {exercise_name_for_display}</p>
+      <p>Repetitions: {counter}/12</p>
+      </div>
+      </div>
+      <div className="minimalfooter_style">
+            <MinimalFooter />
+          </div>
     </>
   );
 }
