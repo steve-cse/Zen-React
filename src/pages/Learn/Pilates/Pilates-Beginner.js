@@ -27,6 +27,30 @@ function find_angle(p1, p2, p3) {
 function Pilates() {
   var exercise_pack = [
     {
+      name: "Side Lunge",
+      pose_landmark_1: 23,
+      pose_landmark_2: 24,
+      pose_landmark_3: 26,
+      max_angle: 110,
+      min_angle: 90,
+    },
+    {
+      name: "Tricep Kickback",
+      pose_landmark_1: 11,
+      pose_landmark_2: 13,
+      pose_landmark_3: 15,
+      max_angle: 172,
+      min_angle: 82,
+    },
+    {
+      name: "Lunges",
+      pose_landmark_1: 23,
+      pose_landmark_2: 25,
+      pose_landmark_3: 27,
+      max_angle: 170,
+      min_angle: 69,
+    },
+    {
       name: "Left Curl",
       pose_landmark_1: 11,
       pose_landmark_2: 13,
@@ -51,11 +75,12 @@ function Pilates() {
       max_angle: 175,
       min_angle: 89,
     },
+    
     {
       name: "No Pose",
       pose_landmark_1: 0,
-      pose_landmark_2: 10,
-      pose_landmark_3: 9,
+      pose_landmark_2: 0,
+      pose_landmark_3: 0,
       max_angle: 160,
       min_angle: 30,
     },
@@ -96,7 +121,7 @@ function Pilates() {
     setCounter(0);
   }
   const [exercise_name_for_display, setexercise_name_for_display] =
-    useState("Left Curl");
+    useState("Side Lunge");
   function changeDisplay() {
     setexercise_name_for_display(current_exercise.name);
   }
@@ -171,7 +196,7 @@ function Pilates() {
 
         incrementCounter();
       }
-      if (counterRef.current === 3 && current_exercise_index < 2) {
+      if (counterRef.current === 5 && current_exercise_index < 7) {
         resetCounter();
 
         current_exercise_index += 1;
@@ -181,7 +206,7 @@ function Pilates() {
         console.log(current_exercise.name);
         changeDisplay();
       }
-      if (counterRef.current === 3 && current_exercise_index === 2) {
+      if (counterRef.current === 5 && current_exercise_index === 7) {
         resetCounter();
 
         current_exercise = exercise_pack[exercise_pack.length - 1];
