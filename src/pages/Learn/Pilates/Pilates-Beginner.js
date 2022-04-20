@@ -4,7 +4,14 @@ import * as poseAll from "@mediapipe/pose";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import useState from "react-usestateref";
+import { Navbar, Button, Alert, Nav, NavItem } from "react-bootstrap";
+import { useAuth } from "../../../contexts/AuthContext";
+import { MinimalFooter } from "../../../containers";
+import logo from "../../../assets/logo.png";
+import { useWindowSize } from "@react-hook/window-size";
+import Confetti from "react-confetti";
 
+import "./Pilates-Beginner.css";
 const radians_to_degrees = (rad) => (rad * 180.0) / Math.PI;
 function find_angle(p1, p2, p3) {
   //angle between 3 points
@@ -67,6 +74,21 @@ function Pilates() {
 
   stage = null;
   const [counter, setCounter, counterRef] = useState(0);
+  const [error, setError] = useState("");
+  const [sparkles, setSparkles] = useState(false);
+  const [win_width, win_height] = useWindowSize()
+  const { currentUser, logout } = useAuth();
+  async function handleLogout() {
+    setError("");
+
+    try {
+      await logout();
+      window.open("/login", "_top");
+    } catch {
+      setError("Failed to log out");
+    }
+  }
+
   function incrementCounter() {
     setCounter((prevCounter) => prevCounter + 1);
   }
@@ -74,7 +96,7 @@ function Pilates() {
     setCounter(0);
   }
   const [exercise_name_for_display, setexercise_name_for_display] =
-    useState("Curls");
+    useState("Left Curl");
   function changeDisplay() {
     setexercise_name_for_display(current_exercise.name);
   }
@@ -149,21 +171,26 @@ function Pilates() {
 
         incrementCounter();
       }
-      if (counterRef.current === 20 && current_exercise_index < 2) {
+      if (counterRef.current === 3 && current_exercise_index < 2) {
         resetCounter();
 
         current_exercise_index += 1;
         console.log("Updated current exercise index");
+        
         current_exercise = exercise_pack[current_exercise_index];
         console.log(current_exercise.name);
         changeDisplay();
       }
-      if (counterRef.current === 20 && current_exercise_index === 2) {
+      if (counterRef.current === 3 && current_exercise_index === 2) {
         resetCounter();
 
         current_exercise = exercise_pack[exercise_pack.length - 1];
         console.log(current_exercise.name);
         console.log("Finished");
+        setSparkles(true);
+        setTimeout(function () {
+          setSparkles(false);
+      }, 20000);
         changeDisplay();
       }
     } catch (error) {}
@@ -196,47 +223,98 @@ function Pilates() {
         width: 640,
         height: 480,
       });
+
       camera.start();
     }
+    
   }, []);
   return (
     <>
-      <center>
-        <div className="Pilates">
-          <Webcam
-            ref={webcamRef}
-            style={{
-              position: "absolute",
-              marginLeft: "auto",
-              marginRight: "auto",
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              zindex: 9,
-              width: 640,
-              height: 480,
-            }}
-          />{" "}
-          <canvas
-            ref={canvasRef}
-            className="output_canvas"
-            style={{
-              position: "absolute",
-              marginLeft: "auto",
-              marginRight: "auto",
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              zindex: 9,
-              width: 640,
-              height: 480,
-            }}
-          ></canvas>
-        </div>
-      </center>
-
+      {error && <Alert variant="danger">{error}</Alert>}
+      <Navbar className="gradient_navbar">
+        <Navbar.Brand>
+          <img
+            alt=""
+            src={logo}
+            width="120"
+            height="60"
+            className="d-inline-block align-top mx-3"
+          />
+        </Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link
+            className="navbar_links my-2"
+            onClick={() => window.open("/dashboard", "_top")}
+            style={{ color: "black" }}
+          >
+            Dashboard
+          </Nav.Link>
+          <Nav.Link
+            className="navbar_links my-2"
+            href="#pricing"
+            style={{ color: "black" }}
+          >
+            Learn
+          </Nav.Link>
+          <Nav.Link
+            className="navbar_links my-2"
+            href="#pricing"
+            style={{ color: "black" }}
+          >
+            Practice
+          </Nav.Link>
+          <Nav.Link
+            className="navbar_links my-2"
+            href="#pricing"
+            style={{ color: "black" }}
+          >
+            Tutorials
+          </Nav.Link>
+          <Nav.Link
+            className="navbar_links my-2"
+            href="#pricing"
+            style={{ color: "black" }}
+          >
+            Article
+          </Nav.Link>
+        </Nav>
+        <Nav pullright="true">
+          <Nav.Link
+            className="mx-1"
+            style={{ color: "black", cursor: "default" }}
+          >
+            Syncing to: {currentUser.email}
+          </Nav.Link>
+          <NavItem className="mx-3" onClick={handleLogout}>
+            <Button>Log Out</Button>
+          </NavItem>
+        </Nav>
+      </Navbar>
+      {sparkles ? (<><Confetti
+          width={win_width}
+          height={win_height}
+          initialVelocityX={15}
+          initialVelocityY={15}
+        /></>):(null)}
+      
+      <Webcam
+        className="camera_style"
+        ref={webcamRef}
+        style={{
+          width: 640,
+          height: 480,
+        }}
+      />{" "}
+      <canvas
+        ref={canvasRef}
+        className="camera_style"
+        style={{
+          width: 640,
+          height: 480,
+        }}
+      ></canvas>
       <h4>Current Exercise: {exercise_name_for_display}</h4>
-      <h4>Reps: {counter}/20</h4>
+      <h4>Repetitions: {counter}/20</h4>
     </>
   );
 }

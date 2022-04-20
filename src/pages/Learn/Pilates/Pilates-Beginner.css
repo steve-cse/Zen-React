@@ -1,0 +1,69 @@
+.gradient_navbar {
+  background: linear-gradient(
+    18deg,
+    rgba(255, 188, 188, 1) 0%,
+    rgba(233, 233, 148, 1) 100%
+  );
+  width: 100%;
+}
+.navbar_links {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 22px;
+}
+.flex_container {
+  display: flex;
+  position: relative;
+}
+.scoreboard_container {
+  display: flex;
+}
+.scoreboard_style {
+  margin: 20px 20px 20px 65%;
+}
+
+.scoreboard_style p {
+  font-family: var(--font-family);
+  font-weight: 550;
+  font-size: 25px;
+}
+.pose_image {
+  width: 500px;
+  height: 500px;
+  text-align: justify;
+  font-family: var(--font-family);
+  cursor: default;
+  user-select: none;
+  font-weight: 500;
+  font-size: 20px;
+  resize: none;
+  border: none;
+  padding: 10px;
+  margin-left: 10%;
+  margin-right: 5%;
+}
+.camera_style {
+  margin: 10px 10px 10px 5%;
+  background-color: black;
+}
+.canvas_style {
+  position: absolute;
+  margin: 10px 10px 10px 5%;
+  top: 0%;
+  left: 0%;
+  bottom: 0%;
+  right: 0%;
+}
+.dropdown_style {
+  margin: 20px 20px 30px 20px;
+}
+.dropdown_container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.minimalfooter_style {
+  width: 100%;
+  bottom: -700px;
+}
