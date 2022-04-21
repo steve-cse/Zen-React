@@ -171,14 +171,14 @@ export default function Dashboard() {
               </Nav.Link>
               <Nav.Link
                 className="navbar_links my-2"
-                href="#pricing"
+                onClick={() => navigate("/selection-learn")}
                 style={{ color: "black" }}
               >
                 Learn
               </Nav.Link>
               <Nav.Link
                 className="navbar_links my-2"
-                href="#pricing"
+                onClick={() => navigate("/selection-practice")}
                 style={{ color: "black" }}
               >
                 Practice

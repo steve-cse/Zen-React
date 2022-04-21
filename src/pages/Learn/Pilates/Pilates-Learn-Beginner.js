@@ -253,14 +253,14 @@ function Pilates() {
           </Nav.Link>
           <Nav.Link
             className="navbar_links my-2"
-            href="#pricing"
+            onClick={() => window.open("/selection-learn", "_top")}
             style={{ color: "black" }}
           >
             Learn
           </Nav.Link>
           <Nav.Link
             className="navbar_links my-2"
-            href="#pricing"
+            onClick={() => window.open("/selection-practice", "_top")}
             style={{ color: "black" }}
           >
             Practice

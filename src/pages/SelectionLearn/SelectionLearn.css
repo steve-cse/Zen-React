@@ -1,0 +1,14 @@
+.card_flex_container{
+display:flex;
+justify-content: space-evenly;
+margin-bottom: 110px;
+margin-top: 110px;
+}
+.yoga_learn_select{
+    margin:15px;
+}
+.minimalfoot_styling {
+    width: 100%;
+    bottom: -400px;
+  }
+  
