@@ -6,7 +6,18 @@ import Webcam from "react-webcam";
 import { POINTS, keypointConnections } from "../../../utils/data";
 import { drawPoint, drawSegment } from "../../../utils/helper";
 import { landmarks_to_embedding } from "../../../tflib/FeatureVectorExtractor";
+import { Navbar, Button, Alert, Nav, NavItem } from "react-bootstrap";
+import { useAuth } from "../../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import logo from "../../../assets/logo.png";
+import { YogaImages } from "../../../yogaposedata/YogaImages";
+import { YogaInstructions } from "../../../yogaposedata/YogaInstructions";
+import ClockLoader from "react-spinners/ClockLoader";
+import { MinimalFooter } from "../../../containers";
+import { useWindowSize } from "@react-hook/window-size";
+import Confetti from "react-confetti";
 
+import "./Yoga-Learn-Intermediate.css";
 let skeletonColor = "rgb(160, 32, 240)";
 let poseList = [
   { name: "camel" },
@@ -22,12 +33,29 @@ var currentPoseIndex = 0;
 function Yoga() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [sparkles, setSparkles] = useState(false);
+  const [win_width, win_height] = useWindowSize();
+  const { currentUser, logout } = useAuth();
   const [currentPose, setCurrentPose, currentPoseRef] = useState("camel");
   const [startingTime, setStartingTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [poseTime, setPoseTime] = useState(0);
   const [round, setRound, roundRef] = useState(0);
-  const [feedback, setFeedback] = useState(" ");
+  const [feedback, setFeedback] = useState("Your Pose Feedback");
+  const [loading, setLoading] = useState(true);
+  const [toggleImage, setToggleImage] = useState(true);
+  async function handleLogout() {
+    setError("");
+
+    try {
+      await logout();
+      navigate("/login");
+    } catch {
+      setError("Failed to log out");
+    }
+  }
   function incrementRound() {
     setRound((prevRound) => prevRound + 1);
   }
@@ -35,6 +63,10 @@ function Yoga() {
     currentPoseIndex = currentPoseIndex + 1;
     if (currentPoseIndex === 5) {
       setCurrentPose(poseList[poseList.length - 1].name);
+      setSparkles(true);
+      setTimeout(function () {
+        setSparkles(false);
+      }, 30000);
       console.log(poseList[poseList.length - 1].name);
     } else if (currentPoseIndex < 5) {
       setCurrentPose(poseList[currentPoseIndex].name);
@@ -89,7 +121,7 @@ function Yoga() {
     const poseClassifier = await tf.loadLayersModel(
       "https://raw.githubusercontent.com/Maverick-2000/Zen-React/master/Movenet%20Files/Intermediate/model/model.json"
     );
-
+    setLoading(false);
     interval = setInterval(() => {
       detectPose(detector, poseClassifier);
     }, 100);
@@ -111,7 +143,13 @@ function Yoga() {
         let input = keypoints.map((keypoint) => {
           if (keypoint.score > 0.4) {
             if (
-              !(keypoint.name === "left_eye" || keypoint.name === "right_eye")
+              !(
+                keypoint.name === "left_eye" ||
+                keypoint.name === "right_eye" ||
+                keypoint.name === "nose" ||
+                keypoint.name === "right_ear" ||
+                keypoint.name === "left_ear"
+              )
             ) {
               drawPoint(ctx, keypoint.x, keypoint.y, 8, "rgb(255,255,255)");
               let connections = keypointConnections[keypoint.name];
@@ -173,44 +211,138 @@ function Yoga() {
 
   return (
     <>
-      <center>
-        <Webcam
-          width="640px"
-          height="480px"
-          id="webcam"
-          ref={webcamRef}
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            textAlign: "center",
-            left: 0,
-            right: 0,
-            zindex: 9,
-            padding: "0px",
-          }}
-        />
-        <canvas
-          ref={canvasRef}
-          id="my-canvas"
-          width="640px"
-          height="480px"
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            textAlign: "center",
-            left: 0,
-            right: 0,
-            zindex: 9,
-          }}
-        ></canvas>
-      </center>
-
-      <h3>Counter: {poseTime}</h3>
-      <h3>Rounds: {round}</h3>
-      <h3>Pose: {currentPose}</h3>
-      <h3>{feedback}</h3>
+      {loading ? (
+        <>
+          <div className="spinner_style">
+            <ClockLoader
+              speedMultiplier={1.5}
+              color={"#ffc107"}
+              loading={loading}
+              size={140}
+            />
+            <p>A jug fills drop by drop.</p>
+          </div>
+        </>
+      ) : (
+        <>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Navbar className="gradient_navbar">
+            <Navbar.Brand>
+              <img
+                alt=""
+                src={logo}
+                width="120"
+                height="60"
+                className="d-inline-block align-top mx-3"
+              />
+            </Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link
+                className="navbar_links my-2"
+                onClick={() => navigate("/dashboard")}
+                style={{ color: "black" }}
+              >
+                Dashboard
+              </Nav.Link>
+              <Nav.Link
+                className="navbar_links my-2"
+                href="#pricing"
+                style={{ color: "black" }}
+              >
+                Learn
+              </Nav.Link>
+              <Nav.Link
+                className="navbar_links my-2"
+                href="#pricing"
+                style={{ color: "black" }}
+              >
+                Practice
+              </Nav.Link>
+              <Nav.Link
+                className="navbar_links my-2"
+                href="#pricing"
+                style={{ color: "black" }}
+              >
+                Tutorials
+              </Nav.Link>
+              <Nav.Link
+                className="navbar_links my-2"
+                href="#pricing"
+                style={{ color: "black" }}
+              >
+                Article
+              </Nav.Link>
+            </Nav>
+            <Nav pullright="true">
+              <Nav.Link
+                className="mx-1"
+                style={{ color: "black", cursor: "default" }}
+              >
+                Syncing to: {currentUser.email}
+              </Nav.Link>
+              <NavItem className="mx-3" onClick={handleLogout}>
+                <Button>Log Out</Button>
+              </NavItem>
+            </Nav>
+          </Navbar>
+          <h2 className="dashboard_heading">Learn Yoga (Intermediate)</h2>
+          {sparkles ? (
+            <>
+              <Confetti
+                width={win_width}
+                height={win_height}
+                initialVelocityX={25}
+                initialVelocityY={25}
+              />
+            </>
+          ) : null}
+          <div className="flex_container">
+            <Webcam
+              className="camera_style"
+              width="640px"
+              height="480px"
+              ref={webcamRef}
+            />
+            <canvas
+              className="canvas_style"
+              ref={canvasRef}
+              width="640px"
+              height="480px"
+            ></canvas>
+            {toggleImage ? (
+              <img
+                className="pose_image"
+                alt=""
+                src={YogaImages[currentPose]}
+                onClick={() => {
+                  setToggleImage(false);
+                }}
+              />
+            ) : (
+              <textarea
+                className="pose_image"
+                onClick={() => {
+                  setToggleImage(true);
+                }}
+                value={YogaInstructions[currentPose]}
+                readOnly={true}
+                spellCheck={false}
+              ></textarea>
+            )}
+          </div>
+          <div className="scoreboard_container">
+            <div className="scoreboard_style">
+              <h3>Counter: {poseTime}</h3>
+              <h3>Rounds: {round}</h3>
+              <h3>Pose: {currentPose}</h3>
+              <h3>{feedback}</h3>
+            </div>
+          </div>
+          <div className="minimalfooter_style">
+            <MinimalFooter />
+          </div>
+        </>
+      )}
     </>
   );
 }
