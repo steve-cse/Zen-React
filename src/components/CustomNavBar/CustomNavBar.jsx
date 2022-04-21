@@ -13,11 +13,12 @@ const Navbar = () => {
         <img src={logo}/> 
         </div>
         <div className="gpt3__navbar-links_container">
-          <p><a href="#home">Home</a></p>
-          <p><a href="#dashboard">Dashboard</a></p>
-          <p><a href="#about">Article</a></p>
-          <p><a href="#about">About</a></p>
-          <p><a href="#motivation">Motivation</a></p>
+        <p><a href="/dashboard">Dashboard</a></p>
+          <p><a href="/selection-learn">Learn</a></p>
+        
+          <p><a href="/selection-practice">Practice</a></p>
+          <p><a href="#tutorials">Tutorials</a></p>
+          <p><a href="#article">Article</a></p>
         </div>
       </div>
       <div className="gpt3__navbar-sign">
@@ -31,11 +32,13 @@ const Navbar = () => {
         {toggleMenu && (
         <div className="gpt3__navbar-menu_container scale-up-center">
           <div className="gpt3__navbar-menu_container-links">
-          <p><a href="#home">Home</a></p>
-          <p><a href="#dashboard">Dashboard</a></p>
-          <p><a href="#practice">Practice</a></p>
-          <p><a href="#abstract">Abstract</a></p>
-          <p><a href="#future">Future</a></p>
+          
+          <p><a href="/dashboard">Dashboard</a></p>
+          <p><a href="/selection-learn">Learn</a></p>
+        
+          <p><a href="/selection-practice">Practice</a></p>
+          <p><a href="#tutorials">Tutorials</a></p>
+          <p><a href="#article">Article</a></p>
           </div>
           <div className="gpt3__navbar-menu_container-links-sign">
           <p> <Link to="/login">Log in</Link></p>
