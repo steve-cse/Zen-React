@@ -68,6 +68,27 @@ export default function YogaDataTable() {
             <td>Intermediate</td>
             <td>{localStorage.getItem("warrior2")}</td>
           </tr>
+          <tr>
+            <td>Bound Ankle</td>
+            <td>Advanced</td>
+            <td>{localStorage.getItem("bound_ankle")}</td>
+          </tr><tr>
+            <td>Bridge</td>
+            <td>Advanced</td>
+            <td>{localStorage.getItem("bridge")}</td>
+          </tr><tr>
+            <td>Down Dog</td>
+            <td>Advanced</td>
+            <td>{localStorage.getItem("down_dog")}</td>
+          </tr><tr>
+            <td>Gate</td>
+            <td>Advanced</td>
+            <td>{localStorage.getItem("gate")}</td>
+          </tr><tr>
+            <td>Half Moon</td>
+            <td>Advanced</td>
+            <td>{localStorage.getItem("half_moon")}</td>
+          </tr>
         </tbody>
       </Table>
     </div>
