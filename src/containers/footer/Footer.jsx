@@ -13,7 +13,7 @@ const Footer = () => {
 
     <div className="gpt3__footer-btn" onClick={() => navigate('/signup')}>
      
-      <strong > Login / Register</strong>
+      <strong >Register</strong>
     </div>
 
     <div className="gpt3__footer-links">
