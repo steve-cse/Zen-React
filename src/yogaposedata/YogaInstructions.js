@@ -79,6 +79,74 @@ warrior2: [
 
 2. Turn your left foot out 90 degrees, then bend your knee into a lunge. Be sure to keep your knee above your ankle and pointing over your toes. Turn your head to the left and look over your fingers. Repeat on the other side.`,
  ],
+bridge:[
+`1. Lie on your back in the center of your mat with your knees bent, your legs and feet parallel and hip-distance apart.
+
+2. Move your feet closer to your buttocks. Press down firmly through both of your feet and inhale to raise your hips, lifting from the pubic bone rather than the navel.
+  
+3. Clasp your hands under your back on the floor. Broaden your collarbones and get on top of your shoulders. Firm the outer shins and roll your upper thighs inward. Press down firmly through your heels and lift the back of your thighs and the bottom of your buttocks even higher while keeping the thighs parallel.
+  
+4.To finish, exhale, release your hands, and lower to the floor. Allow your back to rest in a neutral state as you observe the spaciousness within your chest.`
+],
+bound_ankle:[
+`1. From a seated position, bring the bottoms of the feet together with the knees bent out to the sides, and interlace the fingers around the toes.
+
+2. Inhale and press the hips down and reach the crown of the head up towards the ceiling. Drop the shoulders down and back and press the chest towards the front. Press the knees down towards the floor to open the hips.
+
+3. Keeping the back flat and the chest open, exhale and gently pull your torso forward. Close the eyes and stare up at the third eye / sixth chakra.
+
+4. Breathe and hold for 3-8 breaths.`
+],
+down_dog: [`1. Come to your hands and knees with your wrists underneath the shoulders and your knees underneath the hips.
+
+2. Curl your toes under and push back through your hands to lift your hips and straighten your legs.
+
+3. Spread your fingers and ground down from the forearms into the fingertips.
+
+4. Outwardly rotate your upper arms to broaden the collarbones.
+
+5. Let your head hang and move your shoulder blades away from your ears towards your hips.
+
+6. Engage your quadriceps strongly to take the burden of your body's weight off your arms. This action goes a long way toward making this a resting pose.
+
+7. Rotate your thighs inward, keep your tail high, and sink your heels towards the floor.
+
+8. Check that the distance between your hands and feet is correct by coming forward to a plank position. The distance between the hands and feet should be the same in these two poses. Do not step the feet toward the hands in Down Dog in order the get the heels to the floor.
+
+9. Exhale and bend your knees to release and come back to your hands and knees.`],
+gate:[
+`1. Come into an upright kneeling position with your thighs perpendicular to the floor and your hips over the knees. Place a blanket under your knees if they are sensitive.
+
+2. Straighten your right leg as you extend it out to the right side, keeping the knee and ankle in line with your right hip.
+
+3. Turn your right toes forward so that the right foot is parallel to the side of your mat.
+
+4. Inhale and reach your left arm up next to your left ear.
+
+5. Exhale and lean your torso to the right, stretching the left arm over your head. Let your right arm come down and rest on your right leg.
+
+6. Bring your gaze up under your extended left arm.
+
+7. Stay for several breaths, extending your spine on your inhales and deepening the side stretch on your exhales.
+
+8. Bring your torso upright and return your right knee next to the left one.`],
+half_moon:[
+`1. Begin in Triangle Pose with the right leg forward. Bend your right knee softly and bring your left hand to your hip.
+
+2. Bring your right hand to the floor in front of your right foot. Your hand should be under your shoulder when you are in the full pose, so in order to set it up in the correct position, place it about a foot in front of and 5 or 6 inches to the right of your right foot. Tent your hand so that just your fingertips on the floor.
+
+3. Begin to straighten your right leg while simultaneously lifting your left foot off the floor. Keep your left leg as straight as possible. 
+
+4. Open your hips, stacking the left hip point on top of the right hip point. 
+
+5. Bring your left leg straight and parallel to the floor. Flex your left foot strongly with the toes pointing toward the left side of the room.
+
+6. When you feel balanced on the right leg, reach the left arm up toward the ceiling, opening the chest and making a straight line with the right and left arms perpendicular to the floor.
+
+7. Finally, turn your head so that your gaze is lifted toward your upraised left fingertips.
+
+8. The balance here for around five breaths before releasing the left leg to the floor and repeating the pose on the other side.`
+],
 no_pose: [
 `Well done now you can practice the learned poses using the practice module.`  
 ]

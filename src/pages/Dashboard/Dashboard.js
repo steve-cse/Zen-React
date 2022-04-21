@@ -31,6 +31,11 @@ export default function Dashboard() {
       "Upward Dog",
       "Warrior 1",
       "Warrior 2",
+      "Bound Ankle",
+      "Bridge",
+      "Down Dog",
+      "Gate",
+      "Half Moon"
     ],
     datasets: [
       {
@@ -46,6 +51,12 @@ export default function Dashboard() {
           localStorage.getItem("upward_dog"),
           localStorage.getItem("warrior1"),
           localStorage.getItem("warrior2"),
+          localStorage.getItem("bound_ankle"),
+          localStorage.getItem("bridge"),
+          localStorage.getItem("down_dog"),
+          localStorage.getItem("gate"),
+          localStorage.getItem("half_moon"),
+
         ],
         backgroundColor: "rgba(153, 102, 255, 0.6)",
       },
@@ -111,6 +122,12 @@ export default function Dashboard() {
       localStorage.setItem("upward_dog", returnedData.upward_dog);
       localStorage.setItem("warrior1", returnedData.warrior1);
       localStorage.setItem("warrior2", returnedData.warrior2);
+      localStorage.setItem("bound_ankle", returnedData.bound_ankle);
+      localStorage.setItem("bridge", returnedData.bridge);
+      localStorage.setItem("down_dog", returnedData.down_dog);
+      localStorage.setItem("gate", returnedData.gate);
+      localStorage.setItem("half_moon", returnedData.half_moon);
+
       localStorage.setItem("id", returnedData.id);
       setLoading(false);
     };

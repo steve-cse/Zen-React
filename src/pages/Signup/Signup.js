@@ -49,7 +49,12 @@ export default function Signup() {
           "plank":0,
           "upward_dog":0,
           "warrior1":0,
-          "warrior2":0
+          "warrior2":0,
+          "bound_ankle":0,
+          "bridge":0,
+          "down_dog":0,
+          "gate":0,
+          "half_moon":0
         });}
       navigate("/login")
     } catch (error) {
