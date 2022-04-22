@@ -6,16 +6,13 @@ import Webcam from "react-webcam";
 import { POINTS, keypointConnections } from "../../../utils/data";
 import { drawPoint, drawSegment } from "../../../utils/helper";
 import { landmarks_to_embedding } from "../../../tflib/FeatureVectorExtractor";
-import { Navbar, Button, Alert, Nav, NavItem } from "react-bootstrap";
-import { useAuth } from "../../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
-import logo from "../../../assets/logo.png";
 import { YogaImages } from "../../../yogaposedata/YogaImages";
 import { YogaInstructions } from "../../../yogaposedata/YogaInstructions";
 import ClockLoader from "react-spinners/ClockLoader";
 import { MinimalFooter } from "../../../containers";
 import { useWindowSize } from "@react-hook/window-size";
 import Confetti from "react-confetti";
+import SecNavBar from "../../../components/SecNavBar/SecNavBar";
 
 import "./Yoga-Learn-Advanced.css";
 let skeletonColor = "rgb(160, 32, 240)";
@@ -33,11 +30,10 @@ var currentPoseIndex = 0;
 function Yoga() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const navigate = useNavigate();
-  const [error, setError] = useState("");
+
   const [sparkles, setSparkles] = useState(false);
   const [win_width, win_height] = useWindowSize();
-  const { currentUser, logout } = useAuth();
+
   const [currentPose, setCurrentPose, currentPoseRef] = useState("bound_ankle");
   const [startingTime, setStartingTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -46,16 +42,7 @@ function Yoga() {
   const [feedback, setFeedback] = useState("Your Pose Feedback");
   const [loading, setLoading] = useState(true);
   const [toggleImage, setToggleImage] = useState(true);
-  async function handleLogout() {
-    setError("");
 
-    try {
-      await logout();
-      navigate("/login");
-    } catch {
-      setError("Failed to log out");
-    }
-  }
   function incrementRound() {
     setRound((prevRound) => prevRound + 1);
   }
@@ -225,66 +212,7 @@ function Yoga() {
         </>
       ) : (
         <>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Navbar className="gradient_navbar">
-            <Navbar.Brand>
-              <img
-                alt=""
-                src={logo}
-                width="120"
-                height="60"
-                className="d-inline-block align-top mx-3"
-              />
-            </Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link
-                className="navbar_links my-2"
-                onClick={() => navigate("/dashboard")}
-                style={{ color: "black" }}
-              >
-                Dashboard
-              </Nav.Link>
-              <Nav.Link
-                className="navbar_links my-2"
-                onClick={() => navigate("/selection-learn")}
-                style={{ color: "black" }}
-              >
-                Learn
-              </Nav.Link>
-              <Nav.Link
-                className="navbar_links my-2"
-                onClick={() => navigate("/selection-practice")}
-                style={{ color: "black" }}
-              >
-                Practice
-              </Nav.Link>
-              <Nav.Link
-                className="navbar_links my-2"
-                href="#pricing"
-                style={{ color: "black" }}
-              >
-                Tutorials
-              </Nav.Link>
-              <Nav.Link
-                className="navbar_links my-2"
-                href="#pricing"
-                style={{ color: "black" }}
-              >
-                Article
-              </Nav.Link>
-            </Nav>
-            <Nav pullright="true">
-              <Nav.Link
-                className="mx-1"
-                style={{ color: "black", cursor: "default" }}
-              >
-                Syncing to: {currentUser.email}
-              </Nav.Link>
-              <NavItem className="mx-3" onClick={handleLogout}>
-                <Button>Log Out</Button>
-              </NavItem>
-            </Nav>
-          </Navbar>
+          <SecNavBar />
           <h2 className="dashboard_heading">Learn Yoga (Advanced)</h2>
           {sparkles ? (
             <>

@@ -20,6 +20,7 @@ import PilatesLearnIntermediate from "./pages/Learn/Pilates/Pilates-Learn-Interm
 import PilatesLearnAdvanced from "./pages/Learn/Pilates/Pilates-Learn-Advanced";
 import SelectionLearn from "./pages/SelectionLearn/SelectionLearn";
 import SelectionPractice from "./pages/SelectionPractice/SelectionPractice";
+
 function App() {
   return (
     <Router>
@@ -30,6 +31,7 @@ function App() {
             path="/dashboard"
             element={
               <PrivateRoute>
+                
                 <Dashboard />
               </PrivateRoute>
             }

@@ -6,10 +6,6 @@ import Webcam from "react-webcam";
 import { POINTS, keypointConnections } from "../../../utils/data";
 import { drawPoint, drawSegment } from "../../../utils/helper";
 import DropDown from "../../../components/DropDown/DropDown";
-import { Navbar, Button, Alert, Nav, NavItem } from "react-bootstrap";
-import { useAuth } from "../../../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
-import logo from "../../../assets/logo.png";
 import { fstore } from "../../../firebaseconfig/firebaseconfig";
 import { updateDoc, doc } from "firebase/firestore";
 import { landmarks_to_embedding } from "../../../tflib/FeatureVectorExtractor";
@@ -17,6 +13,7 @@ import { YogaImages } from "../../../yogaposedata/YogaImages";
 import { YogaInstructions } from "../../../yogaposedata/YogaInstructions";
 import ClockLoader from "react-spinners/ClockLoader";
 import { MinimalFooter } from "../../../containers";
+import SecNavBar from "../../../components/SecNavBar/SecNavBar";
 import "./Yoga-Practice-Intermediate.css";
 let skeletonColor = "rgb(160, 32, 240)";
 let poseList = [
@@ -29,11 +26,9 @@ let poseList = [
 let flag = false;
 let interval;
 function Yoga() {
-  const [error, setError] = useState("");
-  const { currentUser, logout } = useAuth();
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const navigate = useNavigate();
+
   const [currentPose, setCurrentPose, currentPoseRef] = useState("camel");
   const [startingTime, setStartingTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -42,16 +37,7 @@ function Yoga() {
   const [feedback, setFeedback] = useState("Your Pose Feedback");
   const [loading, setLoading] = useState(true);
   const [toggleImage, setToggleImage] = useState(true);
-  async function handleLogout() {
-    setError("");
 
-    try {
-      await logout();
-      navigate("/login");
-    } catch {
-      setError("Failed to log out");
-    }
-  }
   const handleUpdate = async () => {
     console.log(parseInt(localStorage.getItem(currentPoseRef.current)) + 1);
     try {
@@ -220,122 +206,62 @@ function Yoga() {
         </>
       ) : (
         <>
-        
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Navbar className="gradient_navbar">
-            <Navbar.Brand>
-              <img
-                alt=""
-                src={logo}
-                width="120"
-                height="60"
-                className="d-inline-block align-top mx-3"
-              />
-            </Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link
-                className="navbar_links my-2"
-                onClick={() => navigate("/dashboard")}
-                style={{ color: "black" }}
-              >
-                Dashboard
-              </Nav.Link>
-              <Nav.Link
-                className="navbar_links my-2"
-                onClick={() => navigate("/selection-learn")}
-                style={{ color: "black" }}
-              >
-                Learn
-              </Nav.Link>
-              <Nav.Link
-                className="navbar_links my-2"
-                onClick={() => navigate("/selection-practice")}
-                style={{ color: "black" }}
-              >
-                Practice
-              </Nav.Link>
-              <Nav.Link
-                className="navbar_links my-2"
-                href="#pricing"
-                style={{ color: "black" }}
-              >
-                Tutorials
-              </Nav.Link>
-              <Nav.Link
-                className="navbar_links my-2"
-                href="#pricing"
-                style={{ color: "black" }}
-              >
-                Article
-              </Nav.Link>
-            </Nav>
-            <Nav pullright="true">
-              <Nav.Link
-                className="mx-1"
-                style={{ color: "black", cursor: "default" }}
-              >
-                Syncing to: {currentUser.email}
-              </Nav.Link>
-              <NavItem className="mx-3" onClick={handleLogout}>
-                <Button>Log Out</Button>
-              </NavItem>
-            </Nav>
-          </Navbar>
+          <SecNavBar />
+
           <h2 className="dashboard_heading">Practice Yoga (Intermediate)</h2>
           <div className="dropdown_container">
-          <div className="dropdown_style">
-            <DropDown
-              exercise_pack={poseList}
-              currentPose={currentPose}
-              setCurrentPose={setCurrentPose}
-            />
+            <div className="dropdown_style">
+              <DropDown
+                exercise_pack={poseList}
+                currentPose={currentPose}
+                setCurrentPose={setCurrentPose}
+              />
             </div>
           </div>
           <div className="flex_container">
-          <Webcam
-            className="camera_style"
-            width="640px"
-            height="480px"
-            ref={webcamRef}
-          />
-          <canvas
-            className="canvas_style"
-            ref={canvasRef}
-            width="640px"
-            height="480px"
-          ></canvas>
-          {toggleImage ? (
-            <img
-              className="pose_image"
-              alt=""
-              src={YogaImages[currentPose]}
-              onClick={() => {
-                setToggleImage(false);
-              }}
+            <Webcam
+              className="camera_style"
+              width="640px"
+              height="480px"
+              ref={webcamRef}
             />
-          ) : (
-            <textarea
-              className="pose_image"
-              onClick={() => {
-                setToggleImage(true);
-              }}
-              value={YogaInstructions[currentPose]}
-              readOnly={true}
-              spellCheck={false}
-            ></textarea>
-          )}
- </div>
+            <canvas
+              className="canvas_style"
+              ref={canvasRef}
+              width="640px"
+              height="480px"
+            ></canvas>
+            {toggleImage ? (
+              <img
+                className="pose_image"
+                alt=""
+                src={YogaImages[currentPose]}
+                onClick={() => {
+                  setToggleImage(false);
+                }}
+              />
+            ) : (
+              <textarea
+                className="pose_image"
+                onClick={() => {
+                  setToggleImage(true);
+                }}
+                value={YogaInstructions[currentPose]}
+                readOnly={true}
+                spellCheck={false}
+              ></textarea>
+            )}
+          </div>
           <div className="scoreboard_container">
             <div className="scoreboard_style">
-            <p>Counter: {poseTime}</p>
-            <p>Rounds: {round}</p>
-            <p>{feedback}</p>
+              <p>Counter: {poseTime}</p>
+              <p>Rounds: {round}</p>
+              <p>{feedback}</p>
             </div>
           </div>
           <div className="minimalfooter_style">
             <MinimalFooter />
           </div>
-         
         </>
       )}
     </>

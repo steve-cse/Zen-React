@@ -4,14 +4,12 @@ import * as poseAll from "@mediapipe/pose";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import useState from "react-usestateref";
-import { Navbar, Button, Alert, Nav, NavItem } from "react-bootstrap";
-import { useAuth } from "../../../contexts/AuthContext";
 import { MinimalFooter } from "../../../containers";
-import logo from "../../../assets/logo.png";
 import { useWindowSize } from "@react-hook/window-size";
 import Confetti from "react-confetti";
 import { PilatesImages } from "../../../pilatesposedata/PilatesImages";
 import { PilatesInstructions } from "../../../pilatesposedata/PilatesInstructions";
+import SecNavBar from "../../../components/SecNavBar/SecNavBar";
 import "./Pilates-Learn-Advanced.css";
 const radians_to_degrees = (rad) => (rad * 180.0) / Math.PI;
 function find_angle(p1, p2, p3) {
@@ -66,21 +64,11 @@ function Pilates() {
 
   stage = null;
   const [counter, setCounter, counterRef] = useState(0);
-  const [error, setError] = useState("");
-  const [sparkles, setSparkles] = useState(false);
-  const [win_width, win_height] = useWindowSize()
-  const { currentUser, logout } = useAuth();
-  const [toggleImage, setToggleImage] = useState(true);
-  async function handleLogout() {
-    setError("");
 
-    try {
-      await logout();
-      window.open("/login", "_top");
-    } catch {
-      setError("Failed to log out");
-    }
-  }
+  const [sparkles, setSparkles] = useState(false);
+  const [win_width, win_height] = useWindowSize();
+
+  const [toggleImage, setToggleImage] = useState(true);
 
   function incrementCounter() {
     setCounter((prevCounter) => prevCounter + 1);
@@ -169,7 +157,7 @@ function Pilates() {
 
         current_exercise_index += 1;
         console.log("Updated current exercise index");
-        
+
         current_exercise = exercise_pack[current_exercise_index];
         console.log(current_exercise.name);
         changeDisplay();
@@ -183,7 +171,7 @@ function Pilates() {
         setSparkles(true);
         setTimeout(function () {
           setSparkles(false);
-      }, 20000);
+        }, 20000);
         changeDisplay();
       }
     } catch (error) {}
@@ -219,124 +207,68 @@ function Pilates() {
 
       camera.start();
     }
-    
   }, []);
   return (
     <>
-      {error && <Alert variant="danger">{error}</Alert>}
-      <Navbar className="gradient_navbar">
-        <Navbar.Brand>
-          <img
-            alt=""
-            src={logo}
-            width="120"
-            height="60"
-            className="d-inline-block align-top mx-3"
-          />
-        </Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link
-            className="navbar_links my-2"
-            onClick={() => window.open("/dashboard", "_top")}
-            style={{ color: "black" }}
-          >
-            Dashboard
-          </Nav.Link>
-          <Nav.Link
-            className="navbar_links my-2"
-            onClick={() => window.open("/selection-learn", "_top")}
-            style={{ color: "black" }}
-          >
-            Learn
-          </Nav.Link>
-          <Nav.Link
-            className="navbar_links my-2"
-            onClick={() => window.open("/selection-practice", "_top")}
-            style={{ color: "black" }}
-          >
-            Practice
-          </Nav.Link>
-          <Nav.Link
-            className="navbar_links my-2"
-            href="#pricing"
-            style={{ color: "black" }}
-          >
-            Tutorials
-          </Nav.Link>
-          <Nav.Link
-            className="navbar_links my-2"
-            href="#pricing"
-            style={{ color: "black" }}
-          >
-            Article
-          </Nav.Link>
-        </Nav>
-        <Nav pullright="true">
-          <Nav.Link
-            className="mx-1"
-            style={{ color: "black", cursor: "default" }}
-          >
-            Syncing to: {currentUser.email}
-          </Nav.Link>
-          <NavItem className="mx-3" onClick={handleLogout}>
-            <Button>Log Out</Button>
-          </NavItem>
-        </Nav>
-      </Navbar>
+      <SecNavBar SlowLoad />
       <h2 className="dashboard_heading">Learn Pilates (Advanced)</h2>
-      {sparkles ? (<><Confetti
-          width={win_width}
-          height={win_height}
-          initialVelocityX={15}
-          initialVelocityY={15}
-        /></>):(null)}
+      {sparkles ? (
+        <>
+          <Confetti
+            width={win_width}
+            height={win_height}
+            initialVelocityX={15}
+            initialVelocityY={15}
+          />
+        </>
+      ) : null}
       <div className="flex_container">
-      <Webcam
-        className="camera_style"
-        ref={webcamRef}
-        style={{
-          width: 640,
-          height: 480,
-        }}
-      />{" "}
-      <canvas
-        ref={canvasRef}
-        className="canvas_style"
-        style={{
-          width: 640,
-          height: 480,
-        }}
-      ></canvas>
-       {toggleImage ? (
-            <img
-              className="pose_image"
-              alt=""
-              src={PilatesImages[exercise_name_for_display]}
-              onClick={() => {
-                setToggleImage(false);
-              }}
-            />
-          ) : (
-            <textarea
-              className="pose_image"
-              onClick={() => {
-                setToggleImage(true);
-              }}
-              value={PilatesInstructions[exercise_name_for_display]}
-              readOnly={true}
-              spellCheck={false}
-            ></textarea>
-          )}
+        <Webcam
+          className="camera_style"
+          ref={webcamRef}
+          style={{
+            width: 640,
+            height: 480,
+          }}
+        />{" "}
+        <canvas
+          ref={canvasRef}
+          className="canvas_style"
+          style={{
+            width: 640,
+            height: 480,
+          }}
+        ></canvas>
+        {toggleImage ? (
+          <img
+            className="pose_image"
+            alt=""
+            src={PilatesImages[exercise_name_for_display]}
+            onClick={() => {
+              setToggleImage(false);
+            }}
+          />
+        ) : (
+          <textarea
+            className="pose_image"
+            onClick={() => {
+              setToggleImage(true);
+            }}
+            value={PilatesInstructions[exercise_name_for_display]}
+            readOnly={true}
+            spellCheck={false}
+          ></textarea>
+        )}
       </div>
       <div className="scoreboard_container">
-      <div className="scoreboard_style">
-      <p>Current Exercise: {exercise_name_for_display}</p>
-      <p>Repetitions: {counter}/12</p>
-      </div>
+        <div className="scoreboard_style">
+          <p>Current Exercise: {exercise_name_for_display}</p>
+          <p>Repetitions: {counter}/12</p>
+        </div>
       </div>
       <div className="minimalfooter_style">
-            <MinimalFooter />
-          </div>
+        <MinimalFooter />
+      </div>
     </>
   );
 }
