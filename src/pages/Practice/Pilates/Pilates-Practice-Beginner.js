@@ -68,7 +68,6 @@ function Pilates_Practice() {
   stage = null;
   const [counter, setCounter] = useState(0); //hook to deal with counter
   const [currentPose, setCurrentPose, currentPoseRef] = useState("Right Curl");
-
   const [toggleImage, setToggleImage] = useState(true);
 
   const handleUpdate = async () => {
@@ -105,8 +104,8 @@ function Pilates_Practice() {
 
   function onResults(results) {
     // const video = webcamRef.current.video;
-    const videoWidth = webcamRef.current.video.videoWidth;
-    const videoHeight = webcamRef.current.video.videoHeight;
+    const videoWidth = webcamRef.current.video.clientWidth;
+    const videoHeight = webcamRef.current.video.clientHeight;
 
     // Set canvas width
     canvasRef.current.width = videoWidth;
@@ -242,22 +241,8 @@ function Pilates_Practice() {
         </div>
       </div>
       <div className="flex_container">
-        <Webcam
-          className="camera_style"
-          ref={webcamRef}
-          style={{
-            width: 640,
-            height: 480,
-          }}
-        />{" "}
-        <canvas
-          ref={canvasRef}
-          className="canvas_style"
-          style={{
-            width: 640,
-            height: 480,
-          }}
-        ></canvas>
+        <Webcam className="camera_style" ref={webcamRef} />{" "}
+        <canvas ref={canvasRef} className="canvas_style"></canvas>
         {toggleImage ? (
           <img
             className="pose_image"

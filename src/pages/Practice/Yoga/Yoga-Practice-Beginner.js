@@ -113,6 +113,10 @@ function Yoga() {
       webcamRef.current !== null &&
       webcamRef.current.video.readyState === 4
     ) {
+      const videoWidth = webcamRef.current.video.clientWidth;
+      const videoHeight = webcamRef.current.video.clientHeight;
+      canvasRef.current.width = videoWidth;
+      canvasRef.current.height = videoHeight;
       let notDetected = 0;
       const video = webcamRef.current.video;
       const pose = await detector.estimatePoses(video);
@@ -220,16 +224,12 @@ function Yoga() {
           <div className="flex_container">
             <Webcam
               className="camera_style"
-              width="640px"
-              height="480px"
+              // width="640px"
+              // height="480px"
+
               ref={webcamRef}
             />
-            <canvas
-              className="canvas_style"
-              ref={canvasRef}
-              width="640px"
-              height="480px"
-            ></canvas>
+            <canvas className="canvas_style" ref={canvasRef}></canvas>
             {toggleImage ? (
               <img
                 className="pose_image"
