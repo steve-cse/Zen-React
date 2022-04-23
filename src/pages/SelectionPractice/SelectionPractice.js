@@ -1,117 +1,113 @@
-import React from "react";
-import { Button, Card } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Card, Dropdown, DropdownButton } from "react-bootstrap";
 import { MinimalFooter } from "../../containers";
 import SecNavBar from "../../components/SecNavBar/SecNavBar";
 import { useNavigate } from "react-router-dom";
+import lotus from "../../assets/lotus.png";
+import resistanceband from "../../assets/resistanceband.png";
 import "./SelectionPractice.css";
-export default function SelectionLearn() {
+export default function SelectionPractice() {
   const navigate = useNavigate();
+  const [YogaLearnRoute, setYogaLearnRoute] = useState("/yoga-practice-beginner");
+  const [PilatesLearnRoute, setPilatesLearnRoute] = useState(
+    "/pilates-practice-beginner"
+  );
   return (
-    <>
+    <div className="SelectionPractice">
       <SecNavBar />
-      <div className="card_flex_container">
-        <div className="yoga_learn_select">
-          <Card style={{ width: "18rem" }}>
+
+      <div className="practice_select_container">
+        <div className="practice_select_yoga">
+          <Card className="yoga_card">
+            <Card.Img className="yoga_card_img" variant="top" src={lotus} />
             <Card.Body>
-              <Card.Title>Yoga Practice (Beginner)</Card.Title>
-              <Card.Text>Easy poses for beginners.</Card.Text>
-              <center>
+              <Card.Title className="yoga_card_title">Practice Yoga</Card.Title>
+              <Card.Text className="yoga_card_text">
+                Practice yoga from beginner to advanced.
+              </Card.Text>
+              <div className="yoga_card_selector">
+                <DropdownButton
+                  className="yoga_dropdown"
+                  title={
+                    YogaLearnRoute.substring(15).charAt(0).toUpperCase() +
+                    YogaLearnRoute.substring(15).slice(1)
+                  }
+                  onSelect={(e) => {
+                    setYogaLearnRoute(e);
+                  }}
+                >
+                  <Dropdown.Item eventKey="/yoga-practice-beginner">
+                    {" "}
+                    Beginner
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="/yoga-practice-intermediate">
+                    {" "}
+                    Intermediate
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="/yoga-practice-advanced">
+                    Advanced
+                  </Dropdown.Item>
+                </DropdownButton>
                 <Button
                   variant="warning"
-                  onClick={() => navigate("/yoga-practice-beginner")}
+                  onClick={() => navigate(YogaLearnRoute)}
                 >
                   Go
                 </Button>
-              </center>
+              </div>
             </Card.Body>
           </Card>
         </div>
-        <div className="yoga_learn_select">
-          <Card style={{ width: "20rem" }}>
+        <div className="pilates_practice_select">
+          <Card className="pilates_card">
+            <Card.Img
+              className="pilates_card_img"
+              variant="top"
+              src={resistanceband}
+            />
             <Card.Body>
-              <Card.Title>Yoga Practice (Intermediate)</Card.Title>
-              <Card.Text>Bit more challenging poses.</Card.Text>
-              <center>
+              <Card.Title className="pilates_card_title">
+                Practice Pilates
+              </Card.Title>
+              <Card.Text className="pilates_card_text">
+                Practice pilates from beginner to advanced.
+              </Card.Text>
+              <div className="pilates_card_selector">
+                <DropdownButton
+                  className="pilates_dropdown"
+                  title={
+                    PilatesLearnRoute.substring(18).charAt(0).toUpperCase() +
+                    PilatesLearnRoute.substring(18).slice(1)
+                  }
+                  onSelect={(e) => {
+                    setPilatesLearnRoute(e);
+                  }}
+                >
+                  <Dropdown.Item eventKey="/pilates-practice-beginner">
+                    {" "}
+                    Beginner
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="/pilates-practice-intermediate">
+                    {" "}
+                    Intermediate
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="/pilates-practice-advanced">
+                    Advanced
+                  </Dropdown.Item>
+                </DropdownButton>
                 <Button
                   variant="warning"
-                  onClick={() => navigate("/yoga-practice-intermediate")}
+                  onClick={() => navigate(PilatesLearnRoute)}
                 >
                   Go
                 </Button>
-              </center>
-            </Card.Body>
-          </Card>
-        </div>
-        <div className="yoga_learn_select">
-          <Card style={{ width: "18rem" }}>
-            <Card.Body>
-              <Card.Title>Yoga Practice (Advanced)</Card.Title>
-              <Card.Text>The ultimate challenge.</Card.Text>
-              <center>
-                <Button
-                  variant="warning"
-                  onClick={() => navigate("/yoga-practice-advanced")}
-                >
-                  Go
-                </Button>
-              </center>
-            </Card.Body>
-          </Card>
-        </div>
-      </div>
-      <div className="card_flex_container">
-        <div className="yoga_learn_select">
-          <Card style={{ width: "18rem" }}>
-            <Card.Body>
-              <Card.Title>Pilates Practice (Beginner)</Card.Title>
-              <Card.Text>Simple exercises for beginners.</Card.Text>
-              <center>
-                <Button
-                  variant="warning"
-                  onClick={() => navigate("/pilates-practice-beginner")}
-                >
-                  Go
-                </Button>
-              </center>
-            </Card.Body>
-          </Card>
-        </div>
-        <div className="yoga_learn_select">
-          <Card style={{ width: "20rem" }}>
-            <Card.Body>
-              <Card.Title>Pilates Practice (Intermediate)</Card.Title>
-              <Card.Text>Bit more challenging exercises.</Card.Text>
-              <center>
-                <Button
-                  variant="warning"
-                  onClick={() => navigate("/pilates-practice-intermediate")}
-                >
-                  Go
-                </Button>
-              </center>
-            </Card.Body>
-          </Card>
-        </div>
-        <div className="yoga_learn_select">
-          <Card style={{ width: "18rem" }}>
-            <Card.Body>
-              <Card.Title>Pilates Practice (Advanced)</Card.Title>
-              <Card.Text>The hardcore challenge.</Card.Text>
-              <center>
-                <Button
-                  variant="warning"
-                  onClick={() => navigate("/pilates-practice-advanced")}
-                >
-                  Go
-                </Button>
-              </center>
+              </div>
             </Card.Body>
           </Card>
         </div>
       </div>
-      <div className="minimalfoot_styling">
-        <MinimalFooter />
-      </div>
-    </>
+
+      <MinimalFooter />
+    </div>
   );
 }

@@ -1,14 +1,57 @@
-.card_flex_container{
-display:flex;
-justify-content: space-evenly;
-margin-bottom: 110px;
-margin-top: 110px;
+.SelectionPractice .practice_select_container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 50px;
 }
-.yoga_learn_select{
-    margin:15px;
+.SelectionPractice .yoga_card_title {
+  font-family: var(--font-family);
+  text-align: center;
 }
-.minimalfoot_styling {
-    width: 100%;
-    bottom: -400px;
+.SelectionPractice .yoga_card_text {
+  font-family: var(--font-family);
+  text-align: center;
+}
+.SelectionPractice .yoga_card_img {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+.SelectionPractice .pilates_card_img {
+  width: 200px;
+  height: 200px;
+
+  margin: 0 auto;
+}
+
+.SelectionPractice .pilates_card_title {
+  font-family: var(--font-family);
+  text-align: center;
+}
+.SelectionPractice .pilates_card_text {
+  font-family: var(--font-family);
+  text-align: center;
+}
+
+.SelectionPractice .yoga_card_selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.SelectionPractice .pilates_card_selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  .SelectionPractice .practice_select_container {
+    flex-direction: column;
   }
-  
+  .SelectionPractice .yoga_card {
+    align-self: center;
+    margin-bottom: 15px;
+  }
+  .SelectionPractice .pilates_card {
+    align-self: center;
+  }
+}
