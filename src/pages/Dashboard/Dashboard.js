@@ -5,7 +5,7 @@ import { query, getDocs, collection, where } from "firebase/firestore";
 import PilatesDataTable from "../../components/PilatesDataTable/PilatesDataTable";
 import YogaDataTable from "../../components/YogaDataTable/YogaDataTable";
 import BarChart from "../../components/BarChart/BarChart";
-import PolarAreaChart from "../../components/PolarAreaChart/PolarAreaChart";
+import RadarChart from "../../components/RadarChart/RadarChart";
 import { MinimalFooter } from "../../containers";
 import ClockLoader from "react-spinners/ClockLoader";
 import SecNavBar from "../../components/SecNavBar/SecNavBar";
@@ -155,11 +155,11 @@ export default function Dashboard() {
             </div>
             <div className="graph_container">
               <div className="yoga_graph">
-                <PolarAreaChart chartData={yogaBarData} chartTitle="Yoga Overview" />
+                <RadarChart chartData={yogaBarData} chartTitle="Yoga Overview" />
               </div>
   
               <div className="pilates_graph">
-                <PolarAreaChart
+                <RadarChart
                   chartData={pilatesBarData}
                   chartTitle="Pilates Overview"
                 />
