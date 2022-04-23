@@ -148,7 +148,7 @@
         line-height: 60px;
     }
 
-    .gpt3__header-content p {
+    .gpt3__header-content strong {
         font-size: 16px;
         line-height: 24px;
     }
@@ -174,7 +174,7 @@
         line-height: 48px;
     }
 
-    .gpt3__header-content p {
+    .gpt3__header-content strong {
         font-size: 14px;
         line-height: 24px;
     }

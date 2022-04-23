@@ -1,9 +1,4 @@
-.pilates_table_wrap {
-    height: 250px;
-    width:550px;
-    overflow-y: auto;
-    border: 0.5px solid black;
-  }
+
   .pilates_table_body {
     
     text-align: center;

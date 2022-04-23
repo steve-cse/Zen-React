@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import "./YogaDataTable.css";
 export default function YogaDataTable() {
   return (
-    <div className="yoga_table_wrap">
+    <>
       <Table>
         <thead>
           <tr>
@@ -91,6 +91,6 @@ export default function YogaDataTable() {
           </tr>
         </tbody>
       </Table>
-    </div>
+    </>
   );
 }

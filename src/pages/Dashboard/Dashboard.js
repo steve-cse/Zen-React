@@ -5,6 +5,7 @@ import { query, getDocs, collection, where } from "firebase/firestore";
 import PilatesDataTable from "../../components/PilatesDataTable/PilatesDataTable";
 import YogaDataTable from "../../components/YogaDataTable/YogaDataTable";
 import BarChart from "../../components/BarChart/BarChart";
+import PolarAreaChart from "../../components/PolarAreaChart/PolarAreaChart";
 import { MinimalFooter } from "../../containers";
 import ClockLoader from "react-spinners/ClockLoader";
 import SecNavBar from "../../components/SecNavBar/SecNavBar";
@@ -13,7 +14,7 @@ import "./Dashboard.css";
 var returnedData;
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
-  const { currentUser} = useAuth();
+  const { currentUser } = useAuth();
   const yogaBarData = {
     labels: [
       "Chair",
@@ -84,7 +85,7 @@ export default function Dashboard() {
       },
     ],
   };
-  
+
   useEffect(() => {
     const getData = async () => {
       const q = query(
@@ -126,52 +127,115 @@ export default function Dashboard() {
 
     getData();
   }, []);
-
-  return (
-    <>
-      {loading ? (
-        <>
-          <div className="spinner_style">
-            <ClockLoader
-              speedMultiplier={1.5}
-              color={"#ffc107"}
-              loading={loading}
-              size={140}
-            />
-            <p>Follow the white rabbit.</p>
+  if (window.innerWidth<480) {
+    return (
+      <>
+        {loading ? (
+          <>
+            <div className="spinner_container">
+              <div className="spinner_style">
+                <ClockLoader
+                  speedMultiplier={1.5}
+                  color={"#ffc107"}
+                  loading={loading}
+                  size={140}
+                />
+              </div>
+              
+            </div>
+          </>
+        ) : (
+          <div className="dashboard">
+            <SecNavBar />
+            <div className="dashboard_header">
+              <h2>Your Dashboard</h2>
+            </div>
+            <div className="dashboard_desc">
+              <p>&#128200; Visualize your gains here.</p>
+            </div>
+            <div className="graph_container">
+              <div className="yoga_graph">
+                <PolarAreaChart chartData={yogaBarData} chartTitle="Yoga Overview" />
+              </div>
+  
+              <div className="pilates_graph">
+                <PolarAreaChart
+                  chartData={pilatesBarData}
+                  chartTitle="Pilates Overview"
+                />
+              </div>
+            </div>
+            <div className="dashboard_desc">
+            <p> &#128194; Your data. </p>
+            </div>
+           
+            <div className="table_container">
+              <div className="yoga_table_style">
+                <YogaDataTable />
+              </div>
+              <div className="pilates_table_style">
+                <PilatesDataTable />
+              </div>
+            </div>
+            <MinimalFooter />
           </div>
-        </>
-      ) : (
-        <>
-          <SecNavBar />
-
-          <h2 className="dashboard_heading">Your Dashboard</h2>
-          <p className="dashboard_description">
-            &#128200; Visualize your gains here.
-          </p>
-          <div className="graph_container">
-            <div style={{ width: 750 }}>
-              <BarChart chartData={yogaBarData} chartTitle="Yoga Overview" />
+        )}
+      </>
+    );
+  } else{
+    return (
+      <>
+        {loading ? (
+          <>
+            <div className="spinner_container">
+              <div className="spinner_style">
+                <ClockLoader
+                  speedMultiplier={1.5}
+                  color={"#ffc107"}
+                  loading={loading}
+                  size={140}
+                />
+              </div>
+              
             </div>
-            <div style={{ width: 750 }}>
-              <BarChart
-                chartData={pilatesBarData}
-                chartTitle="Pilates Overview"
-              />
+          </>
+        ) : (
+          <div className="dashboard">
+            <SecNavBar />
+            <div className="dashboard_header">
+              <h2>Your Dashboard</h2>
             </div>
+            <div className="dashboard_desc">
+              <p>&#128200; Visualize your gains here.</p>
+            </div>
+            <div className="graph_container">
+              <div className="yoga_graph">
+                <BarChart chartData={yogaBarData} chartTitle="Yoga Overview" />
+              </div>
+  
+              <div className="pilates_graph">
+                <BarChart
+                  chartData={pilatesBarData}
+                  chartTitle="Pilates Overview"
+                />
+              </div>
+            </div>
+            <div className="dashboard_desc">
+            <p> &#128194; Your data. </p>
+            </div>
+           
+            <div className="table_container">
+              <div className="yoga_table_style">
+                <YogaDataTable />
+              </div>
+              <div className="pilates_table_style">
+                <PilatesDataTable />
+              </div>
+            </div>
+            <MinimalFooter />
           </div>
-          <p className="dashboard_description"> &#128194; Your data. </p>
-          <div className="table_container">
-            <div className="yoga_table_style">
-              <YogaDataTable />
-            </div>
-            <div className="pilates_table_style">
-              <PilatesDataTable />
-            </div>
-          </div>
-          <MinimalFooter />
-        </>
-      )}
-    </>
-  );
+        )}
+      </>
+    );
+  } 
 }

@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import "./PilatesDataTable.css";
 export default function PilatesDataTable() {
   return (
-    <div className="pilates_table_wrap">
+    <>
       <Table>
         <thead>
           <tr>
@@ -60,6 +60,6 @@ export default function PilatesDataTable() {
           </tr>
         </tbody>
       </Table>
-    </div>
+    </>
   );
 }

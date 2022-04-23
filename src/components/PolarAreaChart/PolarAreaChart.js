@@ -1,12 +1,12 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
+import { PolarArea } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
 function BarChart(props) {
   let delayed;
   return (
     
-    <Bar
+    <PolarArea
       data={props.chartData}
       options={{
       

@@ -1,0 +1,28 @@
+.SecNavBar .gradient_navbar{
+    background: linear-gradient(
+    18deg,
+    rgba(255, 188, 188, 1) 0%,
+    rgba(233, 233, 148, 1) 100%
+  );
+ 
+}
+.SecNavBar .navbar_links {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 22px;
+  }
+  .SecNavBar .navbar_brand_img {
+    width: 120px;
+    height: 60px;
+}
+  @media screen and (max-width: 1024px) {
+    .SecNavBar .navbar_links {
+    font-size: 19px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .SecNavBar .current_user {
+      margin-bottom: 10px;
+    }
+  }
