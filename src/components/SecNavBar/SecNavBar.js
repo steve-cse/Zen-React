@@ -89,8 +89,8 @@ export default function SecNavBar(props) {
               <Nav.Link className="current_user" style={{ color: "black", cursor: "default"}}>
                 Syncing to: {currentUser.email}
               </Nav.Link>
-              <NavItem onClick={handleLogout}>
-                <Button>Log Out</Button>
+              <NavItem>
+                <Button onClick={handleLogout}>Log Out</Button>
               </NavItem>
             </Nav>
           </Navbar.Collapse>
