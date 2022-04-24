@@ -11,7 +11,7 @@ import { updateDoc, doc } from "firebase/firestore";
 import { landmarks_to_embedding } from "../../../tflib/FeatureVectorExtractor";
 import { YogaImages } from "../../../yogaposedata/YogaImages";
 import { YogaInstructions } from "../../../yogaposedata/YogaInstructions";
-import ClockLoader from "react-spinners/ClockLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import { MinimalFooter } from "../../../containers";
 import RotateDevice from "../../../components/RotateDevice/RotateDevice";
 import SecNavBar from "../../../components/SecNavBar/SecNavBar";
@@ -197,23 +197,22 @@ function Yoga() {
     }
   };
   if (window.innerWidth < 640) {
-    return (
-      <RotateDevice/>
-    );
+    return <RotateDevice />;
   } else {
     return (
       <>
         {loading ? (
-          <>
-            <div className="spinner_style">
-              <ClockLoader
-                speedMultiplier={1.5}
-                color={"#ffc107"}
-                loading={loading}
-                size={140}
-              />
-            </div>
-          </>
+          <div
+            className="yoga_loader"
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <ClipLoader size={"150"} color={"#ffc107"} loading={loading} />
+          </div>
         ) : (
           <div className="Yoga-Practice-Beginner">
             <SecNavBar />

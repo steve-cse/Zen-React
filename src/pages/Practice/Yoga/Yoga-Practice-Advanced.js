@@ -11,9 +11,10 @@ import { updateDoc, doc } from "firebase/firestore";
 import { landmarks_to_embedding } from "../../../tflib/FeatureVectorExtractor";
 import { YogaImages } from "../../../yogaposedata/YogaImages";
 import { YogaInstructions } from "../../../yogaposedata/YogaInstructions";
-import ClockLoader from "react-spinners/ClockLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import { MinimalFooter } from "../../../containers";
 import SecNavBar from "../../../components/SecNavBar/SecNavBar";
+import RotateDevice from "../../../components/RotateDevice/RotateDevice";
 import "./Yoga-Practice-Advanced.css";
 
 let skeletonColor = "rgb(160, 32, 240)";
@@ -190,82 +191,89 @@ function Yoga() {
       }
     }
   };
+  if (window.innerWidth < 640) {
+    return <RotateDevice />;
+  } else {
+    return (
+      <>
+        {loading ? (
+          <div
+            className="yoga_loader"
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <ClipLoader size={"150"} color={"#ffc107"} loading={loading} />
+          </div>
+        ) : (
+          <div className="Yoga-Practice-Advanced">
+            <SecNavBar />
 
-  return (
-    <>
-      {loading ? (
-        <>
-          <div className="spinner_style">
-            <ClockLoader
-              speedMultiplier={1.5}
-              color={"#ffc107"}
-              loading={loading}
-              size={140}
-            />
-            <p>A jug fills drop by drop.</p>
-          </div>
-        </>
-      ) : (
-        <>
-          <SecNavBar />
-
-          <h2 className="dashboard_heading">Practice Yoga (Advanced)</h2>
-          <div className="dropdown_container">
-            <div className="dropdown_style">
-              <DropDown
-                exercise_pack={poseList}
-                currentPose={currentPose}
-                setCurrentPose={setCurrentPose}
-              />
+            <h2 className="yoga_practice_heading">Practice Yoga (Advanced)</h2>
+            <div className="dropdown_container">
+              <div className="dropdown_style">
+                <DropDown
+                  exercise_pack={poseList}
+                  currentPose={currentPose}
+                  setCurrentPose={setCurrentPose}
+                />
+              </div>
             </div>
-          </div>
-          <div className="flex_container">
-            <Webcam
-              className="camera_style"
-              width="640px"
-              height="480px"
-              ref={webcamRef}
-            />
-            <canvas
-              className="canvas_style"
-              ref={canvasRef}
-              width="640px"
-              height="480px"
-            ></canvas>
-            {toggleImage ? (
-              <img
-                className="pose_image"
-                alt=""
-                src={YogaImages[currentPose]}
-                onClick={() => {
-                  setToggleImage(false);
-                }}
-              />
-            ) : (
-              <textarea
-                className="pose_image"
-                onClick={() => {
-                  setToggleImage(true);
-                }}
-                value={YogaInstructions[currentPose]}
-                readOnly={true}
-                spellCheck={false}
-              ></textarea>
-            )}
-          </div>
-          <div className="scoreboard_container">
-            <div className="scoreboard_style">
-              <p>Counter: {poseTime}</p>
-              <p>Rounds: {round}</p>
-              <p>{feedback}</p>
+            <div className="flexbox_container">
+              <div className="yoga_camera_and_canvas">
+                <Webcam
+                  ref={webcamRef}
+                  width="640px"
+                  height="480px"
+                  // style={{ backgroundColor: "black" }}
+                />
+                <div className="yoga_canvas_container">
+                  <canvas
+                    ref={canvasRef}
+                    width="640px"
+                    height="480px"
+                    // style={{ backgroundColor: "red" }}
+                  ></canvas>
+                </div>
+              </div>
+              {toggleImage ? (
+                <div className="yoga_pose_image_container">
+                  <img
+                    alt=""
+                    src={YogaImages[currentPose]}
+                    onClick={() => {
+                      setToggleImage(false);
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="yoga_pose_text_container">
+                  <textarea
+                    onClick={() => {
+                      setToggleImage(true);
+                    }}
+                    value={YogaInstructions[currentPose]}
+                    readOnly={true}
+                    spellCheck={false}
+                  ></textarea>{" "}
+                </div>
+              )}
             </div>
-          </div>
-          <div className="minimalfooter_style">
+            <div className="feedback_container">
+              <div className="feedback_style">
+                <p>Counter: {poseTime}</p>
+                <p>Rounds: {round}</p>
+                <p>{feedback}</p>
+              </div>
+            </div>
             <MinimalFooter />
           </div>
-        </>
-      )}
-    </>
-  );
+        )}
+      </>
+    );
+  }
 }
 export default Yoga;

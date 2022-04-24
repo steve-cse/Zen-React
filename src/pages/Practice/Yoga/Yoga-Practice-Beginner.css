@@ -1,4 +1,4 @@
-.Yoga-Practice-Beginner .yoga_practice_heading{
+.Yoga-Practice-Beginner .yoga_practice_heading {
   font-family: var(--font-family);
   font-weight: 800;
   font-size: 50px;
@@ -10,7 +10,6 @@
 .Yoga-Practice-Beginner .dropdown_container {
   display: flex;
   justify-content: center;
-  
 }
 
 .Yoga-Practice-Beginner .flexbox_container {
@@ -22,31 +21,27 @@
 }
 .Yoga-Practice-Beginner .yoga_camera_and_canvas {
   position: relative;
- 
-  
- 
 }
 .Yoga-Practice-Beginner .yoga_camera_and_canvas .yoga_canvas_container {
-  
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 }
 
 .Yoga-Practice-Beginner .feedback_container {
   display: flex;
-  justify-content:right;
+  justify-content: right;
   width: 82%;
   margin-bottom: 20px;
 }
 
-.Yoga-Practice-Beginner .feedback_style p{
+.Yoga-Practice-Beginner .feedback_style p {
   font-family: var(--font-family);
   font-weight: 550;
-  font-size: 25px; 
+  font-size: 25px;
 }
 
-.Yoga-Practice-Beginner .yoga_pose_image_container img{
+.Yoga-Practice-Beginner .yoga_pose_image_container img {
   width: 500px;
   height: 500px;
 }
@@ -55,7 +50,7 @@
   width: 500px;
   height: 500px;
 }
-.Yoga-Practice-Beginner .yoga_pose_text_container textarea{
+.Yoga-Practice-Beginner .yoga_pose_text_container textarea {
   width: 500px;
   height: 500px;
   text-align: justify;
@@ -69,26 +64,24 @@
   padding: 10px;
 }
 
-
 @media screen and (max-width: 1200px) {
   .Yoga-Practice-Beginner .flexbox_container {
     flex-direction: column;
     align-items: center;
-    
-    gap: 12px;
-    
-    }
-    .Yoga-Practice-Beginner .yoga_camera_style{
-      margin: auto;
-    }
-    .Yoga-Practice-Beginner .yoga_canvas_style {
-      margin-right: auto;
-      
-    }
-    .Yoga-Practice-Beginner .feedback_container {
-      justify-content: center;
-      width: 100%;
-    }
-    
-}
 
+    gap: 12px;
+  }
+  .Yoga-Practice-Beginner .yoga_camera_style {
+    margin: auto;
+  }
+  .Yoga-Practice-Beginner .yoga_canvas_style {
+    margin-right: auto;
+  }
+  .Yoga-Practice-Beginner .feedback_container {
+    justify-content: center;
+    width: 100%;
+  }
+  .Yoga-Practice-Beginner .yoga_practice_heading {
+    font-size: 40px;
+  }
+}

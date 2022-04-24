@@ -7,7 +7,7 @@ import YogaDataTable from "../../components/YogaDataTable/YogaDataTable";
 import BarChart from "../../components/BarChart/BarChart";
 import RadarChart from "../../components/RadarChart/RadarChart";
 import { MinimalFooter } from "../../containers";
-import ClockLoader from "react-spinners/ClockLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import SecNavBar from "../../components/SecNavBar/SecNavBar";
 import "./Dashboard.css";
 
@@ -127,23 +127,21 @@ export default function Dashboard() {
 
     getData();
   }, []);
-  if (window.innerWidth<480) {
+  if (window.innerWidth < 480) {
     return (
       <>
         {loading ? (
-          <>
-            <div className="spinner_container">
-              <div className="spinner_style">
-                <ClockLoader
-                  speedMultiplier={1.5}
-                  color={"#ffc107"}
-                  loading={loading}
-                  size={140}
-                />
-              </div>
-              
-            </div>
-          </>
+          <div
+            className="dash_loader"
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <ClipLoader size={"150"} color={"#ffc107"} loading={loading} />
+          </div>
         ) : (
           <div className="dashboard">
             <SecNavBar />
@@ -155,9 +153,12 @@ export default function Dashboard() {
             </div>
             <div className="graph_container">
               <div className="yoga_graph">
-                <RadarChart chartData={yogaBarData} chartTitle="Yoga Overview" />
+                <RadarChart
+                  chartData={yogaBarData}
+                  chartTitle="Yoga Overview"
+                />
               </div>
-  
+
               <div className="pilates_graph">
                 <RadarChart
                   chartData={pilatesBarData}
@@ -166,9 +167,9 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="dashboard_desc">
-            <p> &#128194; Your data. </p>
+              <p> &#128194; Your data. </p>
             </div>
-           
+
             <div className="table_container">
               <div className="yoga_table_style">
                 <YogaDataTable />
@@ -182,23 +183,21 @@ export default function Dashboard() {
         )}
       </>
     );
-  } else{
+  } else {
     return (
       <>
         {loading ? (
-          <>
-            <div className="spinner_container">
-              <div className="spinner_style">
-                <ClockLoader
-                  speedMultiplier={1.5}
-                  color={"#ffc107"}
-                  loading={loading}
-                  size={140}
-                />
-              </div>
-              
-            </div>
-          </>
+          <div
+            className="dash_loader"
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <ClipLoader size={"150"} color={"#ffc107"} loading={loading} />
+          </div>
         ) : (
           <div className="dashboard">
             <SecNavBar />
@@ -212,7 +211,7 @@ export default function Dashboard() {
               <div className="yoga_graph">
                 <BarChart chartData={yogaBarData} chartTitle="Yoga Overview" />
               </div>
-  
+
               <div className="pilates_graph">
                 <BarChart
                   chartData={pilatesBarData}
@@ -221,9 +220,9 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="dashboard_desc">
-            <p> &#128194; Your data. </p>
+              <p> &#128194; Your data. </p>
             </div>
-           
+
             <div className="table_container">
               <div className="yoga_table_style">
                 <YogaDataTable />
@@ -237,5 +236,5 @@ export default function Dashboard() {
         )}
       </>
     );
-  } 
+  }
 }
