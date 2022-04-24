@@ -1,0 +1,18 @@
+.Tutorials .tutorials_heading{
+    font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 40px;
+  letter-spacing: -0.04em;
+  padding: 1rem;
+  margin-top: 5px;
+}
+
+.Tutorials .tutorials_container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+    gap:50px
+
+}

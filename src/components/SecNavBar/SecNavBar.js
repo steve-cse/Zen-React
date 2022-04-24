@@ -21,7 +21,8 @@ export default function SecNavBar(props) {
 
     try {
       await logout();
-      navigate("/login");
+      // navigate("/login");
+      window.open("/login", "_top")
     } catch {
       setError("Failed to log out");
     }
@@ -71,9 +72,10 @@ export default function SecNavBar(props) {
                 Practice
               </Nav.Link>
               <Nav.Link
-                className="navbar_links my-2"
-                href="#pricing"
-                style={{ color: "black" }}
+               className="navbar_links my-2"
+               {...(props.SlowLoad ? { href: "/tutorials" } : {})}
+               onClick={() => navigate("/tutorials")}
+               style={{ color: "black" }}
               >
                 Tutorials
               </Nav.Link>
