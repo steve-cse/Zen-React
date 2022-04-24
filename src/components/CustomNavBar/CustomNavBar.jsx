@@ -17,7 +17,7 @@ const Navbar = () => {
           <p><a href="/selection-learn">Learn</a></p>
         
           <p><a href="/selection-practice">Practice</a></p>
-          <p><a href="#tutorials">Tutorials</a></p>
+          <p><a href="/tutorials">Tutorials</a></p>
           <p><a href="#article">Article</a></p>
         </div>
       </div>
@@ -37,7 +37,7 @@ const Navbar = () => {
           <p><a href="/selection-learn">Learn</a></p>
         
           <p><a href="/selection-practice">Practice</a></p>
-          <p><a href="#tutorials">Tutorials</a></p>
+          <p><a href="/tutorials">Tutorials</a></p>
           <p><a href="#article">Article</a></p>
           </div>
           <div className="gpt3__navbar-menu_container-links-sign">
