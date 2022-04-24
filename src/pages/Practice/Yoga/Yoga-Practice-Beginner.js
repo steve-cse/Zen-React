@@ -13,6 +13,7 @@ import { YogaImages } from "../../../yogaposedata/YogaImages";
 import { YogaInstructions } from "../../../yogaposedata/YogaInstructions";
 import ClockLoader from "react-spinners/ClockLoader";
 import { MinimalFooter } from "../../../containers";
+import rotate from "../../../assets/rotate.png";
 import SecNavBar from "../../../components/SecNavBar/SecNavBar";
 import "./Yoga-Practice-Beginner.css";
 let skeletonColor = "rgb(160, 32, 240)";
@@ -113,10 +114,12 @@ function Yoga() {
       webcamRef.current !== null &&
       webcamRef.current.video.readyState === 4
     ) {
-      const videoWidth = webcamRef.current.video.clientWidth;
-      const videoHeight = webcamRef.current.video.clientHeight;
-      canvasRef.current.width = videoWidth;
-      canvasRef.current.height = videoHeight;
+      // const videoWidth = webcamRef.current.video.clientWidth;
+      // const videoHeight = webcamRef.current.video.clientHeight;
+      // canvasRef.current.width = videoWidth;
+      // canvasRef.current.height = videoHeight;
+      // console.log(canvasRef.current.width);
+      // console.log(canvasRef.current.height);
       let notDetected = 0;
       const video = webcamRef.current.video;
       const pose = await detector.estimatePoses(video);
@@ -192,78 +195,101 @@ function Yoga() {
       }
     }
   };
-
-  return (
-    <>
-      {loading ? (
-        <>
-          <div className="spinner_style">
-            <ClockLoader
-              speedMultiplier={1.5}
-              color={"#ffc107"}
-              loading={loading}
-              size={140}
-            />
-            <p>A jug fills drop by drop.</p>
-          </div>
-        </>
-      ) : (
-        <>
-          <SecNavBar />
-
-          <h2 className="dashboard_heading">Practice Yoga (Beginner)</h2>
-          <div className="dropdown_container">
-            <div className="dropdown_style">
-              <DropDown
-                exercise_pack={poseList}
-                currentPose={currentPose}
-                setCurrentPose={setCurrentPose}
+  if (window.innerWidth < 640) {
+    return (
+      <div className="rotate_device">
+        <SecNavBar />
+        <div className="roatate_device_img_container">
+          <center>
+            <img src={rotate} alt="" />
+            <p>Please rotate your device and refresh.</p>
+          </center>
+        </div>
+        <MinimalFooter />
+      </div>
+    );
+  } else {
+    return (
+      <>
+        {loading ? (
+          <>
+            <div className="spinner_style">
+              <ClockLoader
+                speedMultiplier={1.5}
+                color={"#ffc107"}
+                loading={loading}
+                size={140}
               />
             </div>
-          </div>
-          <div className="flex_container">
-            <Webcam
-              className="camera_style"
-              // width="640px"
-              // height="480px"
+          </>
+        ) : (
+          <div className="Yoga-Practice-Beginner">
+            <SecNavBar />
 
-              ref={webcamRef}
-            />
-            <canvas className="canvas_style" ref={canvasRef}></canvas>
-            {toggleImage ? (
-              <img
-                className="pose_image"
-                alt=""
-                src={YogaImages[currentPose]}
-                onClick={() => {
-                  setToggleImage(false);
-                }}
-              />
-            ) : (
-              <textarea
-                className="pose_image"
-                onClick={() => {
-                  setToggleImage(true);
-                }}
-                value={YogaInstructions[currentPose]}
-                readOnly={true}
-                spellCheck={false}
-              ></textarea>
-            )}
-          </div>
-          <div className="scoreboard_container">
-            <div className="scoreboard_style">
-              <p>Counter: {poseTime}</p>
-              <p>Rounds: {round}</p>
-              <p>{feedback}</p>
+            <h2 className="yoga_practice_heading">Practice Yoga (Beginner)</h2>
+            <div className="dropdown_container">
+              <div className="dropdown_style">
+                <DropDown
+                  exercise_pack={poseList}
+                  currentPose={currentPose}
+                  setCurrentPose={setCurrentPose}
+                />
+              </div>
             </div>
-          </div>
-          <div className="minimalfooter_style">
+            <div className="flexbox_container">
+              <div className="yoga_camera_and_canvas">
+                <Webcam
+                  ref={webcamRef}
+                  width="640px"
+                  height="480px"
+                  // style={{ backgroundColor: "black" }}
+                />
+                <div className="yoga_canvas_container">
+                  <canvas
+                    ref={canvasRef}
+                    width="640px"
+                    height="480px"
+                    // style={{ backgroundColor: "red" }}
+                  ></canvas>
+                </div>
+              </div>
+
+              {toggleImage ? (
+                <div className="yoga_pose_image_container">
+                  <img
+                    alt=""
+                    src={YogaImages[currentPose]}
+                    onClick={() => {
+                      setToggleImage(false);
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="yoga_pose_text_container">
+                  <textarea
+                    onClick={() => {
+                      setToggleImage(true);
+                    }}
+                    value={YogaInstructions[currentPose]}
+                    readOnly={true}
+                    spellCheck={false}
+                  ></textarea>
+                </div>
+              )}
+            </div>
+            <div className="feedback_container">
+              <div className="feedback_style">
+                <p>Counter: {poseTime}</p>
+                <p>Rounds: {round}</p>
+                <p>{feedback}</p>
+              </div>
+            </div>
+
             <MinimalFooter />
           </div>
-        </>
-      )}
-    </>
-  );
+        )}
+      </>
+    );
+  }
 }
 export default Yoga;
