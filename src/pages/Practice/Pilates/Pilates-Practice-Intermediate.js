@@ -11,7 +11,7 @@ import useState from "react-usestateref";
 import DropDown from "../../../components/DropDown/DropDown";
 import { fstore } from "../../../firebaseconfig/firebaseconfig";
 import { updateDoc, doc } from "firebase/firestore";
-
+import RotateDevice from "../../../components/RotateDevice/RotateDevice";
 import "./Pilates-Practice-Intermediate.css";
 
 const radians_to_degrees = (rad) => (rad * 180.0) / Math.PI;
@@ -228,68 +228,75 @@ function Pilates_Practice() {
       camera.start();
     }
   }, []);
-  return (
-    <>
-      <SecNavBar SlowLoad />
-      <h2 className="dashboard_heading">Practice Pilates (Intermediate)</h2>
-      <div className="dropdown_container">
-        <div className="dropdown_style">
-          <DropDown
-            exercise_pack={exercise_pack}
-            currentPose={currentPose}
-            setCurrentPose={setCurrentPose}
-          />
+  if (window.innerWidth < 640) {
+    return <RotateDevice />;
+  } else {
+    return (
+      <div className="Pilates-Practice-Intermediate">
+        <SecNavBar SlowLoad />
+        <h2 className="pilates_practice_heading">
+          Practice Pilates (Intermediate)
+        </h2>
+        <div className="dropdown_container">
+          <div className="dropdown_style">
+            <DropDown
+              exercise_pack={exercise_pack}
+              currentPose={currentPose}
+              setCurrentPose={setCurrentPose}
+            />
+          </div>
         </div>
-      </div>
-      <div className="flex_container">
-        <Webcam
-          className="camera_style"
-          ref={webcamRef}
-          style={{
-            width: 640,
-            height: 480,
-          }}
-        />{" "}
-        <canvas
-          ref={canvasRef}
-          className="canvas_style"
-          style={{
-            width: 640,
-            height: 480,
-          }}
-        ></canvas>
-        {toggleImage ? (
-          <img
-            className="pose_image"
-            alt=""
-            src={PilatesImages[currentPose]}
-            onClick={() => {
-              setToggleImage(false);
-            }}
-          />
-        ) : (
-          <textarea
-            className="pose_image"
-            onClick={() => {
-              setToggleImage(true);
-            }}
-            value={PilatesInstructions[currentPose]}
-            readOnly={true}
-            spellCheck={false}
-          ></textarea>
-        )}
-      </div>
+        <div className="flexbox_container">
+          <div className="pilates_camera_and_canvas">
+            <Webcam
+              ref={webcamRef}
+              width="640px"
+              height="480px"
+              // style={{ backgroundColor: "black" }}
+            />{" "}
+            <div className="pilates_canvas_container">
+              <canvas
+                ref={canvasRef}
+                width="640px"
+                height="480px"
+                // style={{ backgroundColor: "black" }}
+              ></canvas>
+            </div>
+          </div>
+          {toggleImage ? (
+            <div className="pilates_pose_image_container">
+              <img
+                alt=""
+                src={PilatesImages[currentPose]}
+                onClick={() => {
+                  setToggleImage(false);
+                }}
+              />
+            </div>
+          ) : (
+            <div className="pilates_pose_text_container">
+              <textarea
+                onClick={() => {
+                  setToggleImage(true);
+                }}
+                value={PilatesInstructions[currentPose]}
+                readOnly={true}
+                spellCheck={false}
+              ></textarea>
+            </div>
+          )}
+        </div>
 
-      <div className="scoreboard_container">
-        <div className="scoreboard_style">
-          <p>Current Exercise: {currentPose}</p>
-          <p>Repetitions: {counter}</p>
+        <div className="feedback_container">
+          <div className="feedback_style">
+            <p>Current Exercise: {currentPose}</p>
+            <p>Repetitions: {counter}</p>
+          </div>
         </div>
-      </div>
-      <div className="minimalfooter_style">
+
         <MinimalFooter />
       </div>
-    </>
-  );
+    );
+  }
 }
 export default Pilates_Practice;
