@@ -5,7 +5,6 @@ import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import useState from "react-usestateref";
 import { MinimalFooter } from "../../../containers";
-import { useWindowSize } from "@react-hook/window-size";
 import Confetti from "react-confetti";
 import { PilatesImages } from "../../../pilatesposedata/PilatesImages";
 import { PilatesInstructions } from "../../../pilatesposedata/PilatesInstructions";
@@ -75,7 +74,7 @@ function Pilates() {
   const [counter, setCounter, counterRef] = useState(0);
 
   const [sparkles, setSparkles] = useState(false);
-  const [win_width, win_height] = useWindowSize();
+  
 
   const [toggleImage, setToggleImage] = useState(true);
 
@@ -224,8 +223,8 @@ function Pilates() {
       {sparkles ? (
         <>
           <Confetti
-            width={win_width}
-            height={win_height}
+            width={window.innerWidth}
+            height={window.innerHeight}
             initialVelocityX={15}
             initialVelocityY={15}
           />
