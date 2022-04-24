@@ -6,7 +6,6 @@
     "@mediapipe/camera_utils": "^0.3.1640029074",
     "@mediapipe/face_mesh": "^0.4.1633559619",
     "@mediapipe/pose": "^0.5.1635988162",
-    "@react-hook/window-size": "^3.0.7",
     "@tensorflow-models/pose-detection": "^2.0.0",
     "@tensorflow-models/posenet": "^2.2.2",
     "@tensorflow/tfjs": "^3.16.0",

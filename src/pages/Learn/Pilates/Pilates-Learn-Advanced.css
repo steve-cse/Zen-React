@@ -1,34 +1,52 @@
-.gradient_navbar {
-  background: linear-gradient(
-    18deg,
-    rgba(255, 188, 188, 1) 0%,
-    rgba(233, 233, 148, 1) 100%
-  );
-  width: 100%;
-  /* margin-bottom: 40px; */
-}
-.navbar_links {
+.Pilates-Learn-Advanced .pilates_learn_heading {
   font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 22px;
-}
-.flex_container {
-  display: flex;
-  position: relative;
-}
-.scoreboard_container {
-  display: flex;
-}
-.scoreboard_style {
-  margin: 20px 20px 20px 65%;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 40px;
+  letter-spacing: -0.04em;
+  padding: 1rem;
+  margin-top: 5px;
 }
 
-.scoreboard_style p {
+.Pilates-Learn-Advanced .flexbox_container {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+.Pilates-Learn-Advanced .pilates_camera_and_canvas {
+  position: relative;
+}
+.Pilates-Learn-Advanced .pilates_camera_and_canvas .pilates_canvas_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.Pilates-Learn-Advanced .feedback_container {
+  display: flex;
+  justify-content: right;
+  width: 82%;
+  margin-bottom: 20px;
+}
+
+.Pilates-Learn-Advanced .feedback_style p {
   font-family: var(--font-family);
   font-weight: 550;
   font-size: 25px;
 }
-.pose_image {
+
+.Pilates-Learn-Advanced .pilates_pose_image_container img {
+  width: 500px;
+  height: 500px;
+}
+
+.Pilates-Learn-Advanced .pilates_pose_text_container {
+  width: 500px;
+  height: 500px;
+}
+.Pilates-Learn-Advanced .pilates_pose_text_container textarea {
   width: 500px;
   height: 500px;
   text-align: justify;
@@ -40,40 +58,26 @@
   resize: none;
   border: none;
   padding: 10px;
-  margin-left: 10%;
-  margin-right: 5%;
-}
-.camera_style {
-  margin: 10px 10px 10px 5%;
-  background-color: black;
-}
-.canvas_style {
-  position: absolute;
-  margin: 10px 10px 10px 5%;
-  top: 0%;
-  left: 0%;
-  bottom: 0%;
-  right: 0%;
-}
-.dropdown_style {
-  margin: 20px 20px 30px 20px;
-}
-.dropdown_container {
-  display: flex;
-  justify-content: center;
-}
-.dashboard_heading {
-  font-family: var(--font-family);
-  font-weight: 800;
-  font-size: 50px;
-  line-height: 50px;
-  letter-spacing: -0.04em;
-  padding: 1rem;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
-.minimalfooter_style {
-  width: 100%;
-  bottom: -700px;
+@media screen and (max-width: 1200px) {
+  .Pilates-Learn-Advanced .flexbox_container {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+  }
+  .Pilates-Learn-Advanced .pilates_camera_style {
+    margin: auto;
+  }
+  .Pilates-Learn-Advanced .pilates_canvas_style {
+    margin-right: auto;
+  }
+  .Pilates-Learn-Advanced .feedback_container {
+    justify-content: center;
+    width: 100%;
+  }
+  .Pilates-Learn-Advanced .pilates_learn_heading {
+    font-size: 40px;
+  }
 }

@@ -1,34 +1,53 @@
-.gradient_navbar {
-  background: linear-gradient(
-    18deg,
-    rgba(255, 188, 188, 1) 0%,
-    rgba(233, 233, 148, 1) 100%
-  );
-  width: 100%;
-  /* margin-bottom: 40px; */
-}
-.navbar_links {
+.Yoga-Learn-Intermediate .yoga_learn_heading {
   font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 22px;
-}
-.flex_container {
-  display: flex;
-  position: relative;
-}
-.scoreboard_container {
-  display: flex;
-}
-.scoreboard_style {
-  margin: 20px 20px 20px 65%;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 40px;
+  letter-spacing: -0.04em;
+  padding: 1rem;
+  margin-top: 5px;
+  
 }
 
-.scoreboard_style p {
+.Yoga-Learn-Intermediate .flexbox_container {
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+.Yoga-Learn-Intermediate .yoga_camera_and_canvas {
+  position: relative;
+}
+.Yoga-Learn-Intermediate .yoga_camera_and_canvas .yoga_canvas_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.Yoga-Learn-Intermediate .feedback_container {
+  display: flex;
+  justify-content: right;
+  width: 82%;
+  margin-bottom: 20px;
+}
+
+.Yoga-Learn-Intermediate .feedback_style p {
   font-family: var(--font-family);
   font-weight: 550;
   font-size: 25px;
 }
-.pose_image {
+
+.Yoga-Learn-Intermediate .yoga_pose_image_container img {
+  width: 500px;
+  height: 500px;
+}
+
+.Yoga-Learn-Intermediate .yoga_pose_text_container {
+  width: 500px;
+  height: 500px;
+}
+.Yoga-Learn-Intermediate .yoga_pose_text_container textarea {
   width: 500px;
   height: 500px;
   text-align: justify;
@@ -40,40 +59,26 @@
   resize: none;
   border: none;
   padding: 10px;
-  margin-left: 10%;
-  margin-right: 5%;
-}
-.camera_style {
-  margin: 10px 10px 10px 5%;
-  background-color: black;
-}
-.canvas_style {
-  position: absolute;
-  margin: 10px 10px 10px 5%;
-  top: 0%;
-  left: 0%;
-  bottom: 0%;
-  right: 0%;
-}
-.dropdown_style {
-  margin: 20px 20px 30px 20px;
-}
-.dropdown_container {
-  display: flex;
-  justify-content: center;
-}
-.dashboard_heading {
-  font-family: var(--font-family);
-  font-weight: 800;
-  font-size: 50px;
-  line-height: 50px;
-  letter-spacing: -0.04em;
-  padding: 1rem;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
-.minimalfooter_style {
-  width: 100%;
-  bottom: -700px;
+@media screen and (max-width: 1200px) {
+  .Yoga-Learn-Intermediate .flexbox_container {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+  }
+  .Yoga-Learn-Intermediate .yoga_camera_style {
+    margin: auto;
+  }
+  .Yoga-Learn-Intermediate .yoga_canvas_style {
+    margin-right: auto;
+  }
+  .Yoga-Learn-Intermediate .feedback_container {
+    justify-content: center;
+    width: 100%;
+  }
+  .Yoga-Learn-Intermediate .yoga_practice_heading {
+    font-size: 40px;
+  }
 }

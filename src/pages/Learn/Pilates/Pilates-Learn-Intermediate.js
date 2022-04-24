@@ -4,11 +4,8 @@ import * as poseAll from "@mediapipe/pose";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import useState from "react-usestateref";
-import { Navbar, Button, Alert, Nav, NavItem } from "react-bootstrap";
-import { useAuth } from "../../../contexts/AuthContext";
+import RotateDevice from "../../../components/RotateDevice/RotateDevice";
 import { MinimalFooter } from "../../../containers";
-import logo from "../../../assets/logo.png";
-import { useWindowSize } from "@react-hook/window-size";
 import Confetti from "react-confetti";
 import { PilatesImages } from "../../../pilatesposedata/PilatesImages";
 import { PilatesInstructions } from "../../../pilatesposedata/PilatesInstructions";
@@ -78,7 +75,6 @@ function Pilates() {
   const [counter, setCounter, counterRef] = useState(0);
 
   const [sparkles, setSparkles] = useState(false);
-  const [win_width, win_height] = useWindowSize();
 
   const [toggleImage, setToggleImage] = useState(true);
 
@@ -220,68 +216,73 @@ function Pilates() {
       camera.start();
     }
   }, []);
-  return (
-    <>
-      <SecNavBar SlowLoad />
-      <h2 className="dashboard_heading">Learn Pilates (Intermediate)</h2>
-      {sparkles ? (
-        <>
-          <Confetti
-            width={win_width}
-            height={win_height}
-            initialVelocityX={15}
-            initialVelocityY={15}
-          />
-        </>
-      ) : null}
-      <div className="flex_container">
-        <Webcam
-          className="camera_style"
-          ref={webcamRef}
-          style={{
-            width: 640,
-            height: 480,
-          }}
-        />{" "}
-        <canvas
-          ref={canvasRef}
-          className="canvas_style"
-          style={{
-            width: 640,
-            height: 480,
-          }}
-        ></canvas>
-        {toggleImage ? (
-          <img
-            className="pose_image"
-            alt=""
-            src={PilatesImages[exercise_name_for_display]}
-            onClick={() => {
-              setToggleImage(false);
-            }}
-          />
-        ) : (
-          <textarea
-            className="pose_image"
-            onClick={() => {
-              setToggleImage(true);
-            }}
-            value={PilatesInstructions[exercise_name_for_display]}
-            readOnly={true}
-            spellCheck={false}
-          ></textarea>
-        )}
-      </div>
-      <div className="scoreboard_container">
-        <div className="scoreboard_style">
-          <p>Current Exercise: {exercise_name_for_display}</p>
-          <p>Repetitions: {counter}/12</p>
+  if (window.innerWidth < 640) {
+    return <RotateDevice />;
+  } else {
+    return (
+      <div className="Pilates-Learn-Intermediate">
+        <SecNavBar SlowLoad />
+        <h2 className="pilates_learn_heading">Learn Pilates (Intermediate)</h2>
+        {sparkles ? (
+          <>
+            <Confetti
+              width={window.innerWidth}
+              height={window.innerHeight}
+              initialVelocityX={15}
+              initialVelocityY={15}
+            />
+          </>
+        ) : null}
+        <div className="flexbox_container">
+          <div className="pilates_camera_and_canvas">
+            <Webcam
+              ref={webcamRef}
+              width="640px"
+              height="480px"
+              // style={{ backgroundColor: "black" }}
+            />{" "}
+            <div className="pilates_canvas_container">
+              <canvas
+                ref={canvasRef}
+                width="640px"
+                height="480px"
+                // style={{ backgroundColor: "black" }}
+              ></canvas>
+            </div>
+          </div>
+          {toggleImage ? (
+            <div className="pilates_pose_image_container">
+              <img
+                alt=""
+                src={PilatesImages[exercise_name_for_display]}
+                onClick={() => {
+                  setToggleImage(false);
+                }}
+              />
+            </div>
+          ) : (
+            <div className="pilates_pose_text_container">
+              <textarea
+                onClick={() => {
+                  setToggleImage(true);
+                }}
+                value={PilatesInstructions[exercise_name_for_display]}
+                readOnly={true}
+                spellCheck={false}
+              ></textarea>
+            </div>
+          )}
         </div>
-      </div>
-      <div className="minimalfooter_style">
+        <div className="feedback_container">
+          <div className="feedback_style">
+            <p>Current Exercise: {exercise_name_for_display}</p>
+            <p>Repetitions: {counter}/12</p>
+          </div>
+        </div>
+
         <MinimalFooter />
       </div>
-    </>
-  );
+    );
+  }
 }
 export default Pilates;

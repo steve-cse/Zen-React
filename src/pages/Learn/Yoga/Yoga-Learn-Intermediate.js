@@ -8,9 +8,9 @@ import { drawPoint, drawSegment } from "../../../utils/helper";
 import { landmarks_to_embedding } from "../../../tflib/FeatureVectorExtractor";
 import { YogaImages } from "../../../yogaposedata/YogaImages";
 import { YogaInstructions } from "../../../yogaposedata/YogaInstructions";
-import ClockLoader from "react-spinners/ClockLoader";
 import { MinimalFooter } from "../../../containers";
-import { useWindowSize } from "@react-hook/window-size";
+import ClipLoader from "react-spinners/ClipLoader";
+import RotateDevice from "../../../components/RotateDevice/RotateDevice";
 import Confetti from "react-confetti";
 import SecNavBar from "../../../components/SecNavBar/SecNavBar";
 import "./Yoga-Learn-Intermediate.css";
@@ -30,7 +30,6 @@ function Yoga() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const [sparkles, setSparkles] = useState(false);
-  const [win_width, win_height] = useWindowSize();
   const [currentPose, setCurrentPose, currentPoseRef] = useState("camel");
   const [startingTime, setStartingTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -192,83 +191,90 @@ function Yoga() {
       }
     }
   };
-
-  return (
-    <>
-      {loading ? (
-        <>
-          <div className="spinner_style">
-            <ClockLoader
-              speedMultiplier={1.5}
-              color={"#ffc107"}
-              loading={loading}
-              size={140}
-            />
-            <p>A jug fills drop by drop.</p>
+  if (window.innerWidth < 640) {
+    return <RotateDevice />;
+  } else {
+    return (
+      <>
+        {loading ? (
+          <div
+            className="yoga_loader"
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <ClipLoader size={"150"} color={"#ffc107"} loading={loading} />
           </div>
-        </>
-      ) : (
-        <>
-          <SecNavBar />
-          <h2 className="dashboard_heading">Learn Yoga (Intermediate)</h2>
-          {sparkles ? (
-            <>
-              <Confetti
-                width={win_width}
-                height={win_height}
-                initialVelocityX={25}
-                initialVelocityY={25}
-              />
-            </>
-          ) : null}
-          <div className="flex_container">
-            <Webcam
-              className="camera_style"
-              width="640px"
-              height="480px"
-              ref={webcamRef}
-            />
-            <canvas
-              className="canvas_style"
-              ref={canvasRef}
-              width="640px"
-              height="480px"
-            ></canvas>
-            {toggleImage ? (
-              <img
-                className="pose_image"
-                alt=""
-                src={YogaImages[currentPose]}
-                onClick={() => {
-                  setToggleImage(false);
-                }}
-              />
-            ) : (
-              <textarea
-                className="pose_image"
-                onClick={() => {
-                  setToggleImage(true);
-                }}
-                value={YogaInstructions[currentPose]}
-                readOnly={true}
-                spellCheck={false}
-              ></textarea>
-            )}
-          </div>
-          <div className="scoreboard_container">
-            <div className="scoreboard_style">
-              <h3>Counter: {poseTime}</h3>
-              <h3>Rounds: {round}</h3>
-              <h3>Pose: {currentPose}</h3>
-              <h3>{feedback}</h3>
+        ) : (
+          <div className="Yoga-Learn-Intermediate">
+            <SecNavBar />
+            <h2 className="yoga_learn_heading">Learn Yoga (Intermediate)</h2>
+            {sparkles ? (
+              <>
+                <Confetti
+                  width={window.innerWidth}
+                  height={window.innerHeight}
+                  initialVelocityX={25}
+                  initialVelocityY={25}
+                />
+              </>
+            ) : null}
+            <div className="flexbox_container">
+              <div className="yoga_camera_and_canvas">
+                <Webcam
+                  ref={webcamRef}
+                  width="640px"
+                  height="480px"
+                  // style={{ backgroundColor: "black" }}
+                />
+                <div className="yoga_canvas_container">
+                  <canvas
+                    ref={canvasRef}
+                    width="640px"
+                    height="480px"
+                    // style={{ backgroundColor: "red" }}
+                  ></canvas>
+                </div>
+              </div>
+              {toggleImage ? (
+                <div className="yoga_pose_image_container">
+                  <img
+                    alt=""
+                    src={YogaImages[currentPose]}
+                    onClick={() => {
+                      setToggleImage(false);
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="yoga_pose_text_container">
+                  <textarea
+                    onClick={() => {
+                      setToggleImage(true);
+                    }}
+                    value={YogaInstructions[currentPose]}
+                    readOnly={true}
+                    spellCheck={false}
+                  ></textarea>
+                </div>
+              )}
             </div>
-          </div>
-          <div className="minimalfooter_style">
+            <div className="feedback_container">
+              <div className="feedback_style">
+                <h3>Counter: {poseTime}</h3>
+                <h3>Rounds: {round}</h3>
+                <h3>Pose: {currentPose}</h3>
+                <h3>{feedback}</h3>
+              </div>
+            </div>
             <MinimalFooter />
           </div>
-        </>
-      )}
-    </>
-  );
+        )}
+      </>
+    );
+  }
 }
 export default Yoga;
