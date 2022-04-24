@@ -1,0 +1,17 @@
+.RotateDevice .roatate_device_img_container img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+.RotateDevice .roatate_device_img_container p {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 40px;
+  letter-spacing: -0.04em;
+  padding: 1rem;
+}
+.RotateDevice .roatate_device_img_container {
+  margin-top: 105px;
+  margin-bottom: 200px;
+}

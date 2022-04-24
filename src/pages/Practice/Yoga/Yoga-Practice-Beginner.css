@@ -69,23 +69,7 @@
   padding: 10px;
 }
 
-.rotate_device .roatate_device_img_container img {
-  width:100px;
-  height: 100px;
-  margin-bottom: 20px;
-}
-.rotate_device .roatate_device_img_container p {
-  font-family: var(--font-family);
-  font-weight: 800;
-  font-size: 25px;
-  line-height: 40px;
-  letter-spacing: -0.04em;
-  padding: 1rem;
-}
-.rotate_device .roatate_device_img_container {
-  margin-top: 105px;
-  margin-bottom: 200px;
-}
+
 @media screen and (max-width: 1200px) {
   .Yoga-Practice-Beginner .flexbox_container {
     flex-direction: column;

@@ -13,9 +13,10 @@ import { YogaImages } from "../../../yogaposedata/YogaImages";
 import { YogaInstructions } from "../../../yogaposedata/YogaInstructions";
 import ClockLoader from "react-spinners/ClockLoader";
 import { MinimalFooter } from "../../../containers";
-import rotate from "../../../assets/rotate.png";
+import RotateDevice from "../../../components/RotateDevice/RotateDevice";
 import SecNavBar from "../../../components/SecNavBar/SecNavBar";
 import "./Yoga-Practice-Beginner.css";
+
 let skeletonColor = "rgb(160, 32, 240)";
 let poseList = [
   { name: "chair" },
@@ -197,16 +198,7 @@ function Yoga() {
   };
   if (window.innerWidth < 640) {
     return (
-      <div className="rotate_device">
-        <SecNavBar />
-        <div className="roatate_device_img_container">
-          <center>
-            <img src={rotate} alt="" />
-            <p>Please rotate your device and refresh.</p>
-          </center>
-        </div>
-        <MinimalFooter />
-      </div>
+      <RotateDevice/>
     );
   } else {
     return (
