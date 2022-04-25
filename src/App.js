@@ -29,13 +29,12 @@ function App() {
     <Router>
       <AuthProvider>
         <Routes>
-        <Route path="*" element={<FourOhFour/>}/>
+          <Route path="*" element={<FourOhFour />} />
           <Route
             exact
             path="/dashboard"
             element={
               <PrivateRoute>
-                
                 <Dashboard />
               </PrivateRoute>
             }
@@ -51,7 +50,7 @@ function App() {
               </PrivateRoute>
             }
           />
-           <Route
+          <Route
             path="/pilates-practice-intermediate"
             element={
               <PrivateRoute>
@@ -59,7 +58,7 @@ function App() {
               </PrivateRoute>
             }
           />
-           <Route
+          <Route
             path="/pilates-practice-advanced"
             element={
               <PrivateRoute>
@@ -107,7 +106,7 @@ function App() {
               </PrivateRoute>
             }
           />
-           <Route
+          <Route
             path="/yoga-learn-advanced"
             element={
               <PrivateRoute>
@@ -143,7 +142,7 @@ function App() {
             path="/selection-learn"
             element={
               <PrivateRoute>
-                <SelectionLearn/>
+                <SelectionLearn />
               </PrivateRoute>
             }
           />
@@ -151,7 +150,7 @@ function App() {
             path="/selection-practice"
             element={
               <PrivateRoute>
-                <SelectionPractice/>
+                <SelectionPractice />
               </PrivateRoute>
             }
           />
@@ -159,18 +158,18 @@ function App() {
             path="/tutorials"
             element={
               <PrivateRoute>
-                <Tutorials/>
+                <Tutorials />
               </PrivateRoute>
             }
           />
-          <Route path="/" element={
-            <DashRoute>
-          <Landing />
-          </DashRoute>
-          } />
-         
-          
-            
+          <Route
+            path="/"
+            element={
+              <DashRoute>
+                <Landing />
+              </DashRoute>
+            }
+          />
         </Routes>
       </AuthProvider>
     </Router>
