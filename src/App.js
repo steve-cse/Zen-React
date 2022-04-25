@@ -27,6 +27,7 @@ function App() {
     <Router>
       <AuthProvider>
         <Routes>
+        <Route path="*" element={<FourOhFour/>}/>
           <Route
             exact
             path="/dashboard"
@@ -161,7 +162,7 @@ function App() {
             }
           />
           <Route path="/" element={<Landing />} />
-          <Route path="*" element={<FourOhFour/>}/>
+         
           
             
         </Routes>
