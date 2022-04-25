@@ -5,11 +5,14 @@
 }
 .RotateDevice .roatate_device_img_container p {
   font-family: var(--font-family);
-  font-weight: 800;
+  font-weight: 500;
   font-size: 25px;
   line-height: 40px;
   letter-spacing: -0.04em;
   padding: 1rem;
+}
+.RotateDevice .roatate_device_img_container solid {
+  color: blue;
 }
 .RotateDevice .roatate_device_img_container {
   margin-top: 105px;
