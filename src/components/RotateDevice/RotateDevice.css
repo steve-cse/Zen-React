@@ -10,9 +10,26 @@
   line-height: 40px;
   letter-spacing: -0.04em;
   padding: 1rem;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
-.RotateDevice .roatate_device_img_container solid {
+.RotateDevice .roatate_device_img_container strong {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 25px;
   color: blue;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 .RotateDevice .roatate_device_img_container {
   margin-top: 105px;

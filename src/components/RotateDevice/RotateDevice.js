@@ -11,7 +11,7 @@ export default function RotateDevice() {
       <div className="roatate_device_img_container">
         <center>
           <img src={rotate} alt="" />
-          <p>Please rotate your device and <solid onClick={() => {window.location.reload(false);}}>refresh</solid></p>
+          <p>Please rotate your device and <strong onClick={() => {window.location.reload(false);}}>refresh</strong></p>
         </center>
       </div>
       <MinimalFooter />
