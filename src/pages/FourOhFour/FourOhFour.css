@@ -1,0 +1,33 @@
+.FourOhFour {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+ margin-top: 15px;
+}
+.FourOhFour img {
+  height: 450px;
+  width: 450px;
+}
+.FourOhFour .displaypara {
+  margin-top: 20px;
+}
+.FourOhFour .displaypara p {
+  text-align: center;
+  font-family: var(--font-family);
+  
+  font-size: 20px;
+  
+  letter-spacing: -0.04em;
+ 
+}
+.FourOhFour .displaypara a {
+  color: blue;
+}
+@media screen and (max-width: 768px) {
+  
+    .FourOhFour img {
+        height: 250px;
+        width: 250px;
+      }
+}

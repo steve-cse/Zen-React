@@ -21,6 +21,7 @@ import PilatesLearnAdvanced from "./pages/Learn/Pilates/Pilates-Learn-Advanced";
 import SelectionLearn from "./pages/SelectionLearn/SelectionLearn";
 import SelectionPractice from "./pages/SelectionPractice/SelectionPractice";
 import Tutorials from "./pages/Tutorials/Tutorials";
+import FourOhFour from "./pages/FourOhFour/FourOhFour";
 function App() {
   return (
     <Router>
@@ -160,6 +161,9 @@ function App() {
             }
           />
           <Route path="/" element={<Landing />} />
+          <Route path="*" element={<FourOhFour/>}/>
+          
+            
         </Routes>
       </AuthProvider>
     </Router>
