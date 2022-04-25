@@ -10,6 +10,7 @@
 .Yoga-Practice-Beginner .dropdown_container {
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
 .Yoga-Practice-Beginner .flexbox_container {
@@ -83,5 +84,8 @@
   }
   .Yoga-Practice-Beginner .yoga_practice_heading {
     font-size: 40px;
+  }
+  .Yoga-Practice-Beginner .dropdown_container {
+   margin-bottom: 10px;
   }
 }

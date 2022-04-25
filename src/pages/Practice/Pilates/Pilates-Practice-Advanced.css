@@ -10,6 +10,7 @@
 .Pilates-Practice-Advanced .dropdown_container {
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
 .Pilates-Practice-Advanced .flexbox_container {
@@ -86,4 +87,7 @@
   .Pilates-Practice-Advanced .pilates_practice_heading {
     font-size: 40px;
   }
+  .Pilates-Practice-Advanced .dropdown_container {
+    margin-bottom: 10px;
+   }
 }

@@ -10,6 +10,7 @@
 .Yoga-Practice-Intermediate .dropdown_container {
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
 .Yoga-Practice-Intermediate .flexbox_container {
@@ -84,4 +85,7 @@
   .Yoga-Practice-Intermediate .yoga_practice_heading {
     font-size: 40px;
   }
+  .Yoga-Practice-Intermediate .dropdown_container {
+    margin-bottom: 10px;
+   }
 }
