@@ -56,7 +56,7 @@ export default function Signup() {
           "gate":0,
           "half_moon":0
         });}
-      navigate("/login")
+      navigate("/dashboard")
     } catch (error) {
       setError('Failed to create an account')
       console.log(error)
