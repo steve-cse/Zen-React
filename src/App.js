@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Login from "./pages/Login/Login";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import DashRoute from "./components/DashRoute/DashRoute";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Landing from "./pages/Landing/Landing";
 import PilatesPracticeBeginner from "./pages/Practice/Pilates/Pilates-Practice-Beginner";
@@ -22,6 +23,7 @@ import SelectionLearn from "./pages/SelectionLearn/SelectionLearn";
 import SelectionPractice from "./pages/SelectionPractice/SelectionPractice";
 import Tutorials from "./pages/Tutorials/Tutorials";
 import FourOhFour from "./pages/FourOhFour/FourOhFour";
+
 function App() {
   return (
     <Router>
@@ -161,7 +163,11 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={
+            <DashRoute>
+          <Landing />
+          </DashRoute>
+          } />
          
           
             
