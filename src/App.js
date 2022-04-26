@@ -23,7 +23,7 @@ import SelectionLearn from "./pages/SelectionLearn/SelectionLearn";
 import SelectionPractice from "./pages/SelectionPractice/SelectionPractice";
 import Tutorials from "./pages/Tutorials/Tutorials";
 import FourOhFour from "./pages/FourOhFour/FourOhFour";
-
+import AboutUs from "./pages/AboutUs/AboutUs";
 function App() {
   return (
     <Router>
@@ -159,6 +159,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Tutorials />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <PrivateRoute>
+                <AboutUs />
               </PrivateRoute>
             }
           />

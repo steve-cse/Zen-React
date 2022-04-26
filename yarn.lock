@@ -7687,7 +7687,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7962,6 +7962,13 @@ react-scripts@5.0.0:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-social-icons@^5.13.0:
+  version "5.13.0"
+  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.13.0.tgz#2eb83dc4b843abb0b01c9fc21c7df6d8a58b99a6"
+  integrity sha512-Tfh01p+gugmJJz9Z7trAJVDwYBDIa6M1KYETLLeL0qMM9G7sHX/PcH8xNRq/zP/bMqbOMLEbhfsW8NldjU3KDA==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-spinners@^0.11.0:
   version "0.11.0"

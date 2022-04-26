@@ -84,7 +84,15 @@ export default function SecNavBar(props) {
                 href="#pricing"
                 style={{ color: "black" }}
               >
-                Paper
+                Instructions
+              </Nav.Link>
+              <Nav.Link
+               className="navbar_links my-2"
+               {...(props.SlowLoad ? { href: "/about" } : {})}
+               onClick={() => navigate("/about")}
+               style={{ color: "black" }}
+              >
+                About
               </Nav.Link>
             </Nav>
             <Nav>
