@@ -84,7 +84,7 @@ export default function SecNavBar(props) {
                 href="#pricing"
                 style={{ color: "black" }}
               >
-                Article
+                Paper
               </Nav.Link>
             </Nav>
             <Nav>

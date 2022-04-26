@@ -9,11 +9,11 @@
   /* --font-family: 'Red Hat Display', sans-serif; */
 
 
-  --gradient-text: linear-gradient(89.97deg, #000000 1.84%, #bdbdbd 102.67%);
-  --gradient-bar: linear-gradient(103.22deg, #AE67FA -13.86%, #F49867 99.55%);
+  --gradient-text: linear-gradient(89.97deg, #000000 1.84%, #000000 102.67%);
+  --gradient-bar: linear-gradient(103.22deg, #ffb770 -13.86%, #ff6060 99.55%);
   
   --color-bg: #ffffff;
   --color-footer : #000000;
-  --color-text: #000000;
-  --color-subtext: #fca5a5;
+  --color-text: #484848;
+  --color-subtext: #000000;
 }

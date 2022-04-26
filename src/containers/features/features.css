@@ -23,8 +23,8 @@
     line-height: 45px;
     font-weight: 800;
     font-family: var(--font-family);
-    /* text-align: justify; */
     padding-left: 3rem;
+    text-align: center;
 }
 
 .gpt3__features-heading h1 p {
@@ -34,7 +34,6 @@
     font-family: var(--font-family);
     text-align: center;
     padding-right: 1rem ;
-
     margin-top: 2rem;
 }
 
@@ -53,7 +52,8 @@
     }
 
     .gpt3__features-heading {
-        margin: 0 0 2rem 0;
+        text-align: center;
+        margin-right: 35px;
     }
 }
 
@@ -63,5 +63,18 @@
         font-size: 28px;
         line-height: 38px;
         padding-top: 1rem;
+    }
+    .gpt3__features-heading {
+        text-align: center;
+        margin-right: 35px;
+        
+    }
+
+}
+@media screen and (max-width:370px) {
+    .gpt3__features-heading {
+        text-align: center;
+        margin-right: 35px;
+        
     }
 }

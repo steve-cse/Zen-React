@@ -19,9 +19,9 @@ export const POINTS = {
 }
 
 export const keypointConnections = {
-    nose: ['left_ear', 'right_ear'],
-    left_ear: ['left_shoulder'],
-    right_ear: ['right_shoulder'],
+    nose: ['left_eye', 'right_eye'],
+    left_ear: ['left_eye'],
+    right_ear: ['right_eye'],
     left_shoulder: ['right_shoulder', 'left_elbow', 'left_hip'],
     right_shoulder: ['right_elbow', 'right_hip'],
     left_elbow: ['left_wrist'],

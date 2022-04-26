@@ -196,7 +196,7 @@ export default function Dashboard() {
               transform: "translate(-50%, -50%)",
             }}
           >
-            <ClipLoader size={"150"} color={"#ffc107"} loading={loading} />
+            <ClipLoader size={"150px"} color={"#ffc107"} loading={loading} />
           </div>
         ) : (
           <div className="dashboard">

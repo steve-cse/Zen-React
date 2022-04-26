@@ -129,32 +129,19 @@ function Yoga() {
         const keypoints = pose[0].keypoints;
         let input = keypoints.map((keypoint) => {
           if (keypoint.score > 0.4) {
-            if (
-              !(
-                keypoint.name === "left_eye" ||
-                keypoint.name === "right_eye" ||
-                keypoint.name === "nose" ||
-                keypoint.name === "right_ear" ||
-                keypoint.name === "left_ear"
-              )
-            ) {
-              drawPoint(ctx, keypoint.x, keypoint.y, 8, "rgb(255,255,255)");
-              let connections = keypointConnections[keypoint.name];
-              try {
-                connections.forEach((connection) => {
-                  let conName = connection.toUpperCase();
-                  drawSegment(
-                    ctx,
-                    [keypoint.x, keypoint.y],
-                    [
-                      keypoints[POINTS[conName]].x,
-                      keypoints[POINTS[conName]].y,
-                    ],
-                    skeletonColor
-                  );
-                });
-              } catch (err) {}
-            }
+            drawPoint(ctx, keypoint.x, keypoint.y, 8, "rgb(255,255,255)");
+            let connections = keypointConnections[keypoint.name];
+            try {
+              connections.forEach((connection) => {
+                let conName = connection.toUpperCase();
+                drawSegment(
+                  ctx,
+                  [keypoint.x, keypoint.y],
+                  [keypoints[POINTS[conName]].x, keypoints[POINTS[conName]].y],
+                  skeletonColor
+                );
+              });
+            } catch (err) {}
           } else {
             notDetected += 1;
           }
@@ -198,86 +185,87 @@ function Yoga() {
   if (window.innerWidth < 640) {
     return <RotateDevice />;
   } else {
-  return (
-    <>
-      {loading ? (
-        <div
-          className="yoga_loader"
-          style={{
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <ClipLoader size={"150"} color={"#ffc107"} loading={loading} />
-        </div>
-      ) : (
-        <div className="Yoga-Learn-Advanced">
-          <SecNavBar />
-          <h2 className="yoga_learn_heading">Learn Yoga (Advanced)</h2>
-          {sparkles ? (
-            <>
-              <Confetti
-                width={window.innerWidth}
-                height={window.innerHeight}
-                initialVelocityX={25}
-                initialVelocityY={25}
-              />
-            </>
-          ) : null}
-          <div className="flexbox_container">
-            <div className="yoga_camera_and_canvas">
-              <Webcam
-                ref={webcamRef}
-                width="640px"
-                height="480px"
-                // style={{ backgroundColor: "black" }}
-              />
-              <div className="yoga_canvas_container">
-                <canvas
-                  ref={canvasRef}
+    return (
+      <>
+        {loading ? (
+          <div
+            className="yoga_loader"
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <ClipLoader size={"150px"} color={"#ffc107"} loading={loading} />
+          </div>
+        ) : (
+          <div className="Yoga-Learn-Advanced">
+            <SecNavBar />
+            <h2 className="yoga_learn_heading">Learn Yoga (Advanced)</h2>
+            {sparkles ? (
+              <>
+                <Confetti
+                  width={window.innerWidth}
+                  height={window.innerHeight}
+                  initialVelocityX={25}
+                  initialVelocityY={25}
+                />
+              </>
+            ) : null}
+            <div className="flexbox_container">
+              <div className="yoga_camera_and_canvas">
+                <Webcam
+                  ref={webcamRef}
                   width="640px"
                   height="480px"
-                  // style={{ backgroundColor: "red" }}
-                ></canvas>
-              </div>
-            </div>
-            {toggleImage ? (
-              <div className="yoga_pose_image_container">
-                <img
-                  alt=""
-                  src={YogaImages[currentPose]}
-                  onClick={() => {
-                    setToggleImage(false);
-                  }}
+                  // style={{ backgroundColor: "black" }}
                 />
+                <div className="yoga_canvas_container">
+                  <canvas
+                    ref={canvasRef}
+                    width="640px"
+                    height="480px"
+                    // style={{ backgroundColor: "red" }}
+                  ></canvas>
+                </div>
               </div>
-            ) : (
-              <div className="yoga_pose_text_container">
-                <textarea
-                  onClick={() => {
-                    setToggleImage(true);
-                  }}
-                  value={YogaInstructions[currentPose]}
-                  readOnly={true}
-                  spellCheck={false}
-                ></textarea>
-              </div>
-            )}
-          </div>
-          <div className="feedback_container">
-            <div className="feedback_style">
-              <h3>Counter: {poseTime}</h3>
-              <h3>Rounds: {round}</h3>
-              <h3>Pose: {currentPose}</h3>
-              <h3>{feedback}</h3>
+              {toggleImage ? (
+                <div className="yoga_pose_image_container">
+                  <img
+                    alt=""
+                    src={YogaImages[currentPose]}
+                    onClick={() => {
+                      setToggleImage(false);
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="yoga_pose_text_container">
+                  <textarea
+                    onClick={() => {
+                      setToggleImage(true);
+                    }}
+                    value={YogaInstructions[currentPose]}
+                    readOnly={true}
+                    spellCheck={false}
+                  ></textarea>
+                </div>
+              )}
             </div>
+            <div className="feedback_container">
+              <div className="feedback_style">
+                <h3>Counter: {poseTime}</h3>
+                <h3>Rounds: {round}</h3>
+                <h3>Pose: {currentPose}</h3>
+                <h3>{feedback}</h3>
+              </div>
+            </div>
+            <MinimalFooter />
           </div>
-          <MinimalFooter />
-        </div>
-      )}
-    </>
-  );}
+        )}
+      </>
+    );
+  }
 }
 export default Yoga;

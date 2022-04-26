@@ -130,32 +130,19 @@ function Yoga() {
         const keypoints = pose[0].keypoints;
         let input = keypoints.map((keypoint) => {
           if (keypoint.score > 0.4) {
-            if (
-              !(
-                keypoint.name === "left_eye" ||
-                keypoint.name === "right_eye" ||
-                keypoint.name === "nose" ||
-                keypoint.name === "right_ear" ||
-                keypoint.name === "left_ear"
-              )
-            ) {
-              drawPoint(ctx, keypoint.x, keypoint.y, 8, "rgb(255,255,255)");
-              let connections = keypointConnections[keypoint.name];
-              try {
-                connections.forEach((connection) => {
-                  let conName = connection.toUpperCase();
-                  drawSegment(
-                    ctx,
-                    [keypoint.x, keypoint.y],
-                    [
-                      keypoints[POINTS[conName]].x,
-                      keypoints[POINTS[conName]].y,
-                    ],
-                    skeletonColor
-                  );
-                });
-              } catch (err) {}
-            }
+            drawPoint(ctx, keypoint.x, keypoint.y, 8, "rgb(255,255,255)");
+            let connections = keypointConnections[keypoint.name];
+            try {
+              connections.forEach((connection) => {
+                let conName = connection.toUpperCase();
+                drawSegment(
+                  ctx,
+                  [keypoint.x, keypoint.y],
+                  [keypoints[POINTS[conName]].x, keypoints[POINTS[conName]].y],
+                  skeletonColor
+                );
+              });
+            } catch (err) {}
           } else {
             notDetected += 1;
           }
@@ -211,7 +198,7 @@ function Yoga() {
               transform: "translate(-50%, -50%)",
             }}
           >
-            <ClipLoader size={"150"} color={"#ffc107"} loading={loading} />
+            <ClipLoader size={"150px"} color={"#ffc107"} loading={loading} />
           </div>
         ) : (
           <div className="Yoga-Practice-Beginner">

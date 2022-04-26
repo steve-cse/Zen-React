@@ -4,12 +4,8 @@
   justify-content: center;
   align-items: center;
 
-  background: rgb(255, 188, 188);
-  background: linear-gradient(
-    18deg,
-    rgba(255, 188, 188, 1) 0%,
-    rgba(233, 233, 148, 1) 100%
-  );
+  background: rgb(255,188,188);
+  background: linear-gradient(18deg, rgb(253, 150, 150) 19%, rgb(248, 248, 115) 81%);
 }
 
 .gpt3__footer-links {

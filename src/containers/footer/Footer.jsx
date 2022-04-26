@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from '../../assets/logo.png';
 import './footer.css';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 
 const Footer = () => {
   const navigate = useNavigate();
-  return (
+  return ( 
   <div className="gpt3__footer section__padding">
     <div className="gpt3__footer-heading">
       <h1 className="gradient__text">Get On Board Right Now !</h1>
