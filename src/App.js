@@ -24,6 +24,7 @@ import SelectionPractice from "./pages/SelectionPractice/SelectionPractice";
 import Tutorials from "./pages/Tutorials/Tutorials";
 import FourOhFour from "./pages/FourOhFour/FourOhFour";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import AboutUsLanding from "./pages/AboutUsLanding/AboutUsLanding";
 function App() {
   return (
     <Router>
@@ -170,6 +171,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="/aboutus" element={<AboutUsLanding />} />
           <Route
             path="/"
             element={
