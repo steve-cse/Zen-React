@@ -35,6 +35,9 @@
   height: 200px;
   margin: 5px;
 }
+.AboutUs .image_container .steve_card .steve_gmail {
+  margin-right: 5px;
+}
 .AboutUs .image_container .steve_card .steve_github {
   margin-right: 5px;
 }
@@ -50,6 +53,9 @@
   height: 200px;
   margin: 5px;
 }
+.AboutUs .image_container .sanjay_card .sanjay_gmail {
+  margin-right: 5px;
+}
 .AboutUs .image_container .sanjay_card .sanjay_github {
   margin-right: 5px;
 }
@@ -64,6 +70,9 @@
   height: 200px;
   margin: 5px;
 }
+.AboutUs .image_container .edwin_card .edwin_gmail {
+  margin-right: 5px;
+}
 .AboutUs .image_container .edwin_card .edwin_github {
   margin-right: 5px;
 }
@@ -77,6 +86,9 @@
   width: 200px;
   height: 200px;
   margin: 5px;
+}
+.AboutUs .image_container .agnel_card .agnel_gmail {
+  margin-right: 5px;
 }
 .AboutUs .image_container .agnel_card .agnel_github {
   margin-right: 5px;

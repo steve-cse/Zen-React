@@ -32,9 +32,14 @@ export default function AboutUs() {
               className="steve_card_text"
               style={{ textAlign: "center" }}
             >
-              Front-End Developer
+              Front & Back-End Developer
             </Card.Text>
             <center>
+              <SocialIcon
+                className="steve_gmail"
+                url="mailto:stevebobygeorge@gmail.com"
+                style={{ height: 40, width: 40 }}
+              />
               <SocialIcon
                 className="steve_github"
                 url="https://github.com/Maverick-2000"
@@ -80,6 +85,11 @@ export default function AboutUs() {
               Front-End Developer
             </Card.Text>
             <center>
+            <SocialIcon
+                className="sanjay_gmail"
+                url="mailto:sanjujaimy@gmail.com"
+                style={{ height: 40, width: 40 }}
+              />
               <SocialIcon
                 className="sanjay_github"
                 url="https://github.com/petergade2000"
@@ -122,9 +132,14 @@ export default function AboutUs() {
               className="edwin_card_text"
               style={{ textAlign: "center" }}
             >
-              AI/ML Specialist
+              AI & ML Specialist
             </Card.Text>
             <center>
+            <SocialIcon
+                className="edwin_gmail"
+                url="mailto:edwin.daji@gmail.com"
+                style={{ height: 40, width: 40 }}
+              />
               <SocialIcon
                 className="edwin_github"
                 url="https://github.com/RisingPhoenix-2000"
@@ -167,9 +182,14 @@ export default function AboutUs() {
               className="agnel_card_text"
               style={{ textAlign: "center" }}
             >
-              Researcher
+              Research & Documentation
             </Card.Text>
             <center>
+            <SocialIcon
+                className="agnel_gmail"
+                url="mailto:agnel.antony2000@gmail.com"
+                style={{ height: 40, width: 40 }}
+              />
               <SocialIcon
                 className="agnel_github"
                 url="https://github.com/imAgnel"
@@ -212,14 +232,15 @@ export default function AboutUs() {
       <div className="aboutus_desc">
         <ol className="aboutus_list">
           <li>
-            <b>React</b>: A free and open-source front-end JavaScript library for
-            building user interfaces based on UI components. It is maintained by
-            Meta and a community of individual developers and companies
+            <b>React</b>: A free and open-source front-end JavaScript library
+            for building user interfaces based on UI components. It is
+            maintained by Meta and a community of individual developers and
+            companies
           </li>
           <li>
-            <b>Movenet</b>: MoveNet is a human pose detection architecture developed at
-            Google that is ultra fast and accurate. It was designed to detect
-            difficult poses.
+            <b>Movenet</b>: MoveNet is a human pose detection architecture
+            developed at Google that is ultra fast and accurate. It was designed
+            to detect difficult poses.
           </li>
           <li>
             <b>MediaPipe</b>: MediaPipe Pose is a machine learning solution for
@@ -228,8 +249,8 @@ export default function AboutUs() {
             segmentation mask on the entire body from RGB video frames.
           </li>
           <li>
-            <b>Vite</b>: A new breed of frontend build tool that significantly improves
-            the frontend development experience.
+            <b>Vite</b>: A new breed of frontend build tool that significantly
+            improves the frontend development experience.
           </li>
         </ol>
       </div>
