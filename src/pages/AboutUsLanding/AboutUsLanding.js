@@ -258,6 +258,50 @@ export default function AboutUsLanding() {
             database.
           </li>
         </ol>
+        <div className="aboutus_heading">
+          <h2>Icons courtesy of</h2>
+        </div>
+        <div className="aboutus_desc">
+          <ul className="aboutus_list">
+            <li>
+              <a
+                href="https://www.flaticon.com/free-icons/excercise"
+                title="excercise icons"
+              >
+                Excercise icons created by monkik - Flaticon
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.flaticon.com/free-icons/lotus"
+                title="lotus icons"
+              >
+                Lotus icons created by Freepik - Flaticon
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.flaticon.com/free-icons/resistance-band"
+                title="resistance band icons"
+              >
+                Resistance band icons created by Freepik - Flaticon
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.flaticon.com/free-icons/rotate"
+                title="rotate icons"
+              >
+                Rotate icons created by Pixel perfect - Flaticon
+              </a>
+            </li>
+            <li>
+              <a href="https://www.freepik.com/vectors/no-connection">
+                No connection vector created by storyset - www.freepik.com
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <Footer />
