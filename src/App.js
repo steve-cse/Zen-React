@@ -1,30 +1,58 @@
-import Signup from "./pages/Signup/Signup";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import DashRoute from "./components/DashRoute/DashRoute";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Landing from "./pages/Landing/Landing";
-import PilatesPracticeBeginner from "./pages/Practice/Pilates/Pilates-Practice-Beginner";
-import PilatesPracticeIntermediate from "./pages/Practice/Pilates/Pilates-Practice-Intermediate";
-import PilatesPracticeAdvanced from "./pages/Practice/Pilates/Pilates-Practice-Advanced";
-import YogaPracticeBeginner from "./pages/Practice/Yoga/Yoga-Practice-Beginner";
-import YogaPracticeIntermediate from "./pages/Practice/Yoga/Yoga-Practice-Intermediate";
-import YogaPracticeAdvanced from "./pages/Practice/Yoga/Yoga-Practice-Advanced";
-import YogaLearnBeginner from "./pages/Learn/Yoga/Yoga-Learn-Beginner";
-import YogaLearnIntermediate from "./pages/Learn/Yoga/Yoga-Learn-Intermediate";
-import YogaLearnAdvanced from "./pages/Learn/Yoga/Yoga-Learn-Advanced";
-import PilatesLearnBeginner from "./pages/Learn/Pilates/Pilates-Learn-Beginner";
-import PilatesLearnIntermediate from "./pages/Learn/Pilates/Pilates-Learn-Intermediate";
-import PilatesLearnAdvanced from "./pages/Learn/Pilates/Pilates-Learn-Advanced";
-import SelectionLearn from "./pages/SelectionLearn/SelectionLearn";
-import SelectionPractice from "./pages/SelectionPractice/SelectionPractice";
-import Tutorials from "./pages/Tutorials/Tutorials";
 import FourOhFour from "./pages/FourOhFour/FourOhFour";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import AboutUsLanding from "./pages/AboutUsLanding/AboutUsLanding";
+import SelectionLearn from "./pages/SelectionLearn/SelectionLearn";
+import SelectionPractice from "./pages/SelectionPractice/SelectionPractice";
+import loadable from "@loadable/component";
+
+const PilatesPracticeBeginner = loadable(() =>
+  import("./pages/Practice/Pilates/Pilates-Practice-Beginner")
+);
+const PilatesPracticeIntermediate = loadable(() =>
+  import("./pages/Practice/Pilates/Pilates-Practice-Intermediate")
+);
+const PilatesPracticeAdvanced = loadable(() =>
+  import("./pages/Practice/Pilates/Pilates-Practice-Advanced")
+);
+const YogaPracticeBeginner = loadable(() =>
+  import("./pages/Practice/Yoga/Yoga-Practice-Beginner")
+);
+const YogaPracticeIntermediate = loadable(() =>
+  import("./pages/Practice/Yoga/Yoga-Practice-Intermediate")
+);
+const YogaPracticeAdvanced = loadable(() =>
+  import("./pages/Practice/Yoga/Yoga-Practice-Advanced")
+);
+const YogaLearnBeginner = loadable(() =>
+  import("./pages/Learn/Yoga/Yoga-Learn-Beginner")
+);
+const YogaLearnIntermediate = loadable(() =>
+  import("./pages/Learn/Yoga/Yoga-Learn-Intermediate")
+);
+const YogaLearnAdvanced = loadable(() =>
+  import("./pages/Learn/Yoga/Yoga-Learn-Advanced")
+);
+const PilatesLearnBeginner = loadable(() =>
+  import("./pages/Learn/Pilates/Pilates-Learn-Beginner")
+);
+const PilatesLearnIntermediate = loadable(() =>
+  import("./pages/Learn/Pilates/Pilates-Learn-Intermediate")
+);
+const PilatesLearnAdvanced = loadable(() =>
+  import("./pages/Learn/Pilates/Pilates-Learn-Advanced")
+);
+
+const Tutorials = loadable(() => import("./pages/Tutorials/Tutorials"));
+
 function App() {
   return (
     <Router>

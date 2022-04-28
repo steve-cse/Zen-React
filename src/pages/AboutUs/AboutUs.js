@@ -85,7 +85,7 @@ export default function AboutUs() {
               Front-End Developer
             </Card.Text>
             <center>
-            <SocialIcon
+              <SocialIcon
                 className="sanjay_gmail"
                 url="mailto:sanjujaimy@gmail.com"
                 style={{ height: 40, width: 40 }}
@@ -135,7 +135,7 @@ export default function AboutUs() {
               AI & ML Specialist
             </Card.Text>
             <center>
-            <SocialIcon
+              <SocialIcon
                 className="edwin_gmail"
                 url="mailto:edwin.daji@gmail.com"
                 style={{ height: 40, width: 40 }}
@@ -185,7 +185,7 @@ export default function AboutUs() {
               Research & Documentation
             </Card.Text>
             <center>
-            <SocialIcon
+              <SocialIcon
                 className="agnel_gmail"
                 url="mailto:agnel.antony2000@gmail.com"
                 style={{ height: 40, width: 40 }}
@@ -249,8 +249,13 @@ export default function AboutUs() {
             segmentation mask on the entire body from RGB video frames.
           </li>
           <li>
-            <b>Vite</b>: A new breed of frontend build tool that significantly
-            improves the frontend development experience.
+            <b>Firebase</b>: Firebase is a platform developed by Google for
+            creating mobile and web applications.
+          </li>
+          <li>
+            <b>Vercel</b>: Vercel is a platform for frontend frameworks and
+            static sites, built to integrate with headless content, commerce, or
+            database.
           </li>
         </ol>
       </div>

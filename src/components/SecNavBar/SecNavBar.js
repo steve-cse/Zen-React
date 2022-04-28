@@ -21,8 +21,8 @@ export default function SecNavBar(props) {
 
     try {
       await logout();
-      // navigate("/login");
-      window.open("/login", "_top")
+      navigate("/");
+     
     } catch {
       setError("Failed to log out");
     }
