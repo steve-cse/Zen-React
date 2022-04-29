@@ -1,5 +1,5 @@
-.Tutorials .tutorials_heading{
-    font-family: var(--font-family);
+.Tutorials .tutorials_heading {
+  font-family: var(--font-family);
   font-weight: 800;
   font-size: 50px;
   line-height: 40px;
@@ -8,11 +8,23 @@
   margin-top: 5px;
 }
 
-.Tutorials .tutorials_container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px;
-    gap:50px
+.Tutorials .tutorials_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px;
+  gap: 50px;
+}
+.Tutorials .searchbar_container {
+  display: flex;
+  justify-content: center;
+}
+.Tutorials .searchbar {
+  width: 650px;
+}
 
+@media screen and (max-width: 1024px) {
+  .Tutorials .searchbar {
+    width: 345px;
+  }
 }

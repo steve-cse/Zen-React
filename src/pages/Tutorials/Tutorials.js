@@ -1,182 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import SecNavBar from "../../components/SecNavBar/SecNavBar";
 import { MinimalFooter } from "../../containers";
+import { Form, FormControl, InputGroup } from "react-bootstrap";
 import ReactPlayer from "react-player/lazy";
+import TUTDATA from "./TutorialData.json";
+import { IoIosSearch } from "react-icons/io";
+import { IconContext } from "react-icons";
 import "./Tutorials.css";
 export default function Tutorials() {
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className="Tutorials">
       <SecNavBar />
       <h2 className="tutorials_heading">Tutorials</h2>
+      <div className="searchbar_container">
+        <Form className="searchbar">
+          <InputGroup className="mb-3">
+            <FormControl
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="basic-addon2"
+              onChange={(event) => {
+                setSearchTerm(event.target.value);
+              }}
+            />
+            <IconContext.Provider value={{ size: "1.5em" }}>
+              <InputGroup.Text id="basic-addon2">
+                <IoIosSearch />
+              </InputGroup.Text>
+            </IconContext.Provider>
+          </InputGroup>
+        </Form>
+      </div>
+
       <div className="tutorials_container">
-        <ReactPlayer
-          url="https://www.youtube.com/embed/IxtOtPFwaIE?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/3cmRrQAZqRU?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/gWpUTLghv_0?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/wgXefCprLm0?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/yVE4XXFFO70?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/_oixJ56znyU?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/_NNnowkcIqU?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/RG4PwUP5njo?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/pVmOOluGAv8?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/4Tbp3NydcbQ?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/7Xl-TNyOJec?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/B6tb4TncKhY?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/NnbvPeAIhmA?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/EC7RGJ975iM?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/_xKgCrr_n9g?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/csErxVR7dpA?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/ykJmrZ5v0Oo?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/J_OQDNM8gn8?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/YFRh8TWjPZ0?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/3XDriUn0udo?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/tlUg1DXhHm8?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/YaXPRqUwItQ?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/m9me06UBPKc?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
-        <ReactPlayer
-          url="https://www.youtube.com/embed/QWOY17an9yQ?rel=0&modestbranding=1"
-          width="300px"
-          height="150px"
-          controls
-          light
-        />
+        {TUTDATA.filter((val) => {
+          if (searchTerm === "") {
+            return val;
+          } else if (
+            val.title.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+            return val;
+          }
+        }).map((val, key) => {
+          return (
+            <div className="player_container" key={key}>
+              <ReactPlayer
+                url={val.url}
+                width="300px"
+                height="150px"
+                controls
+                light
+              />
+            </div>
+          );
+        })}
       </div>
       <MinimalFooter />
     </div>
