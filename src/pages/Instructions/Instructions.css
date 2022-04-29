@@ -1,0 +1,19 @@
+.Instructions .instructions_heading {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 40px;
+  letter-spacing: -0.04em;
+  padding: 1rem;
+  margin-top: 5px;
+}
+.Instructions .instructions_container {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 30px;
+}
+.Instructions .viewer {
+  height: 650px;
+  width: 900px;
+}

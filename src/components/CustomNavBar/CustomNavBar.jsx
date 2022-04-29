@@ -17,7 +17,7 @@ const Navbar = () => {
           <p onClick={() => navigate("/selection-learn")}>Learn</p>
           <p onClick={() => navigate("/selection-practice")}>Practice</p>
           <p onClick={() => navigate("/tutorials")}>Tutorials</p>
-          <p onClick={() => navigate("/instructions")}>Instructions</p>
+          <p onClick={() => navigate("/instructions")}>Manual</p>
           <p onClick={() => navigate("/aboutus")}>About</p>
         </div>
       </div>
@@ -51,7 +51,7 @@ const Navbar = () => {
               <p onClick={() => navigate("/selection-learn")}>Learn</p>
               <p onClick={() => navigate("/selection-practice")}>Practice</p>
               <p onClick={() => navigate("/tutorials")}>Tutorials</p>
-              <p onClick={() => navigate("/instructions")}>Instructions</p>
+              <p onClick={() => navigate("/instructions")}>Manual</p>
               <p onClick={() => navigate("/aboutus")}>About</p>
             </div>
             <div className="gpt3__navbar-menu_container-links-sign">

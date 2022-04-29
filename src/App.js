@@ -53,6 +53,8 @@ const PilatesLearnAdvanced = loadable(() =>
 
 const Tutorials = loadable(() => import("./pages/Tutorials/Tutorials"));
 
+const Instructions = loadable(() => import("./pages/Instructions/Instructions"));
+
 function App() {
   return (
     <Router>
@@ -196,6 +198,14 @@ function App() {
             element={
               <PrivateRoute>
                 <AboutUs />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/instructions"
+            element={
+              <PrivateRoute>
+                <Instructions />
               </PrivateRoute>
             }
           />
