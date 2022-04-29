@@ -10,10 +10,12 @@
 .Instructions .instructions_container {
   display: flex;
   justify-content: center;
-
-  margin-bottom: 30px;
+  
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 50px;
 }
-.Instructions .viewer {
+.Instructions .viewer_container {
   height: 650px;
   width: 900px;
 }
