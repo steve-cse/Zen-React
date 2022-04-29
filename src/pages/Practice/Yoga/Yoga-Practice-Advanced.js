@@ -102,7 +102,7 @@ function Yoga() {
       detectorConfig
     );
     const poseClassifier = await tf.loadLayersModel(
-      "https://raw.githubusercontent.com/Maverick-2000/Zen-React/master/Movenet%20Files/Advanced/model/model.json"
+      "https://raw.githubusercontent.com/Maverick-2000/Zen-Movenet/master/Advanced/model/model.json"
     );
     setLoading(false);
     interval = setInterval(() => {
