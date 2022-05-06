@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+   "namespace": "android_app",
+    "package_name": "app.zen.twa",
+    "sha256_cert_fingerprints":["CE:44:62:2C:EC:8C:78:69:76:D8:F3:38:7A:5E:47:90:8C:FF:AD:11:92:71:FA:96:CF:66:80:66:DE:F9:F7:4B"]
+  }
+}]
