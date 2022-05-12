@@ -9,10 +9,10 @@ const About = () => (
     </div>
     <div className="gpt3__whatgpt3-heading">
       <h1 className="gradient__text">A Computer-Assisted Yoga and Pilates training system</h1>
-      <p><a href=''>Know more</a> </p>
+      <p onClick={() => {window.open("https://zen.cram.workers.dev/", "_blank");}}>Know more </p>
     </div>
     <div className="gpt3__whatgpt3-container">
-      <Feature title="Learn" text="The Learn module can be used to learn new poses and exercises for yoga and pilates" />
+      <Feature title="Learn" text="The Learn module can be used to learn new poses and exercises for yoga and pilates." />
       <Feature title="Practice" text="The practice module can be utilised to perfect the poses and exercises that have been previously learned." />
       <Feature title="Review" text="The Review module, also known as the Dashboard, is used to visually describe the data from a pose or exercise." />
     </div>

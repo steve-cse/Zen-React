@@ -1,6 +1,42 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="#">
+    
+  </a>
+  <p align="center">
+   <img width="150" height="150" src="https://raw.githubusercontent.com/Maverick-2000/Zen-React/master/public/logo512.png" alt="Logo">
+  </p>
+  <h1 align="center"><b>Zen Yoga and Pilates</b></h1>
+  <p align="center">
+  Learn and Practice Yoga & Pilates online
+    <br />
+    <a href="https://zen-react.vercel.app/"><strong>zen-react.vercel.app »</strong></a>
+    <br />
+    <br />
+    <b>Download the <a href="https://github.com/Maverick-2000/Zen-React/releases">App</a> for Android</b>
+   
+    
+    
+  </p>
+</p>
+Zen is a Computer Assisted Yoga and Pilates training system. Users get real time feedback on their posture, performance and correction needed. Helps diminish the need for a yoga or pilates coach.
+<br/>
+<br/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Motivation
+
+Yoga, an ancient Indian art, is gaining popularity nowadays since it not only promotes physical wellness but also helps to detoxify the body, mind, and spirit. Similarly, pilates, the modern form of yoga, is well-known for its high-calorie-burning activities. Improper postures can cause major harm to the muscles and ligaments of the body if the practitioner does not perform a pose or exercise appropriately. As a result, we are motivated to develop a computer vision-based self-training system for supporting practitioners in exercising on their own.
+
+# Features
+
+
+
+- **[Review](#features)** - The Review module, also known as the Dashboard, is used to visually describe the data from a pose or exercise.
+- **[Learn](#features)** - The Learn module can be used to learn new poses and exercises for yoga and pilates.
+- **[Practice](#features)** - The practice module can be utilised to perfect the poses and exercises that have been previously learned.
+- **[Tutorials](#features)** - A curated list of tutorials.
+
+
+# Developer Guide
 
 ## Available Scripts
 
@@ -29,42 +65,14 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Inspiration
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project was inspired by the projects listed below.:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [yogAI](https://github.com/cris-maillo/yogAI) by [@cris-maillo](https://github.com/cris-maillo)
+- [MediaPipePoseEstimation](https://github.com/nicknochnack/MediaPipePoseEstimation) by [@nicknochnack](https://github.com/nicknochnack)
+- [YogaIntelliJ](https://github.com/harshbhatt7585/YogaIntelliJ) by [@harshbhatt7585](https://github.com/harshbhatt7585)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
