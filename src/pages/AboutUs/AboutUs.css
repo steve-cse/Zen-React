@@ -1,4 +1,4 @@
-.AboutUsLanding .aboutus_heading h2 {
+.AboutUs .aboutus_heading h2 {
   font-family: var(--font-family);
   font-weight: 800;
   font-size: 45px;
@@ -7,7 +7,7 @@
   padding: 1rem;
   margin-bottom: 10px;
 }
-.AboutUsLanding .aboutus_desc p {
+.AboutUs .aboutus_desc p {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 23px;
@@ -16,7 +16,7 @@
   padding: 1rem;
   margin-left: 10px;
 }
-.AboutUsLanding .aboutus_list li {
+.AboutUs .aboutus_list li {
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 23px;
@@ -25,104 +25,104 @@
   padding: 1rem;
   margin-left: 10px;
 }
-.AboutUsLanding .image_container {
+.AboutUs .image_container {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 20px;
 }
-.AboutUsLanding .image_container .steve_card img {
+.AboutUs .image_container .steve_card img {
   width: 200px;
   height: 200px;
   margin: 5px;
 }
-.AboutUsLanding .image_container .steve_card .steve_gmail {
+.AboutUs .image_container .steve_card .steve_gmail {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .steve_card .steve_github {
+.AboutUs .image_container .steve_card .steve_github {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .steve_card .steve_linkedin {
+.AboutUs .image_container .steve_card .steve_linkedin {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .steve_card .steve_discord {
+.AboutUs .image_container .steve_card .steve_discord {
   margin-right: 5px;
 }
 
-.AboutUsLanding .image_container .sanjay_card img {
+.AboutUs .image_container .sanjay_card img {
   width: 200px;
   height: 200px;
   margin: 5px;
 }
-.AboutUsLanding .image_container .sanjay_card .sanjay_gmail {
+.AboutUs .image_container .sanjay_card .sanjay_gmail {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .sanjay_card .sanjay_github {
+.AboutUs .image_container .sanjay_card .sanjay_github {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .sanjay_card .sanjay_linkedin {
+.AboutUs .image_container .sanjay_card .sanjay_linkedin {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .sanjay_card .sanjay_discord {
+.AboutUs .image_container .sanjay_card .sanjay_discord {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .edwin_card img {
+.AboutUs .image_container .edwin_card img {
   width: 200px;
   height: 200px;
   margin: 5px;
 }
-.AboutUsLanding .image_container .edwin_card .edwin_gmail {
+.AboutUs .image_container .edwin_card .edwin_gmail {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .edwin_card .edwin_github {
+.AboutUs .image_container .edwin_card .edwin_github {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .edwin_card .edwin_linkedin {
+.AboutUs .image_container .edwin_card .edwin_linkedin {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .edwin_card .edwin_discord {
+.AboutUs .image_container .edwin_card .edwin_discord {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .agnel_card img {
+.AboutUs .image_container .agnel_card img {
   width: 200px;
   height: 200px;
   margin: 5px;
 }
-.AboutUsLanding .image_container .agnel_card .agnel_gmail {
+.AboutUs .image_container .agnel_card .agnel_gmail {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .agnel_card .agnel_github {
+.AboutUs .image_container .agnel_card .agnel_github {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .agnel_card .agnel_linkedin {
+.AboutUs .image_container .agnel_card .agnel_linkedin {
   margin-right: 5px;
 }
-.AboutUsLanding .image_container .agnel_card .agnel_discord {
+.AboutUs .image_container .agnel_card .agnel_discord {
   margin-right: 5px;
 }
 @media screen and (max-width: 1024px) {
-  .AboutUsLanding .image_container {
+  .AboutUs .image_container {
     flex-direction: column;
     align-items: center;
   }
-  .AboutUsLanding .image_container .steve_card {
+  .AboutUs .image_container .steve_card {
     margin-bottom: 30px;
   }
-  .AboutUsLanding .image_container .sanjay_card {
+  .AboutUs .image_container .sanjay_card {
     margin-bottom: 30px;
   }
-  .AboutUsLanding .image_container .edwin_card {
+  .AboutUs .image_container .edwin_card {
     margin-bottom: 30px;
   }
-  .AboutUsLanding .image_container .agnel_card {
+  .AboutUs .image_container .agnel_card {
     margin-bottom: 30px;
   }
-  .AboutUsLanding .aboutus_heading h2 {
+  .AboutUs .aboutus_heading h2 {
     font-size: 30px;
   }
-  .AboutUsLanding .aboutus_desc p {
+  .AboutUs .aboutus_desc p {
     font-size: 17px;
   }
-  .AboutUsLanding .aboutus_list li {
+  .AboutUs .aboutus_list li {
     font-size: 17px;
   }
 }
