@@ -18,7 +18,7 @@
     
   </p>
 </p>
-Zen is a Computer Assisted Yoga and Pilates training system. Users get real time feedback on their posture, performance and correction needed. Helps diminish the need for a yoga or pilates coach.
+Zen is a Computer Assisted Yoga and Pilates training system. Users are provided with immediate feedback on their posture, performance, and areas in which they can improve. This reduces the necessity of hiring a personal yoga or pilates trainer.
 <br/>
 <br/>
 
