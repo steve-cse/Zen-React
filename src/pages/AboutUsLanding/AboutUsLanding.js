@@ -182,7 +182,7 @@ export default function AboutUsLanding() {
               className="agnel_card_text"
               style={{ textAlign: "center" }}
             >
-              Research & Documentation
+              CSS Developer
             </Card.Text>
             <center>
               <SocialIcon

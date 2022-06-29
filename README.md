@@ -68,7 +68,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 # Inspiration
 
-This project was inspired by the projects listed below.:
+This project was inspired by the projects listed below :
 
 - [yogAI](https://github.com/cris-maillo/yogAI) by [@cris-maillo](https://github.com/cris-maillo)
 - [MediaPipePoseEstimation](https://github.com/nicknochnack/MediaPipePoseEstimation) by [@nicknochnack](https://github.com/nicknochnack)
