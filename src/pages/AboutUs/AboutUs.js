@@ -42,7 +42,7 @@ export default function AboutUs() {
               />
               <SocialIcon
                 className="steve_github"
-                url="https://github.com/Maverick-2000"
+                url="https://github.com/steve-cse"
                 style={{ height: 40, width: 40 }}
               />
               <SocialIcon
