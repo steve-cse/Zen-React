@@ -11,6 +11,7 @@
     <br />
     <a href="https://zen-react.vercel.app/"><strong>zen-react.vercel.app »</strong></a>
     <br />
+    <a href="https://youtu.be/HMg_S0wZCpE"><strong>Check out the Demo</strong></a>
     <br />
     <b>Download the <a href="https://github.com/Maverick-2000/Zen-React/releases">App</a> for Android</b>
    
