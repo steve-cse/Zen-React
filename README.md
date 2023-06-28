@@ -9,7 +9,7 @@
   <p align="center">
   Learn and Practice Yoga & Pilates online
     <br />
-    <a href="https://zen-react.vercel.app/"><strong>zen-react.vercel.app »</strong></a>
+    <a href="https://zen-react.vercel.app/"><strong>zen-react.vercel.app</strong></a>
     <br />
     <br />
     <a href="https://youtu.be/HMg_S0wZCpE"><strong>Check out the Demo</strong></a>
